@@ -11,6 +11,7 @@ namespace Domain.Entities.Abstracts
 		public int Id { get; set; }
 		public DateTime createdTime { get; set; } = DateTime.UtcNow;
 		public DateTime LastUpdatedTime { get; set; }
+		public bool IsDeleted { get; set; }=false;
 
 	}
 }

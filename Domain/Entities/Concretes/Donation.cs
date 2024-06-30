@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Concretes
 {
-	public class Donation:Entity
+	public class Donation : Entity
 	{
-        public decimal?  Amount { get; set; }
+		public decimal? Amount { get; set; }
 
-        public int UserId { get; set; }
-        public User User { get; set; }
-    }
+		//foreign key
+		public string ShelterId { get; set; }
+		public string UserId { get; set; }
+		
+		//Navigation
+		public AppUser User { get; set; }
+		public Shelter Shelter { get; set; }
+	}
 }

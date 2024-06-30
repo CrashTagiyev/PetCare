@@ -14,9 +14,10 @@ namespace Domain.Entities.Concretes
         public string? Street { get; set; }
 
 
-        public int PetId { get; set; }
+
+        //Foreign key
         //Navigation peroperties
-        public Pet Pet { get; set; }
+        public ShelterBranch  ShelterBranch { get; set; }
 
     }
 }

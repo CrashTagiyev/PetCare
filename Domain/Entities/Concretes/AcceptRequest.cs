@@ -14,7 +14,9 @@ namespace Domain.Entities.Concretes
         public Pet Pet { get; set; }
         public string? IsAccepted { get; set; }= Acceptstatus.Pending.ToString();
         public string? Description { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
-    }
+        public string UserId { get; set; }
+        public int ShelterId { get; set; }
+		public AppUser User { get; set; }
+        public Shelter Shelter  { get; set; }
+	}
 }

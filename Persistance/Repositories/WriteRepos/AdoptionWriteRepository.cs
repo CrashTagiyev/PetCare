@@ -26,10 +26,7 @@ namespace Persistance.Repositories.WriteRepos
 			throw new NotImplementedException();
 		}
 
-		public Task SaveChangesAsync()
-		{
-			throw new NotImplementedException();
-		}
+
 
 		public Task UpdateAsync(Adoption entity)
 		{

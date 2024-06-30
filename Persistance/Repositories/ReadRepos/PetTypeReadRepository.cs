@@ -19,7 +19,7 @@ namespace Persistance.Repositories.ReadRepos
 		public Task<ICollection<PetType>> GetAllAsync()
 		{
 			throw new NotImplementedException();
-		}-+
+		}
 
 		public Task<PetType> GetByIdAsync(int id)
 		{
