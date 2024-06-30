@@ -9,7 +9,6 @@ namespace Domain.Identity
 {
 	public class Shelter:AppUser
 	{
-        public int sheltername { get; set; }
         public ICollection<ShelterBranch> ShelterBranches { get; set; }
     }
 }

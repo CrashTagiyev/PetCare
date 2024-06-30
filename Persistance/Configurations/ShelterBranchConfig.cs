@@ -16,6 +16,8 @@ namespace Persistance.Configurations
 			builder.HasOne(sb => sb.Shelter)
 				.WithMany(s => s.ShelterBranches)
 				.HasForeignKey(sb => sb.ShelterId);
+
+		
 		}
 	}
 }

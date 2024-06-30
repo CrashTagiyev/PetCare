@@ -193,7 +193,7 @@ namespace Persistance.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -217,13 +217,13 @@ namespace Persistance.Migrations
                         column: x => x.ShelterId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Donations_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -326,8 +326,7 @@ namespace Persistance.Migrations
                     IsAccepted = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ShelterId = table.Column<int>(type: "int", nullable: false),
-                    ShelterId1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ShelterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -336,8 +335,8 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_AcceptRequests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AcceptRequests_AspNetUsers_ShelterId1",
-                        column: x => x.ShelterId1,
+                        name: "FK_AcceptRequests_AspNetUsers_ShelterId",
+                        column: x => x.ShelterId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -355,19 +354,71 @@ namespace Persistance.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Adoption",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PetId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ShelterId = table.Column<int>(type: "int", nullable: false),
+                    ShelterId1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adoption", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Adoption_AspNetUsers_ShelterId1",
+                        column: x => x.ShelterId1,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Adoption_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Adoption_Pets_PetId",
+                        column: x => x.PetId,
+                        principalTable: "Pets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AcceptRequests_PetId",
                 table: "AcceptRequests",
                 column: "PetId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AcceptRequests_ShelterId1",
+                name: "IX_AcceptRequests_ShelterId",
                 table: "AcceptRequests",
-                column: "ShelterId1");
+                column: "ShelterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AcceptRequests_UserId",
                 table: "AcceptRequests",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adoption_PetId",
+                table: "Adoption",
+                column: "PetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adoption_ShelterId1",
+                table: "Adoption",
+                column: "ShelterId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adoption_UserId",
+                table: "Adoption",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -451,6 +502,9 @@ namespace Persistance.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AcceptRequests");
+
+            migrationBuilder.DropTable(
+                name: "Adoption");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Persistance.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,20 @@ namespace Persistance.Database
 			: base(options)
 		{
 		}
+
+		protected override void OnModelCreating(ModelBuilder builder)
+		{
+			builder.ApplyConfiguration(new AcceptRequestConfig());
+			builder.ApplyConfiguration(new ShelterBranchConfig());
+			builder.ApplyConfiguration(new AdoptionConfig());
+			builder.ApplyConfiguration(new PetConfig());
+			builder.ApplyConfiguration(new PetTypeConfig());
+			builder.ApplyConfiguration(new BreedConfig());
+			builder.ApplyConfiguration(new DonationConfig());
+			builder.ApplyConfiguration(new LocationConfig());
+			base.OnModelCreating(builder);
+		}
+
 
 		public DbSet<Pet> Pets { get; set; }
 		public DbSet<PetType> PetTypes { get; set; }

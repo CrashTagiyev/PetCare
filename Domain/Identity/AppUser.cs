@@ -14,7 +14,7 @@ namespace Domain.Identity
 
 		//Navigation properties
 		public ICollection<Donation>? Donations { get; set; }
-		//public ICollection<AcceptRequest>? AcceptRequests { get; set; }
+		public ICollection<AcceptRequest>? AcceptRequests { get; set; }
 		//      public ICollection<Adoption>? Adoptions { get; set; }
 		//public ICollection<ShelterBranch>? ShelterBranches { get; set; }
 

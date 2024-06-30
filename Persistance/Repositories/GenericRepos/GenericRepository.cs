@@ -20,7 +20,7 @@ namespace Persistance.Repositories.GenericRepos
 		{
 			await _context.SaveChangesAsync();
 		}
-		protected void SaveChangesDB()
+		protected void SaveChangesDb()
 		{
 			_context.SaveChanges();
 		}

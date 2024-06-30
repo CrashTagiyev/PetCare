@@ -12,7 +12,7 @@ using Persistance.Database;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(PetCareDB))]
-    [Migration("20240630124258_mig1")]
+    [Migration("20240630195418_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -48,6 +48,45 @@ namespace Persistance.Migrations
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ShelterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("createdTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId");
+
+                    b.HasIndex("ShelterId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AcceptRequests");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Concretes.Adoption", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
 
@@ -70,7 +109,7 @@ namespace Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AcceptRequests");
+                    b.ToTable("Adoption");
                 });
 
             modelBuilder.Entity("Domain.Entities.Concretes.Breed", b =>
@@ -535,6 +574,33 @@ namespace Persistance.Migrations
 
                     b.HasOne("Domain.Identity.Shelter", "Shelter")
                         .WithMany()
+                        .HasForeignKey("ShelterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Identity.AppUser", "User")
+                        .WithMany("AcceptRequests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("Shelter");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Concretes.Adoption", b =>
+                {
+                    b.HasOne("Domain.Entities.Concretes.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Identity.Shelter", "Shelter")
+                        .WithMany()
                         .HasForeignKey("ShelterId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -691,6 +757,8 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.Identity.AppUser", b =>
                 {
+                    b.Navigation("AcceptRequests");
+
                     b.Navigation("Donations");
                 });
 

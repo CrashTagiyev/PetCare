@@ -30,6 +30,7 @@ namespace Persistance.Repositories.WriteRepos
 
 		public Task UpdateAsync(Donation entity)
 		{
+			throw new NotImplementedException();
 		}
 	}
 }
