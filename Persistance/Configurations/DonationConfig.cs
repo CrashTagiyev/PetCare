@@ -14,9 +14,9 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Donation> builder)
 		{
-			builder.HasOne(d => d.User)
-				.WithMany(u => u.Donations)
-				.HasForeignKey(d => d.UserId);
+				builder.HasOne(d => d.User)
+					.WithMany(u => u.Donations)
+					.HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

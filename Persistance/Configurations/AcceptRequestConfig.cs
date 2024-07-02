@@ -13,7 +13,7 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<AcceptRequest> builder)
 		{
-	
+			
 
 		}
 	}

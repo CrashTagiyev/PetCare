@@ -23,8 +23,8 @@ namespace Domain.Entities.Concretes
 		public int PetTypeId { get; set; }
         public int SHelterBranchId { get; set; }
         //Navigation property
-        public PetType? PetType { get; set; }
-        public ShelterBranch?  ShelterBranch { get; set; }
+        public PetType PetType { get; set; }
+        public ShelterBranch  ShelterBranch { get; set; }
 
 	}
 }

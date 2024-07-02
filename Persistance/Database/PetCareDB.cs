@@ -28,9 +28,18 @@ namespace Persistance.Database
 			builder.ApplyConfiguration(new BreedConfig());
 			builder.ApplyConfiguration(new DonationConfig());
 			builder.ApplyConfiguration(new LocationConfig());
+
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
 			base.OnModelCreating(builder);
 		}
 
+		
 
 		public DbSet<Pet> Pets { get; set; }
 		public DbSet<PetType> PetTypes { get; set; }
