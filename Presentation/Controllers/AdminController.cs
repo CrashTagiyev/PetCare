@@ -10,5 +10,6 @@ namespace Presentation.Controllers
 	public class AdminController : ControllerBase
 	{
 		private readonly UserManager<Shelter> userManager;
+		// Elgun Salam deyir sene 
 	}
 }
