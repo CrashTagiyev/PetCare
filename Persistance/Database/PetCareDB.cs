@@ -21,7 +21,7 @@ namespace Persistance.Database
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.ApplyConfiguration(new AcceptRequestConfig());
-			builder.ApplyConfiguration(new ShelterBranchConfig());
+			builder.ApplyConfiguration(new ShelterConfig());
 			builder.ApplyConfiguration(new AdoptionConfig());
 			builder.ApplyConfiguration(new PetConfig());
 			builder.ApplyConfiguration(new PetTypeConfig());
@@ -29,13 +29,11 @@ namespace Persistance.Database
 			builder.ApplyConfiguration(new DonationConfig());
 			builder.ApplyConfiguration(new LocationConfig());
 
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+
+
+
+			//builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+		
 			base.OnModelCreating(builder);
 		}
 
@@ -47,7 +45,7 @@ namespace Persistance.Database
 		public DbSet<Breed> Breeds { get; set; }
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }
 		public DbSet<Donation> Donations { get; set; }
-		public DbSet<ShelterBranch> ShelterBranches { get; set; }
+		public DbSet<Shelter> ShelterBranches { get; set; }
 
 	}
 }

@@ -16,15 +16,19 @@ namespace Domain.Entities.Concretes
 		public string? Gender { get; set; }
 		public string[]? ImageUrls { get; set; }
 		public bool IsAdopted { get; set; } = false;
-		public bool IsHealthy { get; set; }
+		public string Health { get; set; }
 		public decimal Weight { get; set; }
 
 		//Foreign key
 		public int PetTypeId { get; set; }
-        public int SHelterBranchId { get; set; }
+        public int ShelterId { get; set; }
+        public int? AdoptionId { get; set; }
         //Navigation property
         public PetType PetType { get; set; }
-        public ShelterBranch  ShelterBranch { get; set; }
+        public Shelter  Shelter { get; set; }
+		public Adoption?  Adoption { get; set; }
+
+		public ICollection<AcceptRequest> AcceptRequests { get; set; }
 
 	}
 }

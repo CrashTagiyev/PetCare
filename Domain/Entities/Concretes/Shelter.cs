@@ -3,12 +3,20 @@ using Domain.Identity;
 
 namespace Domain.Entities.Concretes
 {
-	public class ShelterBranch : Entity
+	public class Shelter : Entity
 	{
-		public string ShelterId { get; set; }
+
+		//Foreign keys
+		public string CompanyId { get; set; }
 		public int LocationId { get; set; }
-		public Shelter Shelter { get; set; }
+
+
+		//Navigation properties
+		public Company Company { get; set; }
 		public Location Location { get; set; }
 		public ICollection<Pet> Pets { get; set; }
+
+
+
 	}
 }

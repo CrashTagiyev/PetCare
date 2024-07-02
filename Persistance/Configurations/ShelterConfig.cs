@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace Persistance.Configurations
 {
-	public class ShelterBranchConfig : IEntityTypeConfiguration<ShelterBranch>
+	public class ShelterConfig : IEntityTypeConfiguration<Shelter>
 	{
-		public void Configure(EntityTypeBuilder<ShelterBranch> builder)
+		public void Configure(EntityTypeBuilder<Shelter> builder)
 		{
-			builder.HasOne(sb => sb.Shelter)
-				.WithMany(s => s.ShelterBranches)
-				.HasForeignKey(sb => sb.ShelterId);
+			builder.HasOne(s => s.Company)
+				.WithMany(s => s.Shelters)
+				.HasForeignKey(sb => sb.CompanyId).OnDelete(DeleteBehavior.Cascade);
+
 
 		
 		}

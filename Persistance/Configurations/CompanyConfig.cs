@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Concretes;
+﻿using Domain.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace Persistance.Configurations
 {
-	internal class LocationConfig : IEntityTypeConfiguration<Location>
+	internal class CompanyConfig : IEntityTypeConfiguration<Company>
 	{
-		public void Configure(EntityTypeBuilder<Location> builder)
+		public void Configure(EntityTypeBuilder<Company> builder)
 		{
-			builder.HasOne(l=>l.Shelter)
-				.WithOne(l=>l.Location).OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }
