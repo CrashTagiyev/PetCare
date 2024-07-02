@@ -13,11 +13,11 @@ namespace Domain.Entities.Concretes
 		public decimal? Amount { get; set; }
 
 		//foreign key
-		public string ShelterId { get; set; }
+		public string CompanyId { get; set; }
 		public string UserId { get; set; }
 		
 		//Navigation
 		public AppUser User { get; set; }
-		public Shelter Shelter { get; set; }
+		public Company Company { get; set; }
 	}
 }

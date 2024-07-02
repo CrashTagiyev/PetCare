@@ -12,10 +12,8 @@ namespace Domain.Entities.Concretes
 	{
 		public int PetId { get; set; }
 		public string UserId { get; set; }
-		public int ShelterId { get; set; }
 
 		public Pet Pet { get; set; }
-		public Shelter Shelter { get; set; }
 		public AppUser User { get; set; }
 	}
 }

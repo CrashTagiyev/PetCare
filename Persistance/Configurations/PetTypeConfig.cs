@@ -13,6 +13,7 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<PetType> builder)
 		{
+			
 		}
 	}
 }

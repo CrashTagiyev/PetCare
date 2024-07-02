@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Identity
 {
-	public class Shelter:AppUser
+	public class Company:AppUser
 	{
-        public ICollection<ShelterBranch> ShelterBranches { get; set; }
-    }
+        public ICollection<Shelter> Shelters { get; set; }
+	}
 }

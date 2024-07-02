@@ -108,7 +108,7 @@ namespace Persistance.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,7 +129,7 @@ namespace Persistance.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -149,7 +149,7 @@ namespace Persistance.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,7 +167,7 @@ namespace Persistance.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -193,7 +193,7 @@ namespace Persistance.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -203,7 +203,7 @@ namespace Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    ShelterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CompanyId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -213,17 +213,16 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_Donations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Donations_AspNetUsers_ShelterId",
-                        column: x => x.ShelterId,
+                        name: "FK_Donations_AspNetUsers_CompanyId",
+                        column: x => x.CompanyId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Donations_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -232,7 +231,7 @@ namespace Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ShelterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CompanyId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     LocationId = table.Column<int>(type: "int", nullable: false),
                     createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -242,17 +241,17 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_ShelterBranches", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShelterBranches_AspNetUsers_ShelterId",
-                        column: x => x.ShelterId,
+                        name: "FK_ShelterBranches_AspNetUsers_CompanyId",
+                        column: x => x.CompanyId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ShelterBranches_Locations_LocationId",
                         column: x => x.LocationId,
                         principalTable: "Locations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -275,7 +274,7 @@ namespace Persistance.Migrations
                         column: x => x.PetTypeId,
                         principalTable: "PetTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -291,10 +290,11 @@ namespace Persistance.Migrations
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrls = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsAdopted = table.Column<bool>(type: "bit", nullable: false),
-                    IsHealthy = table.Column<bool>(type: "bit", nullable: false),
+                    Health = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PetTypeId = table.Column<int>(type: "int", nullable: false),
-                    SHelterBranchId = table.Column<int>(type: "int", nullable: false),
+                    ShelterId = table.Column<int>(type: "int", nullable: false),
+                    AdoptionId = table.Column<int>(type: "int", nullable: true),
                     createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -306,14 +306,13 @@ namespace Persistance.Migrations
                         name: "FK_Pets_PetTypes_PetTypeId",
                         column: x => x.PetTypeId,
                         principalTable: "PetTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Pets_ShelterBranches_SHelterBranchId",
-                        column: x => x.SHelterBranchId,
+                        name: "FK_Pets_ShelterBranches_ShelterId",
+                        column: x => x.ShelterId,
                         principalTable: "ShelterBranches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -322,11 +321,10 @@ namespace Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PetId = table.Column<int>(type: "int", nullable: false),
                     IsAccepted = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PetId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ShelterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -335,23 +333,15 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_AcceptRequests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AcceptRequests_AspNetUsers_ShelterId",
-                        column: x => x.ShelterId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_AcceptRequests_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AcceptRequests_Pets_PetId",
                         column: x => x.PetId,
                         principalTable: "Pets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -362,8 +352,6 @@ namespace Persistance.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PetId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ShelterId = table.Column<int>(type: "int", nullable: false),
-                    ShelterId1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     createdTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -372,34 +360,22 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_Adoption", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Adoption_AspNetUsers_ShelterId1",
-                        column: x => x.ShelterId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Adoption_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Adoption_Pets_PetId",
                         column: x => x.PetId,
                         principalTable: "Pets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AcceptRequests_PetId",
                 table: "AcceptRequests",
                 column: "PetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AcceptRequests_ShelterId",
-                table: "AcceptRequests",
-                column: "ShelterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AcceptRequests_UserId",
@@ -409,12 +385,8 @@ namespace Persistance.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Adoption_PetId",
                 table: "Adoption",
-                column: "PetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Adoption_ShelterId1",
-                table: "Adoption",
-                column: "ShelterId1");
+                column: "PetId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Adoption_UserId",
@@ -466,9 +438,9 @@ namespace Persistance.Migrations
                 column: "PetTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Donations_ShelterId",
+                name: "IX_Donations_CompanyId",
                 table: "Donations",
-                column: "ShelterId");
+                column: "CompanyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Donations_UserId",
@@ -481,20 +453,20 @@ namespace Persistance.Migrations
                 column: "PetTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_SHelterBranchId",
+                name: "IX_Pets_ShelterId",
                 table: "Pets",
-                column: "SHelterBranchId");
+                column: "ShelterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShelterBranches_CompanyId",
+                table: "ShelterBranches",
+                column: "CompanyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShelterBranches_LocationId",
                 table: "ShelterBranches",
                 column: "LocationId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ShelterBranches_ShelterId",
-                table: "ShelterBranches",
-                column: "ShelterId");
         }
 
         /// <inheritdoc />

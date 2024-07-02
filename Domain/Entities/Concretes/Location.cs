@@ -15,7 +15,7 @@ namespace Domain.Entities.Concretes
 
 
 		//Navigation peroperties
-		public ShelterBranch  ShelterBranch { get; set; }
+		public Shelter Shelter { get; set; }
 
     }
 }

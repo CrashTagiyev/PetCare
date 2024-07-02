@@ -13,6 +13,10 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Breed> builder)
 		{
+			builder.HasOne(b => b.PetType)
+				.WithMany(pt => pt.Breeds)
+				.HasForeignKey(b => b.PetTypeId)
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }
