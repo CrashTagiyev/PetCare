@@ -8,7 +8,7 @@ namespace Domain.AutoMapperProfiles
 	{
 		public PetAutoMapper()
 		{
-			CreateMap<PetReadDto, Pet>();
+			CreateMap<Pet, PetReadDto>();
 		}
 	}
 }
