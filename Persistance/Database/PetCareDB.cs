@@ -17,7 +17,7 @@ namespace Persistance.Database
 			: base(options)
 		{
 		}
-
+		//a
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.ApplyConfiguration(new AcceptRequestConfig());
