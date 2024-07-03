@@ -12,7 +12,7 @@ using Persistance.Database;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(PetCareDB))]
-    [Migration("20240702181930_mig1")]
+    [Migration("20240703123539_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -315,7 +315,7 @@ namespace Persistance.Migrations
                     b.HasIndex("LocationId")
                         .IsUnique();
 
-                    b.ToTable("ShelterBranches");
+                    b.ToTable("Shelters");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -578,7 +578,7 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Entities.Concretes.Pet", "Pet")
                         .WithOne("Adoption")
                         .HasForeignKey("Domain.Entities.Concretes.Adoption", "PetId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Domain.Identity.AppUser", "User")
