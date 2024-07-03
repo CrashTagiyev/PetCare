@@ -1,5 +1,6 @@
 ﻿using Domain.AbstractRepositories.ReadRepos;
 using Domain.Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
 using System;
@@ -16,9 +17,9 @@ namespace Persistance.Repositories.ReadRepos
 		{
 		}
 
-		public Task<ICollection<Donation>> GetAllAsync()
+		public async Task<ICollection<Donation>> GetAllAsync()
 		{
-			throw new NotImplementedException();
+			await _table.ToListAsync();
 		}
 
 		public Task<Donation> GetByIdAsync(int id)

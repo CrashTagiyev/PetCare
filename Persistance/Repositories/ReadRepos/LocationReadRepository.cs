@@ -18,7 +18,8 @@ namespace Persistance.Repositories.ReadRepos
 
 		public Task<ICollection<Location>> GetAllAsync()
 		{
-			throw new NotImplementedException();
+
+
 		}
 
 		public Task<Location> GetByIdAsync(int id)

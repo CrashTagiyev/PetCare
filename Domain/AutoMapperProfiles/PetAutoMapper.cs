@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Domain.DTOs.ReadDTO;
+using Domain.Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +14,7 @@ namespace Domain.AutoMapperProfiles
 	{
         public PetAutoMapper()
         {
-          
+            CreateMap<PetReadDto, Pet>();
         }
     }
 }
