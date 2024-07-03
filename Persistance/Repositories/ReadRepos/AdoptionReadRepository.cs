@@ -3,11 +3,6 @@ using Domain.Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Repositories.ReadRepos
 {
@@ -25,7 +20,7 @@ namespace Persistance.Repositories.ReadRepos
 
 		public async Task<Adoption?> GetByIdAsync(int id)
 		{
-			return await _table.FirstOrDefaultAsync(a=>a.Id==id)
+			return await _table.FirstOrDefaultAsync(a => a.Id == id)
 		}
 	}
 }

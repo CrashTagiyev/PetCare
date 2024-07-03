@@ -3,7 +3,7 @@ using Domain.Entities.Concretes;
 
 namespace Domain.AbstractRepositories.ReadRepos;
 
-public interface IShelterReadRepository: IGenericReadRepository<Shelter>
+public interface IShelterReadRepository : IGenericReadRepository<Shelter>
 {
-    
+
 }
