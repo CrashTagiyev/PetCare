@@ -19,7 +19,7 @@ namespace Persistance.Repositories.ReadRepos
 
 		public async Task<ICollection<Adoption>> GetAllAsync()
 		{
-			await _table.ToListAsync();
+			return await _table.ToListAsync();
 
 		}
 

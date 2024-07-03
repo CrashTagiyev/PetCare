@@ -19,10 +19,10 @@ namespace Persistance.Repositories.ReadRepos
 
 		public async Task<ICollection<AcceptRequest>> GetAllAsync()
 		{
-			await _table.ToListAsync();
+			 return await _table.ToListAsync();
 		}
 
-		public Task<AcceptRequest> GetByIdAsync(int id)
+		public Task<AcceptRequest?> GetByIdAsync(int id)
 		{
 			throw new NotImplementedException();
 		}

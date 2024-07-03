@@ -1,5 +1,6 @@
 ﻿using Domain.AbstractRepositories.ReadRepos;
 using Domain.Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
 using System;
@@ -16,15 +17,14 @@ namespace Persistance.Repositories.ReadRepos
 		{
 		}
 
-		public Task<ICollection<Location>> GetAllAsync()
+		public async Task<ICollection<Location>> GetAllAsync()
 		{
-
-
+			return await _table.ToListAsync();
 		}
 
-		public Task<Location> GetByIdAsync(int id)
+		public async Task<Location?> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _table.FirstOrDefaultAsync(l => l.Id == id);
 		}
 	}
 }
