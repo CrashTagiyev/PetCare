@@ -3,7 +3,7 @@ using Domain.Entities.Concretes;
 
 namespace Domain.AbstractRepositories.WriteRepos;
 
-public interface IShelterWriteRepository: IGenericWriteRepository<Shelter>
+public interface IShelterWriteRepository : IGenericWriteRepository<Shelter>
 {
-    
+
 }

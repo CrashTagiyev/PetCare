@@ -1,13 +1,7 @@
 ﻿using Domain.Entities.Concretes;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Database
 {
@@ -17,7 +11,6 @@ namespace Persistance.Database
 			: base(options)
 		{
 		}
-		//a
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.ApplyConfiguration(new AcceptRequestConfig());
@@ -33,11 +26,11 @@ namespace Persistance.Database
 
 
 			//builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
-		
+
 			base.OnModelCreating(builder);
 		}
 
-		
+
 
 		public DbSet<Pet> Pets { get; set; }
 		public DbSet<PetType> PetTypes { get; set; }

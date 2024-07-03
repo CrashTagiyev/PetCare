@@ -1,35 +1,35 @@
 ﻿using Domain.AbstractRepositories.WriteRepos;
 using Domain.Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Repositories.WriteRepos
 {
-    public class BreedWriteRepository : GenericRepository<Breed>, IBreedWriteRepository
+	public class BreedWriteRepository : GenericRepository<Breed>, IBreedWriteRepository
 	{
 		public BreedWriteRepository(PetCareDB context) : base(context)
 		{
 		}
 
-		public Task CreateAsync(Breed entity)
+		public async Task CreateAsync(Breed entity)
 		{
-			throw new NotImplementedException();
+			await _table.AddAsync(entity);
 		}
 
-		public Task DeleteAsync(int id)
+		public async Task DeleteAsync(int id)
 		{
-			throw new NotImplementedException();
+			var breed = await _table.FirstOrDefaultAsync(b => b.Id == id);
+			if (breed is not null)
+				_table.Remove(breed);
+
 		}
 
 
 		public Task UpdateAsync(Breed entity)
 		{
-			throw new NotImplementedException();
+			_table.Update(entity);
+			return Task.CompletedTask;
 		}
 	}
 }

@@ -1,36 +1,35 @@
 ﻿using Domain.AbstractRepositories.WriteRepos;
 using Domain.Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Repositories.WriteRepos
 {
-    public class AdoptionWriteRepository : GenericRepository<Adoption>, IAdoptionWriteRepository
+	public class AdoptionWriteRepository : GenericRepository<Adoption>, IAdoptionWriteRepository
 	{
 		public AdoptionWriteRepository(PetCareDB context) : base(context)
 		{
 		}
 
-		public Task CreateAsync(Adoption entity)
+		public async Task CreateAsync(Adoption entity)
 		{
-			throw new NotImplementedException();
+			await _table.AddAsync(entity);
 		}
 
-		public Task DeleteAsync(int id)
+		public async Task DeleteAsync(int id)
 		{
-			throw new NotImplementedException();
+			var adoption = await _table.FirstOrDefaultAsync(a => a.Id == id);
+			if (adoption is not null)
+				_table.Remove(adoption);
 		}
 
 
 
-		public Task UpdateAsync(Adoption entity)
+		public async Task UpdateAsync(Adoption entity)
 		{
-			throw new NotImplementedException();
+			_table.Update(entity);
+			return Task.CompletedTask;
 		}
 	}
 }
