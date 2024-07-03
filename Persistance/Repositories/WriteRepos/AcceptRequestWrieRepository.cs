@@ -33,7 +33,8 @@ namespace Persistance.Repositories.WriteRepos
 
 		public Task UpdateAsync(AcceptRequest entity)
 		{
-			throw new NotImplementedException();
+			_table.Update(entity);
+			return Task.CompletedTask;
 		}
 	}
 }

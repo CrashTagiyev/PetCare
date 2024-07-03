@@ -19,12 +19,12 @@ namespace Persistance.Repositories.ReadRepos
 
 		public async Task<ICollection<Breed>> GetAllAsync()
 		{
-			await _table.ToListAsync();
+			return await _table.ToListAsync();
 		}
 
-		public Task<Breed> GetByIdAsync(int id)
+		public async Task<Breed?> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _table.FirstOrDefaultAsync(b => b.Id == id);
 		}
 	}
 }

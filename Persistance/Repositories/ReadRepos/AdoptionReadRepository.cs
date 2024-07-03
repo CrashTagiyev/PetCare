@@ -23,9 +23,9 @@ namespace Persistance.Repositories.ReadRepos
 
 		}
 
-		public Task<Adoption> GetByIdAsync(int id)
+		public async Task<Adoption?> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _table.FirstOrDefaultAsync(a=>a.Id==id)
 		}
 	}
 }

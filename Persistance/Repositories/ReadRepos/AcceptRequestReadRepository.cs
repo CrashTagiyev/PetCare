@@ -22,9 +22,9 @@ namespace Persistance.Repositories.ReadRepos
 			 return await _table.ToListAsync();
 		}
 
-		public Task<AcceptRequest?> GetByIdAsync(int id)
+		public async Task<AcceptRequest?> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _table.FirstOrDefaultAsync(ar => ar.Id == id);
 		}
 	}
 }

@@ -19,12 +19,12 @@ namespace Persistance.Repositories.ReadRepos
 
 		public async Task<ICollection<Donation>> GetAllAsync()
 		{
-			await _table.ToListAsync();
+			return await _table.ToListAsync();
 		}
 
-		public Task<Donation> GetByIdAsync(int id)
+		public async Task<Donation?> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _table.FirstOrDefaultAsync(d => d.Id == id);
 		}
 	}
 }

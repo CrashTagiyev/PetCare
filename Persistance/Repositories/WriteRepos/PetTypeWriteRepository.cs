@@ -1,5 +1,6 @@
 ﻿using Domain.AbstractRepositories.WriteRepos;
 using Domain.Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
 using System;
@@ -16,21 +17,24 @@ namespace Persistance.Repositories.WriteRepos
 		{
 		}
 
-		public Task CreateAsync(PetType entity)
+		public async Task CreateAsync(PetType entity)
 		{
-			throw new NotImplementedException();
+			await _table.AddAsync(entity);
 		}
 
-		public Task DeleteAsync(int id)
+		public async Task DeleteAsync(int id)
 		{
-			throw new NotImplementedException();
+			var petType = await _table.FirstOrDefaultAsync(pt => pt.Id == id);
+			if (petType is not null)
+				_table.Remove(petType);
 		}
 
 
 
-		public Task UpdateAsync(PetType entity)
+		public  Task UpdateAsync(PetType entity)
 		{
-			throw new NotImplementedException();
+			_table.Update(entity);
+			return Task.CompletedTask;
 		}
 	}
 }

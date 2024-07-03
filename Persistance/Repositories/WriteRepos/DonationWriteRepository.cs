@@ -1,5 +1,7 @@
 ﻿using Domain.AbstractRepositories.WriteRepos;
 using Domain.Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
 using System;
@@ -10,27 +12,30 @@ using System.Threading.Tasks;
 
 namespace Persistance.Repositories.WriteRepos
 {
-    public class DonationWriteRepository : GenericRepository<Donation>, IDonationWriteRepository
+	public class DonationWriteRepository : GenericRepository<Donation>, IDonationWriteRepository
 	{
 		public DonationWriteRepository(PetCareDB context) : base(context)
 		{
 		}
 
-		public Task CreateAsync(Donation entity)
+		public async Task CreateAsync(Donation entity)
 		{
-			throw new NotImplementedException();
+			await _table.AddAsync(entity);
 		}
 
-		public Task DeleteAsync(int id)
+		public async Task DeleteAsync(int id)
 		{
-			throw new NotImplementedException();
+			var donation = await _table.FirstOrDefaultAsync(d => d.Id == id);
+			if (donation is not null)
+				_table.Remove(donation);
 		}
 
 
 
 		public Task UpdateAsync(Donation entity)
 		{
-			throw new NotImplementedException();
+			_table.Update(entity);
+			return Task.CompletedTask;
 		}
 	}
 }
