@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="AbstractServices\" />
-    <Folder Include="AutoMapper\" />
     <Folder Include="Behaviours\Commands\" />
     <Folder Include="Behaviours\Queries\" />
     <Folder Include="Validators\" />

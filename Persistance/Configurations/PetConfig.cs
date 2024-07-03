@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +18,13 @@ namespace Persistance.Configurations
 				.WithMany(sb => sb.Pets)
 				.HasForeignKey(p => p.ShelterId).OnDelete(DeleteBehavior.Cascade);
 
-			builder.HasOne(p=>p.PetType)
-				.WithMany(pt=>pt.Pets)
-				.HasForeignKey(p=>p.PetTypeId).OnDelete(DeleteBehavior.NoAction);
+			builder.HasOne(p => p.PetType)
+				.WithMany(pt => pt.Pets)
+				.HasForeignKey(p => p.PetTypeId).OnDelete(DeleteBehavior.NoAction);
+
+			builder.HasOne(p => p.Adoption)
+				.WithOne(a=>a.Pet)
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }

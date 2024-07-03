@@ -226,7 +226,7 @@ namespace Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShelterBranches",
+                name: "Shelters",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -239,15 +239,15 @@ namespace Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShelterBranches", x => x.Id);
+                    table.PrimaryKey("PK_Shelters", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShelterBranches_AspNetUsers_CompanyId",
+                        name: "FK_Shelters_AspNetUsers_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ShelterBranches_Locations_LocationId",
+                        name: "FK_Shelters_Locations_LocationId",
                         column: x => x.LocationId,
                         principalTable: "Locations",
                         principalColumn: "Id",
@@ -308,9 +308,9 @@ namespace Persistance.Migrations
                         principalTable: "PetTypes",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Pets_ShelterBranches_ShelterId",
+                        name: "FK_Pets_Shelters_ShelterId",
                         column: x => x.ShelterId,
-                        principalTable: "ShelterBranches",
+                        principalTable: "Shelters",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -369,7 +369,8 @@ namespace Persistance.Migrations
                         name: "FK_Adoption_Pets_PetId",
                         column: x => x.PetId,
                         principalTable: "Pets",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -458,13 +459,13 @@ namespace Persistance.Migrations
                 column: "ShelterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShelterBranches_CompanyId",
-                table: "ShelterBranches",
+                name: "IX_Shelters_CompanyId",
+                table: "Shelters",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShelterBranches_LocationId",
-                table: "ShelterBranches",
+                name: "IX_Shelters_LocationId",
+                table: "Shelters",
                 column: "LocationId",
                 unique: true);
         }
@@ -509,7 +510,7 @@ namespace Persistance.Migrations
                 name: "PetTypes");
 
             migrationBuilder.DropTable(
-                name: "ShelterBranches");
+                name: "Shelters");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

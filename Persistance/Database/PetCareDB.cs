@@ -45,7 +45,7 @@ namespace Persistance.Database
 		public DbSet<Breed> Breeds { get; set; }
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }
 		public DbSet<Donation> Donations { get; set; }
-		public DbSet<Shelter> ShelterBranches { get; set; }
+		public DbSet<Shelter> Shelters { get; set; }
 
 	}
 }
