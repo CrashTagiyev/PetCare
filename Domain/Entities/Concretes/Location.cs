@@ -12,8 +12,7 @@ namespace Domain.Entities.Concretes
         public string? City { get; set; }
         public string? Region { get; set; }
         public string? Street { get; set; }
-
-
+        
 		//Navigation peroperties
 		public ShelterBranch  ShelterBranch { get; set; }
 

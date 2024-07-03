@@ -11,8 +11,10 @@ namespace Domain.Entities.Concretes
 	{
 		public string? BreedName { get; set; }
 
+		// Foreign key
         public int PetTypeId { get; set; }
-        //Property navigations
+        
+        // Navigation property
         public PetType? PetType { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Domain.Entities.Concretes
 		public string ShelterId { get; set; }
 		public string UserId { get; set; }
 		
-		//Navigation
+		//Navigation property
 		public AppUser User { get; set; }
 		public Shelter Shelter { get; set; }
 	}
