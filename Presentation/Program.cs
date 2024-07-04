@@ -1,3 +1,4 @@
+using Application.BuilderRegisters;
 using Domain.BuilderRegisters;
 using Persistance.BuilderRegisters;
 
@@ -10,13 +11,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 //Custom service extensions ---------------------------------------
 
 //Identity
 builder.Services.AddPetCareIdentity();
+//Db Context
 builder.AddPetCareDbContext();
 builder.Services.AddPetCareAutoMapper();
+builder.Services.AddPetCareFluentValidators();
 
 //-------------------------------------------------------------------
 

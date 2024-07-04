@@ -1,11 +1,6 @@
 ﻿using Domain.Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Configurations
 {
@@ -13,10 +8,16 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Breed> builder)
 		{
+			//Relations
 			builder.HasOne(b => b.PetType)
 				.WithMany(pt => pt.Breeds)
 				.HasForeignKey(b => b.PetTypeId)
 				.OnDelete(DeleteBehavior.Cascade);
+
+			//Properties
+			builder.Property(b => b.PetTypeId).IsRequired();
+			builder.Property(b => b.BreedName).IsRequired();
+
 		}
 	}
 }

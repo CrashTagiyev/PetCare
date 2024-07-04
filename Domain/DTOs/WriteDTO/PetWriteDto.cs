@@ -12,5 +12,6 @@ public class PetWriteDto
     public decimal Weight { get; set; }
     
     public int PetTypeId { get; set; }
-    public int ShelterId { get; set; }
+    public int BreedId { get; set; }
+	public int ShelterId { get; set; }
 }

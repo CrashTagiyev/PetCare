@@ -25,7 +25,14 @@ namespace Persistance.Database
 
 
 
-			//builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Shelter>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<PetType>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Breed>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Donation>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Location>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Adoption>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<AcceptRequest>().HasQueryFilter(p => !p.IsDeleted);
 
 			base.OnModelCreating(builder);
 		}
@@ -36,6 +43,7 @@ namespace Persistance.Database
 		public DbSet<PetType> PetTypes { get; set; }
 		public DbSet<Location> Locations { get; set; }
 		public DbSet<Breed> Breeds { get; set; }
+		public DbSet<Adoption> adoptions { get; set; }
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }
 		public DbSet<Donation> Donations { get; set; }
 		public DbSet<Shelter> Shelters { get; set; }

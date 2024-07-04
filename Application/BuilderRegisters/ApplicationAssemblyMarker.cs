@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Identity
+namespace Application.BuilderRegisters
 {
-	public class Vet:AppUser
+	public record ApplicationAssemblyMarker
 	{
-
 	}
 }

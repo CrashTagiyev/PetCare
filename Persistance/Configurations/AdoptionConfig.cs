@@ -1,11 +1,6 @@
 ﻿using Domain.Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Configurations
 {
@@ -13,15 +8,20 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Adoption> builder)
 		{
+			//Relations
 			builder.HasOne(a => a.Pet)
-		.WithOne(p => p.Adoption)
-		.HasForeignKey<Adoption>(a => a.PetId) 
-		.OnDelete(DeleteBehavior.NoAction);
+				.WithOne(p => p.Adoption)
+				.HasForeignKey<Adoption>(a => a.PetId)
+				.OnDelete(DeleteBehavior.NoAction);
 
-			builder.HasOne(a=>a.User)
-				.WithMany(a=>a.Adoptions)
-				.HasForeignKey(u=>u.UserId)
+			builder.HasOne(a => a.User)
+				.WithMany(a => a.Adoptions)
+				.HasForeignKey(u => u.UserId)
 				.OnDelete(DeleteBehavior.Cascade);
+
+			//Properties
+			builder.Property(a => a.PetId).IsRequired();
+			builder.Property(a => a.UserId).IsRequired();
 
 		}
 	}

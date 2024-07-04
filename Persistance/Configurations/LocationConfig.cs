@@ -1,11 +1,6 @@
 ﻿using Domain.Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Configurations
 {
@@ -13,8 +8,15 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Location> builder)
 		{
-			builder.HasOne(l=>l.Shelter)
-				.WithOne(l=>l.Location).OnDelete(DeleteBehavior.Cascade);
+			//Relations
+			builder.HasOne(l => l.Shelter)
+				.WithOne(l => l.Location).OnDelete(DeleteBehavior.Cascade);
+
+			//Properties
+			builder.Property(l => l.City).IsRequired();
+			builder.Property(l => l.Region).IsRequired();
+			builder.Property(l => l.Street).IsRequired();
+
 		}
 	}
 }

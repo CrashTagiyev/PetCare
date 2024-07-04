@@ -20,7 +20,7 @@ namespace Persistance.Repositories.ReadRepos
 
 		public async Task<Adoption?> GetByIdAsync(int id)
 		{
-			return await _table.FirstOrDefaultAsync(a => a.Id == id)
+			return await _table.FirstOrDefaultAsync(a => a.Id == id);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Concretes;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -18,8 +19,10 @@ namespace Persistance.Configurations
 				.HasForeignKey(u => u.UserId)
 				.OnDelete(DeleteBehavior.NoAction);
 
-
-
+			builder.Property(ar => ar.UserId).IsRequired();
+			builder.Property(ar => ar.PetId).IsRequired();
+			builder.Property(ar => ar.AcceptStatus).HasDefaultValue(Acceptstatus.Pending).IsRequired();
+			builder.Property(ar => ar.Description).IsRequired();
 		}
 	}
 }

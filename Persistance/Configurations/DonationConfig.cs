@@ -1,5 +1,4 @@
 ﻿using Domain.Entities.Concretes;
-using Domain.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,9 +8,15 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Donation> builder)
 		{
-				builder.HasOne(d => d.User)
-					.WithMany(u => u.Donations)
-					.HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.NoAction);
+			//Relations
+			builder.HasOne(d => d.User)
+				.WithMany(u => u.Donations)
+				.HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.NoAction);
+
+			//Properties
+			builder.Property(d => d.UserId).IsRequired();
+			builder.Property(d => d.CompanyId).IsRequired();
+			builder.Property(d => d.Amount).IsRequired();
 
 		}
 	}

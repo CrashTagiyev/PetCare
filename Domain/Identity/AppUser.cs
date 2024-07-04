@@ -13,10 +13,13 @@ namespace Domain.Identity
         public string? Address { get; set; }
 
 		//Navigation properties
+			//Company
+		public ICollection<Shelter>? Shelters { get; set; }
+
+			//App Users
 		public ICollection<Donation>? Donations { get; set; }
 		public ICollection<AcceptRequest>? AcceptRequests { get; set; }
 		public ICollection<Adoption>? Adoptions { get; set; }
-		//public ICollection<ShelterBranch>? ShelterBranches { get; set; }
 
 	}
 }

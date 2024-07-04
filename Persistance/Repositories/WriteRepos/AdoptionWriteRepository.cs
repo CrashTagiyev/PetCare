@@ -26,9 +26,9 @@ namespace Persistance.Repositories.WriteRepos
 
 
 
-		public async Task UpdateAsync(Adoption entity)
+		public  Task UpdateAsync(Adoption entity)
 		{
-			_table.Update(entity);
+			 _table.Update(entity);
 			return Task.CompletedTask;
 		}
 	}

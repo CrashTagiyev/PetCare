@@ -18,6 +18,6 @@ namespace Domain.Entities.Concretes
 		
 		//Navigation
 		public AppUser User { get; set; }
-		public Company Company { get; set; }
+		public AppUser Company { get; set; }
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using Domain.Entities.Abstracts;
 using Domain.Enums;
+using Domain.Enums.EnumsExtensions;
 using Domain.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Domain.Entities.Concretes
 {
 	public class AcceptRequest : Entity
 	{
-		public string? IsAccepted { get; set; } = Acceptstatus.Pending.ToString();
-		public string? Description { get; set; }
+		public Acceptstatus AcceptStatus { get; set; }
+		public string Description { get; set; }
 
 		//Foreign keys
 		public int PetId { get; set; }
@@ -21,6 +22,7 @@ namespace Domain.Entities.Concretes
 		//Navigation properties
 		public Pet Pet { get; set; }
 		public AppUser User { get; set; }
+
 
 	}
 }

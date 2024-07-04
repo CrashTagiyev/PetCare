@@ -9,7 +9,7 @@ namespace Domain.Entities.Abstracts
 	public abstract class Entity : IBaseEntity
 	{
 		public int Id { get; set; }
-		public DateTime createdTime { get; set; } = DateTime.UtcNow;
+		public DateTime CreatedTime { get; set; } = DateTime.UtcNow;
 		public DateTime LastUpdatedTime { get; set; }
 		public bool IsDeleted { get; set; }=false;
 

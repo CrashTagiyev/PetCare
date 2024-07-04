@@ -12,7 +12,7 @@ namespace Domain.Entities.Concretes
 
 
 		//Navigation properties
-		public Company Company { get; set; }
+		public AppUser Company { get; set; }
 		public Location Location { get; set; }
 		public ICollection<Pet> Pets { get; set; }
 
