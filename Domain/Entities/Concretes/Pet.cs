@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Abstracts;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Domain.Entities.Concretes
 		public string? Description { get; set; }
 		public string? Size { get; set; }
 		public short Age { get; set; }
-		public string? Gender { get; set; }
+		public Gender? Gender { get; set; }
 		public string[]? ImageUrls { get; set; }
 		public bool IsAdopted { get; set; } = false;
 		public string Health { get; set; }
@@ -26,7 +27,7 @@ namespace Domain.Entities.Concretes
         //Navigation property
         public PetType PetType { get; set; }
         public Shelter  Shelter { get; set; }
-		public Adoption?  Adoption { get; set; }
+		public Adoption?  Adoption { get; set; }	
 
 		public ICollection<AcceptRequest> AcceptRequests { get; set; }
 

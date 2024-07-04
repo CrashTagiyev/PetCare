@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Domain.DTOs.ReadDTO;
 
 public class PetReadDto
@@ -7,7 +9,7 @@ public class PetReadDto
     public string? Description { get; set; }
     public string? Size { get; set; }
     public short Age { get; set; }
-    public string? Gender { get; set; }
+    public Gender? Gender { get; set; }
     public string[]? ImageUrls { get; set; }
     public bool IsAdopted { get; set; }
     public string Health { get; set; }

@@ -26,6 +26,7 @@ namespace Persistance.Database
 
 
 			builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
+			builder.Entity<Pet>().HasQueryFilter(p => !p.IsAdopted);
 			builder.Entity<Shelter>().HasQueryFilter(p => !p.IsDeleted);
 			builder.Entity<PetType>().HasQueryFilter(p => !p.IsDeleted);
 			builder.Entity<Breed>().HasQueryFilter(p => !p.IsDeleted);

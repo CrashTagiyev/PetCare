@@ -1,5 +1,7 @@
 using Application.BuilderRegisters;
 using Domain.BuilderRegisters;
+using Domain.Identity;
+using Microsoft.AspNetCore.Identity;
 using Persistance.BuilderRegisters;
 
 
@@ -31,6 +33,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
 
 app.UseAuthorization();
 
