@@ -13,5 +13,8 @@ namespace Domain.Enums.EnumsExtensions
 
 			return attribute == null ? value.ToString() : attribute.Description;
 		}
+
+
+
 	}
 }

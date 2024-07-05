@@ -12,7 +12,6 @@ namespace Presentation.Controllers
 	[ApiController]
 	public class RepoTestController : ControllerBase
 	{
-
 		//User repos
 		#region User repositories
 		private readonly IAppUserWriteRepository _appUserWriteRepository;
@@ -45,7 +44,7 @@ namespace Presentation.Controllers
 			_breedReadRepository = bioReadRepository;
 		}
 
-		//APpUser repo Test
+		//APpUser repo Test - checked
 		#region AppUser repository tesing
 		[HttpPost("[action]")]
 		public async Task<IActionResult> AppUserCreate(string username, string email)
@@ -104,7 +103,7 @@ namespace Presentation.Controllers
 		//--------------------------------------------------------------------------------------
 		#endregion
 
-		//PetType repo Test
+		//PetType repo Test - checked
 		#region PetType repository test
 		[HttpPost("[action]")]
 		public async Task<IActionResult> PetTypeCreate(string typeName)
@@ -156,7 +155,7 @@ namespace Presentation.Controllers
 		}
 		#endregion
 
-		//Breed tepo test
+		//Breed tepo test - checked
 		#region Breed repository test
 		[HttpPost("[action]")]
 		public async Task<IActionResult> BreedCreate(string breedName,int petTypeId)
@@ -208,5 +207,7 @@ namespace Presentation.Controllers
 		}
 
 		#endregion
+
+	   //
 	}
 }
