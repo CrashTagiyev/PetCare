@@ -17,7 +17,7 @@ namespace Domain.Entities.Concretes
 
 		//Foreign keys
 		public int PetId { get; set; }
-		public string UserId { get; set; }
+		public int UserId { get; set; }
 
 		//Navigation properties
 		public Pet Pet { get; set; }

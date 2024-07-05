@@ -19,7 +19,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPetCareIdentity();
 //Db Context
 builder.AddPetCareDbContext();
+
+//Repositories
+builder.Services.AddPetCareRepositories();
+
+//Automapper
 builder.Services.AddPetCareAutoMapper();
+
+//Validators
 builder.Services.AddPetCareFluentValidators();
 
 //-------------------------------------------------------------------

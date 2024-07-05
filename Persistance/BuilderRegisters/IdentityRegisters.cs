@@ -11,7 +11,7 @@ namespace Persistance.BuilderRegisters
 
 		public static void AddPetCareIdentity(this IServiceCollection services)
 		{
-			services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<PetCareDB>().AddDefaultTokenProviders();
+			services.AddIdentity<AppUser, IdentityRole<int>>().AddEntityFrameworkStores<PetCareDB>().AddDefaultTokenProviders();
 		}
 	}
 }

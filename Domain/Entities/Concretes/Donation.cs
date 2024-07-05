@@ -14,7 +14,7 @@ namespace Domain.Entities.Concretes
 
 		//foreign key
 		public string CompanyId { get; set; }
-		public string UserId { get; set; }
+		public int UserId { get; set; }
 		
 		//Navigation
 		public AppUser User { get; set; }

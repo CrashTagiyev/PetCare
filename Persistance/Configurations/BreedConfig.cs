@@ -18,6 +18,9 @@ namespace Persistance.Configurations
 			builder.Property(b => b.PetTypeId).IsRequired();
 			builder.Property(b => b.BreedName).IsRequired();
 
+
+			//Data seed
+
 		}
 	}
 }

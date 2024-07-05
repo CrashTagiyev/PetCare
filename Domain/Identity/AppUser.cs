@@ -1,25 +1,30 @@
-﻿using Domain.Entities.Concretes;
+﻿using Domain.Entities.Abstracts;
+using Domain.Entities.Concretes;
 using Microsoft.AspNetCore.Identity;
 
 
 namespace Domain.Identity
 {
-	public class AppUser : IdentityUser
+	public class AppUser : IdentityUser<int>,IBaseEntity
 	{
 		public string? Firstname { get; set; }
 		public string? Lasname { get; set; }
 		public DateTime? DateOfBirth { get; set; }
-        public string? City { get; set; }
-        public string? Address { get; set; }
+		public string? City { get; set; }
+		public string? Address { get; set; }
+
+		//Base entity props
+		public DateTime CreatedTime { get; set; }= DateTime.UtcNow;
+		public DateTime LastUpdatedTime { get; set; }
+		public bool IsDeleted { get; set; }
 
 		//Navigation properties
-			//Company
+		//Company
 		public ICollection<Shelter>? Shelters { get; set; }
 
-			//App Users
+		//App Users
 		public ICollection<Donation>? Donations { get; set; }
 		public ICollection<AcceptRequest>? AcceptRequests { get; set; }
 		public ICollection<Adoption>? Adoptions { get; set; }
-
 	}
 }

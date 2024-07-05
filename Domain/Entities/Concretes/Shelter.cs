@@ -7,7 +7,7 @@ namespace Domain.Entities.Concretes
 	{
 
 		//Foreign keys
-		public string CompanyId { get; set; }
+		public int CompanyId { get; set; }
 		public int LocationId { get; set; }
 
 
