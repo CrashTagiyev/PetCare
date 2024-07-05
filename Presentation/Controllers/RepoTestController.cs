@@ -28,13 +28,21 @@ namespace Presentation.Controllers
 
 		#endregion
 
-		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository)
+		//Breed repos
+		#region Breed repositories
+		private readonly IBreedReadRepository _breedReadRepository;
+		private readonly IBreedWriteRepository _breedWriteRepository;
+		#endregion
+
+		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository)
 		{
 			_appUserWriteRepository = appUserWriteRepository;
 			_appUserReadRepository = appUserReadRepository;
 			_userManager = userManager;
 			_petTypeWriteRepository = petTypeWriteRepository;
 			_petTypeReadRepository = petTypeReadRepository;
+			_breedWriteRepository = bioWriteRepository;
+			_breedReadRepository = bioReadRepository;
 		}
 
 		//APpUser repo Test
@@ -103,8 +111,10 @@ namespace Presentation.Controllers
 		{
 			var petType = new PetType() { TypeName = typeName };
 
+
 			await _petTypeWriteRepository.CreateAsync(petType);
 			return Ok();
+
 
 		}
 
@@ -146,6 +156,57 @@ namespace Presentation.Controllers
 		}
 		#endregion
 
-		//
+		//Breed tepo test
+		#region Breed repository test
+		[HttpPost("[action]")]
+		public async Task<IActionResult> BreedCreate(string breedName,int petTypeId)
+		{
+			var breed = new Breed() { BreedName = breedName ,PetTypeId=petTypeId};
+
+
+			await _breedWriteRepository.CreateAsync(breed);
+			return Ok();
+
+
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> BreedGetAll()
+		{
+			var breed = await _breedReadRepository.GetAllAsync();
+			return Ok(breed);
+
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> BreedGetById(int id)
+		{
+			var breed = await _breedReadRepository.GetByIdAsync(id);
+			return Ok(breed);
+
+		}
+
+		[HttpPut("[action]")]
+		public async Task<IActionResult> BreedUpdate(int id, string newBreedName)
+		{
+			var breed = await _breedReadRepository.GetByIdAsync(id);
+			if (breed is not null)
+			{
+
+				breed.BreedName = newBreedName;
+				await _breedWriteRepository.UpdateAsync(breed);
+				return Ok();
+
+			}
+			return NotFound();
+		}
+		[HttpDelete("[action]")]
+		public async Task<IActionResult> BreedDelete(int id)
+		{
+			await _breedWriteRepository.DeleteAsync(id);
+			return Ok();
+		}
+
+		#endregion
 	}
 }
