@@ -1,11 +1,12 @@
 ﻿using Domain.Entities.Abstracts;
+using Domain.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 
 
 namespace Persistance.Repositories.GenericRepos
 {
-    public class GenericRepository<T> where T :Entity, IBaseEntity , new()
+    public class GenericRepository<T> where T :class, IBaseEntity , new()
     {
         protected readonly PetCareDB _context;
         protected readonly DbSet<T> _table;
