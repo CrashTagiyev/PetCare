@@ -13,7 +13,7 @@ namespace Domain.Entities.Concretes
 		public decimal? Amount { get; set; }
 
 		//foreign key
-		public string CompanyId { get; set; }
+		public int CompanyId { get; set; }
 		public int UserId { get; set; }
 		
 		//Navigation

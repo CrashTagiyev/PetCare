@@ -20,7 +20,7 @@ namespace Domain.Identity
 
 		//Navigation properties
 		//Company
-		public ICollection<Shelter>? Shelters { get; set; }
+		public virtual ICollection<Shelter>? Shelters { get; set; }
 
 		//App Users
 		public ICollection<Donation>? Donations { get; set; }
