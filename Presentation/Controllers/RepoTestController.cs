@@ -1,6 +1,9 @@
-﻿using Domain.AbstractRepositories.EntityRepos.ReadRepos;
+﻿using AutoMapper;
+using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.AbstractRepositories.IdentityRepos;
+using Domain.DTOs.ReadDTO;
+using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +15,8 @@ namespace Presentation.Controllers
 	[ApiController]
 	public class RepoTestController : ControllerBase
 	{
+		private readonly IMapper _mapper;
+
 		//User repos
 		#region User repositories
 		private readonly IAppUserWriteRepository _appUserWriteRepository;
@@ -33,7 +38,28 @@ namespace Presentation.Controllers
 		private readonly IBreedWriteRepository _breedWriteRepository;
 		#endregion
 
-		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository)
+		//Pets repos
+		#region Pet repositories
+
+		private readonly IPetWriteRepository _petWriteRepository;
+		private readonly IPetReadRepository _petReadRepository;
+
+		#endregion
+
+
+		//Shelter repos
+		#region shelter repos
+		private readonly IShelterReadRepository _shelterReadRepository;
+		private readonly IShelterWriteRepository _shelterWriteRepository;
+		#endregion
+
+		//Location repos
+		#region location repos
+		private readonly ILocationReadRepository _locationReadRepository;
+		private readonly ILocationWriteRepository _locationWriteRepository;
+		#endregion
+
+		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper, ILocationReadRepository locationReadRepository, ILocationWriteRepository locationWriteRepository, IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository)
 		{
 			_appUserWriteRepository = appUserWriteRepository;
 			_appUserReadRepository = appUserReadRepository;
@@ -42,6 +68,13 @@ namespace Presentation.Controllers
 			_petTypeReadRepository = petTypeReadRepository;
 			_breedWriteRepository = bioWriteRepository;
 			_breedReadRepository = bioReadRepository;
+			_petReadRepository = petReadRepository;
+			_petWriteRepository = petWriteRepository;
+			_mapper = mapper;
+			_locationReadRepository = locationReadRepository;
+			_locationWriteRepository = locationWriteRepository;
+			_shelterReadRepository = shelterReadRepository;
+			_shelterWriteRepository = shelterWriteRepository;
 		}
 
 		//APpUser repo Test - checked
@@ -57,6 +90,7 @@ namespace Presentation.Controllers
 			await _appUserWriteRepository.CreateAsync(newUser);
 
 			await _userManager.AddPasswordAsync(newUser, "123qweA@");
+			//await _userManager.AddToRoleAsync(newUser, role);
 			return Ok();
 		}
 
@@ -158,9 +192,9 @@ namespace Presentation.Controllers
 		//Breed tepo test - checked
 		#region Breed repository test
 		[HttpPost("[action]")]
-		public async Task<IActionResult> BreedCreate(string breedName,int petTypeId)
+		public async Task<IActionResult> BreedCreate(string breedName, int petTypeId)
 		{
-			var breed = new Breed() { BreedName = breedName ,PetTypeId=petTypeId};
+			var breed = new Breed() { BreedName = breedName, PetTypeId = petTypeId };
 
 
 			await _breedWriteRepository.CreateAsync(breed);
@@ -208,6 +242,66 @@ namespace Presentation.Controllers
 
 		#endregion
 
-	   //
+
+
+
+
+
+		//Location repo test -
+		#region Location test
+		[HttpPost("[action]")]
+		public async Task<IActionResult> LocationCreate([FromBody] LocationWriteDto locationWriteDto)
+		{
+			var location = _mapper.Map<Location>(locationWriteDto);
+			await _locationWriteRepository.CreateAsync(location);
+			return Ok();
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> LocationGet(int id)
+		{
+			var location = await _locationReadRepository.GetByIdAsync(id);
+			var locationDTO = _mapper.Map<LocationReadDto>(location);
+
+			return Ok(location);
+		}
+		#endregion
+
+		#region Shelter repo test
+		[HttpPost("[action]")]
+		public async Task<IActionResult> ShelterCreate([FromBody] ShelterWriteDto shelterWriteDto)
+		{
+			try
+			{
+				var shelter = _mapper.Map<Shelter>(shelterWriteDto);
+				await _shelterWriteRepository.CreateAsync(shelter);
+
+				return Ok(shelter);
+			}
+			catch (Exception ex)
+			{
+				return Ok(ex.Message);
+			}
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> ShelterGet(int id)
+		{
+			var shelter = await _shelterReadRepository.GetByIdAsync(id);
+			var shelterReadDTO = _mapper.Map<ShelterReadDto>(shelter);
+			shelterReadDTO.Location = _mapper.Map<LocationReadDto>(shelter.Location);
+
+			shelterReadDTO.Company = shelter!.Company.UserName!;
+			return Ok(shelterReadDTO);
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> ShelterGetAll()
+		{
+			var shelters = await _shelterReadRepository.GetAllAsync();
+			return Ok(shelters);
+		}
+		#endregion
+
 	}
 }

@@ -13,9 +13,13 @@ namespace Persistance.Configurations
 				.WithMany(s => s.Shelters)
 				.HasForeignKey(sb => sb.CompanyId).OnDelete(DeleteBehavior.Cascade);
 
+			builder.HasOne(s => s.Location)
+				.WithOne(l => l.Shelter)
+				.HasForeignKey<Location>(l => l.ShelterId)
+				.OnDelete(DeleteBehavior.Cascade);
+
 			//Properties
-			builder.Property(s=>s.CompanyId).IsRequired();
-			builder.Property(s=>s.LocationId).IsRequired();
+			builder.Property(s => s.CompanyId).IsRequired();
 
 		}
 	}

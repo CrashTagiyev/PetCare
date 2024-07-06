@@ -9,13 +9,11 @@ namespace Persistance.Configurations
 		public void Configure(EntityTypeBuilder<Location> builder)
 		{
 			//Relations
-			builder.HasOne(l => l.Shelter)
-				.WithOne(l => l.Location).OnDelete(DeleteBehavior.Cascade);
-
+			
 			//Properties
 			builder.Property(l => l.City).IsRequired();
 			builder.Property(l => l.Region).IsRequired();
-			builder.Property(l => l.Street).IsRequired();
+			builder.Property(l => l.ShelterId).IsRequired();
 
 		}
 	}

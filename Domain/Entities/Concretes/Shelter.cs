@@ -8,12 +8,10 @@ namespace Domain.Entities.Concretes
 
 		//Foreign keys
 		public int CompanyId { get; set; }
-		public int LocationId { get; set; }
-
 
 		//Navigation properties
-		public AppUser Company { get; set; }
-		public Location Location { get; set; }
+		public virtual AppUser Company { get; set; }
+		public virtual Location Location { get; set; }
 		public ICollection<Pet> Pets { get; set; }
 
 

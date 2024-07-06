@@ -5,16 +5,19 @@ using Domain.Entities.Concretes;
 
 namespace Domain.AutoMapperProfiles;
 
-public class ShelterProfile: Profile
+public class ShelterProfile : Profile
 {
-    public ShelterProfile()
-    {
-        // ShelterReadDto ...
-        CreateMap<Shelter, ShelterReadDto>();
-        CreateMap<ShelterReadDto, Shelter>();
-        
-        // ShelterWriteDto ...
-        CreateMap<ShelterWriteDto, Shelter>();
-        CreateMap<Shelter, ShelterWriteDto>();
-    }
+	public ShelterProfile()
+	{
+		// ShelterReadDto ...
+		CreateMap<Shelter, ShelterReadDto>();
+		
+
+
+		CreateMap<ShelterReadDto, Shelter>();
+
+		// ShelterWriteDto ...
+		CreateMap<ShelterWriteDto, Shelter>();
+		CreateMap<Shelter, ShelterWriteDto>();
+	}
 }

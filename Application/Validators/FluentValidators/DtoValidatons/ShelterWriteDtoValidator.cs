@@ -13,7 +13,6 @@ namespace Application.Validators.FluentValidators.DtoValidatons
 		public ShelterWriteDtoValidator()
 		{
 			RuleFor(s => s.CompanyId).NotEmpty().NotNull();
-			RuleFor(s => s.LocationId).NotEmpty().NotNull();
 		}
 	}
 }
