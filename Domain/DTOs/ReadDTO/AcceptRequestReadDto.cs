@@ -3,7 +3,7 @@ using Domain.Enums.EnumsExtensions;
 
 namespace Domain.DTOs.ReadDTO;
 
-public class AcceptRequestReadDto
+public class  AcceptRequestReadDto
 {
     public int Id { get; set; }
     public string? AcceptStatus { get; set; }

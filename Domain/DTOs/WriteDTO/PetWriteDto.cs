@@ -15,5 +15,5 @@ public class PetWriteDto
     
     public int PetTypeId { get; set; }
     public int BreedId { get; set; }
-    public int? ShelterId { get; set; } = 0;
+    public int? ShelterId { get; set; }
 }
