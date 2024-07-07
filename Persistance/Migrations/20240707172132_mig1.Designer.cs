@@ -12,8 +12,8 @@ using Persistance.Database;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(PetCareDB))]
-    [Migration("20240707092231_mig4")]
-    partial class mig4
+    [Migration("20240707172132_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -218,6 +218,9 @@ namespace Persistance.Migrations
 
                     b.Property<short>("Age")
                         .HasColumnType("smallint");
+
+                    b.Property<int>("BreedId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");

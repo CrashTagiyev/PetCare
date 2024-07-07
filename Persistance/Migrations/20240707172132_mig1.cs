@@ -37,6 +37,9 @@ namespace Persistance.Migrations
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpireTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RefreshTokenCreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -278,7 +281,7 @@ namespace Persistance.Migrations
                         column: x => x.ShelterId,
                         principalTable: "Shelters",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -296,6 +299,7 @@ namespace Persistance.Migrations
                     IsAdopted = table.Column<bool>(type: "bit", nullable: false),
                     Health = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BreedId = table.Column<int>(type: "int", nullable: false),
                     PetTypeId = table.Column<int>(type: "int", nullable: false),
                     ShelterId = table.Column<int>(type: "int", nullable: false),
                     AdoptionId = table.Column<int>(type: "int", nullable: true),

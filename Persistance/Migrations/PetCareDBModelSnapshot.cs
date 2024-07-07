@@ -216,6 +216,9 @@ namespace Persistance.Migrations
                     b.Property<short>("Age")
                         .HasColumnType("smallint");
 
+                    b.Property<int>("BreedId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 

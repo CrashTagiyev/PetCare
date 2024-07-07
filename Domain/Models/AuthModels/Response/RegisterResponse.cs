@@ -1,6 +1,10 @@
+using Domain.Models.AuthModels.ResponseAbstract;
+using System.Net;
+
 namespace Domain.Models.AuthModels.Response;
 
-public class RegisterResponse
+public class RegisterResponse:IResponse
 {
-    public string Message { get; set; }
+    public string StatusMessage { get; set; }
+    public HttpStatusCode StatusCode { get; set; }
 }

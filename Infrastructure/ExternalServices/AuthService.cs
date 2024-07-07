@@ -1,5 +1,5 @@
 ﻿using Application.AbstractServices;
-using Azure.Core;
+using AutoMapper;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.TokenDTOs;
 using Domain.Identity;
@@ -21,16 +21,95 @@ namespace Infrastructure.ExternalServices
 		private readonly IEmailService _emailService;
 		private readonly IConfiguration _configuration;
 		private readonly IAppUserReadRepository _appUserReadRepository;
-		public AuthService(UserManager<AppUser> myUserManager, ITokenService tokenService, IEmailService emailService, IConfiguration configuration,  IAppUserReadRepository appUserReadRepository)
+		private readonly IMapper _mapper;
+		public AuthService(UserManager<AppUser> myUserManager, ITokenService tokenService, IEmailService emailService, IConfiguration configuration, IAppUserReadRepository appUserReadRepository, IMapper mapper)
 		{
 			_userManager = myUserManager;
 			_tokenService = tokenService;
 			_emailService = emailService;
 			_configuration = configuration;
 			_appUserReadRepository = appUserReadRepository;
+			_mapper = mapper;
 		}
 
-		public async Task<LoginResponse> Login(LoginRequest dto,HttpResponse response)
+		public async Task<RegisterResponse> Register(RegisterRequest request)
+		{
+
+
+			var userExist = await _userManager.FindByEmailAsync(request.Email);
+			if (userExist != null)
+			{
+				var failedResponce = new RegisterResponse
+				{
+					StatusMessage = "User with this email is already exist",
+					StatusCode = HttpStatusCode.BadRequest
+				};
+				return failedResponce;
+			}
+
+			userExist = await _userManager.FindByNameAsync(request.UserName);
+			if (userExist != null)
+			{
+				var failedResponce = new RegisterResponse
+				{
+					StatusMessage = "User with this username is already exist",
+					StatusCode = HttpStatusCode.BadRequest
+
+				};
+				return failedResponce;
+			}
+
+			var user = _mapper.Map<AppUser>(request);
+
+			await _userManager.CreateAsync(user, request.Password!);
+			await _userManager.AddToRoleAsync(user, "Admin");
+
+
+			await _emailService.SendEmailConfirm(user);
+			var responce = new RegisterResponse
+			{
+				StatusMessage = "Account created successfully.Please confirm registration from the email",
+				StatusCode = HttpStatusCode.Created
+			};
+			return responce;
+
+		}
+		public async Task<ConfirmEmailResponse> ConfirmEmail(int userId, string token)
+		{
+			var user = await _appUserReadRepository.GetByIdAsync(userId);
+			if (user is null)
+				return new ConfirmEmailResponse
+				{
+					StatusMessage = "User with this id was not found",
+					StatusCode = HttpStatusCode.BadRequest
+				};
+
+			if (user.EmailConfirmed)
+				return new ConfirmEmailResponse
+				{
+					StatusMessage = "You already confirmed your email",
+					StatusCode = HttpStatusCode.BadRequest
+				};
+
+
+			token = token.Replace(" ", "+");
+			var result = await _userManager.ConfirmEmailAsync(user, token);
+			if (!result.Succeeded)
+				return new ConfirmEmailResponse
+				{
+					StatusCode = HttpStatusCode.BadRequest,
+					StatusMessage = "Something is wrong or maybe token is expired"
+				};
+
+			return new ConfirmEmailResponse
+			{
+				StatusCode = HttpStatusCode.OK,
+				StatusMessage = "Email successfully confirmed"
+			};
+
+
+		}
+		public async Task<LoginResponse> Login(LoginRequest dto, HttpResponse response)
 		{
 			var user = await _userManager.FindByEmailAsync(dto.EmailAddress);
 			if (user is null)
@@ -39,7 +118,7 @@ namespace Infrastructure.ExternalServices
 					StatusCode = HttpStatusCode.NotFound,
 					StatusMessage = "Incorrect email or password",
 				};
-			
+
 			if (!user.EmailConfirmed)
 				return new LoginResponse()
 				{
@@ -79,12 +158,15 @@ namespace Infrastructure.ExternalServices
 			return new LoginResponse
 			{
 				AccessToken = accessToken,
-				RefreshToken=refreshToken.Token,
+				RefreshToken = refreshToken.Token,
 				StatusCode = HttpStatusCode.OK
 			};
 		}
 
-		public async Task<LoginResponse> RefreshToken(HttpRequest request,HttpResponse response)
+
+
+		//Refresh tokeninde deyishiklikler edecem yoxlamamisham amma mence sehvdi
+		public async Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response)
 		{
 			var refreshToken = request.Cookies["refreshToken"];
 			if (string.IsNullOrEmpty(refreshToken))
@@ -95,18 +177,18 @@ namespace Infrastructure.ExternalServices
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token,User did with this refresh token did not found" };
 
 
-			if (user.RefreshTokenExpireTime <DateTime.Now)
-			return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Refresh tokens expiretime has outdated" };
+			if (user.RefreshTokenExpireTime < DateTime.Now)
+				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Refresh tokens expiretime has outdated" };
 
 
-			var userRoles=await _userManager.GetRolesAsync(user);
+			var userRoles = await _userManager.GetRolesAsync(user);
 			var tokenRequest = new TokenRequestDTO
 			{
 				UserName = user.UserName!,
 				Email = user.Email!,
 				Id = user.Id,
 				Roles = userRoles,
-			
+
 			};
 			var accessToken = _tokenService.GenerateAccessToken(tokenRequest);
 
@@ -120,16 +202,7 @@ namespace Infrastructure.ExternalServices
 			};
 		}
 
-		public async Task<RegisterResponse> Register(RegisterRequest request)
-		{
-			string body = "Please confirm your account: <a href=\"http://localhost:5067/\">Click here to confirm</a>";
-			
-			
 
-			return new RegisterResponse()
-			{
-				Message = "Registration is successful !"
-			};
-		}
+
 	}
 }

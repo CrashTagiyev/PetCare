@@ -10,27 +10,31 @@ namespace Presentation.Controllers
 	public class AccountController : ControllerBase
 	{
 		private readonly IAuthService _authService;
-		private readonly IEmailService _emailService;
-		
-		public AccountController(IAuthService authService, IEmailService emailService)
+
+		public AccountController(IAuthService authService)
 		{
 			_authService = authService;
-			_emailService = emailService;
 		}
+
+
 
 		[HttpPost("Login")]
 		public async Task<IActionResult> LogIn(LoginRequest loginRequest)
 		{
 			var accessToken = await _authService.Login(loginRequest, Response);
-			return Ok(new { token = accessToken.AccessToken,message=accessToken.StatusMessage });
+			return Ok(new { token = accessToken.AccessToken, message = accessToken.StatusMessage });
 		}
+
+
 
 		[HttpPost("Refresh")]
 		public async Task<IActionResult> Refresh(LoginRequest loginRequest)
 		{
-			var acceccToken = await _authService.RefreshToken(Request,Response);
+			var acceccToken = await _authService.RefreshToken(Request, Response);
 			return Ok(new { accessToken = acceccToken.AccessToken, message = acceccToken.StatusMessage });
 		}
+
+
 
 		[HttpPost("Register")]
 		public async Task<IActionResult> Register(RegisterRequest registerRequest)
@@ -38,8 +42,17 @@ namespace Presentation.Controllers
 			if (!ModelState.IsValid)
 				return BadRequest();
 
-			var result  = await _authService.Register(registerRequest);
+			var result = await _authService.Register(registerRequest);
 			return Ok(result);
 		}
+
+
+		[HttpGet("COnfirmEmail")]
+		public async Task<IActionResult> ConfirmEmail([FromQuery] int userId, [FromQuery] string token)
+		{
+			var response = await _authService.ConfirmEmail(userId,token);
+			return Ok(response);
+		}
+
 	}
 }

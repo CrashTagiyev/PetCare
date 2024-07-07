@@ -6,9 +6,9 @@ namespace Application.AbstractServices
 {
 	public interface IAuthService
 	{
+		Task<RegisterResponse> Register(RegisterRequest request);
+		Task<ConfirmEmailResponse> ConfirmEmail(int userId,string token);
 		Task<LoginResponse> Login(LoginRequest dto, HttpResponse response);
 		Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response);
-
-		Task<RegisterResponse> Register(RegisterRequest request);
 	}
 }

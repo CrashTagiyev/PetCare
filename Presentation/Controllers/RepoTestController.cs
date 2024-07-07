@@ -144,7 +144,7 @@ namespace Presentation.Controllers
 		[HttpDelete("[action]")]
 		public async Task<IActionResult> AppUserDeleteById(int id)
 		{
-
+			await _appUserWriteRepository.DeleteAsync(id);
 			return Ok();
 		}
 		//--------------------------------------------------------------------------------------
