@@ -11,7 +11,7 @@ namespace Domain.Identity
 		public string? Lasname { get; set; }
 		public DateTime? DateOfBirth { get; set; }
 		public string? City { get; set; }
-		public  string? Address { get; set; }
+		public string? Address { get; set; }
 
 		// Refresh Token properties
 		public string? RefreshToken { get; set; }

@@ -39,8 +39,7 @@ namespace Infrastructure.ExternalServices
 					StatusCode = HttpStatusCode.NotFound,
 					StatusMessage = "Incorrect email or password",
 				};
-
-			_userManager.ConfirmEmailAsync()
+			
 			if (!user.EmailConfirmed)
 				return new LoginResponse()
 				{
@@ -118,6 +117,18 @@ namespace Infrastructure.ExternalServices
 			{
 				AccessToken = accessToken,
 				StatusCode = HttpStatusCode.OK
+			};
+		}
+
+		public async Task<RegisterResponse> Register(RegisterRequest request)
+		{
+			string body = "Please confirm your account: <a href=\"http://localhost:5067/\">Click here to confirm</a>";
+			
+			
+
+			return new RegisterResponse()
+			{
+				Message = "Registration is successful !"
 			};
 		}
 	}

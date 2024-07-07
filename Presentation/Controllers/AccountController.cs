@@ -10,10 +10,12 @@ namespace Presentation.Controllers
 	public class AccountController : ControllerBase
 	{
 		private readonly IAuthService _authService;
-
-		public AccountController(IAuthService authService)
+		private readonly IEmailService _emailService;
+		
+		public AccountController(IAuthService authService, IEmailService emailService)
 		{
 			_authService = authService;
+			_emailService = emailService;
 		}
 
 		[HttpPost("Login")]
@@ -28,6 +30,16 @@ namespace Presentation.Controllers
 		{
 			var acceccToken = await _authService.RefreshToken(Request,Response);
 			return Ok(new { accessToken = acceccToken.AccessToken, message = acceccToken.StatusMessage });
+		}
+
+		[HttpPost("Register")]
+		public async Task<IActionResult> Register(RegisterRequest registerRequest)
+		{
+			if (!ModelState.IsValid)
+				return BadRequest();
+
+			var result  = await _authService.Register(registerRequest);
+			return Ok(result);
 		}
 	}
 }
