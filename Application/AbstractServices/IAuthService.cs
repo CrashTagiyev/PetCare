@@ -8,5 +8,7 @@ namespace Application.AbstractServices
 	{
 		Task<LoginResponse> Login(LoginRequest dto, HttpResponse response);
 		Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response);
+
+		Task<RegisterResponse> Register(RegisterRequest request);
 	}
 }

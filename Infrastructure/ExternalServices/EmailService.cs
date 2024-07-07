@@ -1,14 +1,24 @@
 using System.Net;
 using System.Net.Mail;
 using Application.AbstractServices;
+using Domain.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.ExternalServices;
 
-public class EmailService(IConfiguration config): IEmailService
+public class EmailService: IEmailService
 {
-    private readonly IConfiguration _config = config;
-    
+    private readonly IConfiguration _config;
+    private readonly UserManager<AppUser> _userManager;
+
+
+    public EmailService(IConfiguration config, UserManager<AppUser> userManager)
+    {
+        _config = config;
+        _userManager = userManager;
+    }
+
     public Task SendEmailAsync(string toEmail, string subject, string body, bool isBodyHTML)
     {
         string MailServer = _config["EmailSettings:MailServer"]!;
@@ -27,4 +37,10 @@ public class EmailService(IConfiguration config): IEmailService
         return client.SendMailAsync(mailMessage);
     }
 
+    public async Task SendEmailConfirm(AppUser user)
+    {
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user!);
+        var confirmationLink = $"http://localhost:5067/api/Account/Register?UserId={user!.Id}&Token={token}";
+        await SendEmailAsync(user.Email!, "Confirm Your Email", $"Please confirm your account by <a href='{confirmationLink}'>{confirmationLink}</a>;.", true);
+    }
 }

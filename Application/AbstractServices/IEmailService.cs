@@ -1,7 +1,10 @@
-﻿namespace Application.AbstractServices
+﻿using Domain.Identity;
+
+namespace Application.AbstractServices
 {
 	public interface IEmailService
 	{
 		Task SendEmailAsync(string toEmail, string subject, string body, bool isBodyHTML);
+		Task SendEmailConfirm(AppUser user);
 	}
 }
