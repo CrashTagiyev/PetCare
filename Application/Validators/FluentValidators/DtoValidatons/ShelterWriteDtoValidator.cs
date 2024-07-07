@@ -12,7 +12,10 @@ namespace Application.Validators.FluentValidators.DtoValidatons
 	{
 		public ShelterWriteDtoValidator()
 		{
-			RuleFor(s => s.CompanyId).NotEmpty().NotNull();
+			RuleFor(s => s.CompanyId)
+				.NotEmpty().WithMessage("Company Id can not be empty")
+				.NotNull().WithMessage("Company Id can not be null")
+				.GreaterThan(0).WithMessage("Company Id must be greater than 0");
 		}
 	}
 }

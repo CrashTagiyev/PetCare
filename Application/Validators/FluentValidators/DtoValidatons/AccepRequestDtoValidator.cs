@@ -12,9 +12,17 @@ namespace Application.Validators.FluentValidators.DtoValidatons
     {
         public AccepRequestDTOValidator()
         {
-            RuleFor(ar => ar.UserId).NotEmpty().NotNull();
-            RuleFor(ar => ar.Pet).NotEmpty().NotNull();
-            RuleFor(ar => ar.Description).NotEmpty().NotNull();
+            RuleFor(ar => ar.UserId)
+                .NotEmpty().WithMessage("User Id can not be empty")
+                .NotNull().WithMessage("User Id can not be null");
+            
+            RuleFor(ar => ar.Pet)
+                .NotEmpty().WithMessage("Pet can not be empty")
+                .NotNull().WithMessage("Pet can not be null");
+            
+            RuleFor(ar => ar.Description)
+                .NotEmpty().WithMessage("Description can not be empty")
+                .NotNull().WithMessage("Description can not be null");
         }
     }
 }

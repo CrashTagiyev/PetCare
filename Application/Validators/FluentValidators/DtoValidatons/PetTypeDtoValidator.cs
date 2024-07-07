@@ -12,7 +12,10 @@ namespace Application.Validators.FluentValidators.DtoValidatons
 	{
         public PetTypeDtoValidator()
         {
-            RuleFor(pt=>pt.TypeName).NotEmpty().NotNull().MinimumLength(1).MaximumLength(20);
+            RuleFor(pt => pt.TypeName)
+                .NotEmpty().WithMessage("Type name can not be empty")
+                .NotNull().WithMessage("Type name can not be null")
+                .Length(1, 20).WithMessage("Type name must be between 1 and 20 characters");
         }
     }
 }
