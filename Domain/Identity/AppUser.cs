@@ -13,6 +13,11 @@ namespace Domain.Identity
 		public string? City { get; set; }
 		public  string? Address { get; set; }
 
+		// Refresh Token properties
+		public string? RefreshToken { get; set; }
+		public DateTime? RefreshTokenExpireTime { get; set; }
+		public DateTime? RefreshTokenCreateTime { get; set; } = DateTime.Now;
+
 		//Base entity props
 		public DateTime CreatedTime { get; set; }= DateTime.UtcNow;
 		public DateTime LastUpdatedTime { get; set; }

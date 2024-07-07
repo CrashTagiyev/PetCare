@@ -1,0 +1,65 @@
+﻿using Application.AbstractServices;
+using Domain.DTOs.TokenDTOs;
+using Domain.Models.AuthModels.Tokens;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Infrastructure.ExternalServices
+{
+	public class TokenService : ITokenService
+	{
+		private readonly IConfiguration _configuration;
+
+
+		public TokenService(IConfiguration configuration)
+		{
+			_configuration = configuration;
+		}
+
+		public string GenerateAccessToken(TokenRequestDTO dto)
+		{
+			var secredKey = _configuration["Jwt:Key"]!;
+			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secredKey));
+			var tokenDescription = new SecurityTokenDescriptor()
+			{
+				Expires = DateTime.UtcNow.AddMinutes(3),
+				Issuer = _configuration["Jwt:Issuer"],
+				Audience = _configuration["Jwt:Audience"],
+				SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256),
+
+				Subject = new ClaimsIdentity(new Claim[] {
+				new Claim(ClaimTypes.Name, dto.UserName!),
+				new Claim(ClaimTypes.Role, string.Join(",",dto.Roles!)),
+				new Claim(ClaimTypes.Email, dto.Email!)
+				})
+			};
+
+
+			var tokenHandler = new JwtSecurityTokenHandler();
+			SecurityToken? token = tokenHandler.CreateToken(tokenDescription);
+
+
+			return tokenHandler.WriteToken(token);
+		}
+
+
+		public RefreshToken GenerateRefreshToken()
+		{
+			var refreshToken = new RefreshToken()
+			{
+				Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+				ExpireTime = DateTime.UtcNow.AddMinutes(15),
+				CreateTime = DateTime.UtcNow
+			};
+			return refreshToken;
+		}
+
+
+
+
+	}
+}

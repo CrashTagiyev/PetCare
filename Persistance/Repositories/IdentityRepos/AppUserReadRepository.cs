@@ -12,6 +12,11 @@ namespace Persistance.Repositories.IdentityRepos
 		{
 		}
 
+		public async Task<AppUser?> FinByRefreshToken(string refreshToken)
+		{
+			return await _table.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+		}
+
 		public async Task<ICollection<AppUser>> GetAllAsync()
 		{
 			return await _table.ToListAsync();
