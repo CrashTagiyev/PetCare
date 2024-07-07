@@ -21,6 +21,7 @@ namespace Infrastructure.HelperMethods.Extenstions
 				Expires = refreshToken.ExpireTime
 			};
 
+
 			response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
 
 			user.RefreshToken = refreshToken.Token;

@@ -40,6 +40,7 @@ namespace Infrastructure.ExternalServices
 					StatusMessage = "Incorrect email or password",
 				};
 
+			_userManager.ConfirmEmailAsync()
 			if (!user.EmailConfirmed)
 				return new LoginResponse()
 				{
@@ -79,6 +80,7 @@ namespace Infrastructure.ExternalServices
 			return new LoginResponse
 			{
 				AccessToken = accessToken,
+				RefreshToken=refreshToken.Token,
 				StatusCode = HttpStatusCode.OK
 			};
 		}
@@ -92,6 +94,11 @@ namespace Infrastructure.ExternalServices
 			var user = await _appUserReadRepository.FinByRefreshToken(refreshToken);
 			if (user is null)
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token,User did with this refresh token did not found" };
+
+
+			if (user.RefreshTokenExpireTime <DateTime.Now)
+			return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Refresh tokens expiretime has outdated" };
+
 
 			var userRoles=await _userManager.GetRolesAsync(user);
 			var tokenRequest = new TokenRequestDTO
