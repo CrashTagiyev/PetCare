@@ -24,6 +24,7 @@ namespace Infrastructure.ExternalServices
 		{
 			var secredKey = _configuration["Jwt:Key"]!;
 			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secredKey));
+			var roles = string.Join(",", dto.Roles!);
 			var tokenDescription = new SecurityTokenDescriptor()
 			{
 				Expires = DateTime.UtcNow.AddMinutes(3),
@@ -33,7 +34,7 @@ namespace Infrastructure.ExternalServices
 
 				Subject = new ClaimsIdentity(new Claim[] {
 				new Claim(ClaimTypes.Name, dto.UserName!),
-				new Claim(ClaimTypes.Role, string.Join(",",dto.Roles!)),
+				new Claim(ClaimTypes.Role,roles),
 				new Claim(ClaimTypes.Email, dto.Email!)
 				})
 			};

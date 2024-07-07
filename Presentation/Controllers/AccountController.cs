@@ -20,7 +20,14 @@ namespace Presentation.Controllers
 		public async Task<IActionResult> LogIn(LoginRequest loginRequest)
 		{
 			var accessToken = await _authService.Login(loginRequest, Response);
-			return Ok(new { token = accessToken });
+			return Ok(new { token = accessToken.AccessToken,message=accessToken.StatusMessage });
+		}
+
+		[HttpPost("Refresh")]
+		public async Task<IActionResult> Refresh(LoginRequest loginRequest)
+		{
+			var acceccToken = await _authService.RefreshToken(Request,Response);
+			return Ok(new { accessToken = acceccToken.AccessToken, message = acceccToken.StatusMessage });
 		}
 	}
 }

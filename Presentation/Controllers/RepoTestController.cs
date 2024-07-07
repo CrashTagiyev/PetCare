@@ -116,6 +116,7 @@ namespace Presentation.Controllers
 		}
 
 		//App user Get all - working 
+		[Authorize(Roles ="Admin")]
 		[HttpGet("[action]")]
 		public async Task<IActionResult> AppUserGetAll()
 		{

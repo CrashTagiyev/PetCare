@@ -13,7 +13,14 @@ using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowSpecificOrigin",
+			builder => builder.WithOrigins("http://localhost:5173")
+						  .AllowAnyMethod()
+						  .AllowCredentials()
+						  .AllowAnyHeader());
+});
 // Add services to the container.
 builder.Services.AddControllers()
 		 .AddJsonOptions(options =>
@@ -116,7 +123,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
-
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication();
 app.UseAuthorization();
 
