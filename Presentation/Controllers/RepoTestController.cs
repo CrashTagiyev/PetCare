@@ -6,6 +6,7 @@ using Domain.DTOs.ReadDTO;
 using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
 using Domain.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace Presentation.Controllers
 	[ApiController]
 	public class RepoTestController : ControllerBase
 	{
+		private readonly RoleManager<IdentityRole<int>> _roleManager;
 		private readonly IMapper _mapper;
 
 		//User repos
@@ -59,7 +61,7 @@ namespace Presentation.Controllers
 		private readonly ILocationWriteRepository _locationWriteRepository;
 		#endregion
 
-		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper, ILocationReadRepository locationReadRepository, ILocationWriteRepository locationWriteRepository, IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository)
+		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper, ILocationReadRepository locationReadRepository, ILocationWriteRepository locationWriteRepository, IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, RoleManager<IdentityRole<int>> roleManager)
 		{
 			_appUserWriteRepository = appUserWriteRepository;
 			_appUserReadRepository = appUserReadRepository;
@@ -75,26 +77,36 @@ namespace Presentation.Controllers
 			_locationWriteRepository = locationWriteRepository;
 			_shelterReadRepository = shelterReadRepository;
 			_shelterWriteRepository = shelterWriteRepository;
+			_roleManager = roleManager;
 		}
 
 		//APpUser repo Test - checked
 		#region AppUser repository tesing
 		[HttpPost("[action]")]
-		public async Task<IActionResult> AppUserCreate(string username, string email)
+		public async Task<IActionResult> AppUserCreate(string username, string email,string role)
 		{
 			var newUser = new AppUser()
 			{
 				UserName = username,
 				Email = email,
+				EmailConfirmed = true,
 			};
 			await _appUserWriteRepository.CreateAsync(newUser);
-
 			await _userManager.AddPasswordAsync(newUser, "123qweA@");
-			//await _userManager.AddToRoleAsync(newUser, role);
+			await _userManager.AddToRoleAsync(newUser, role);
 			return Ok();
 		}
 
+		[HttpPost("[action]")]
+		public async Task<IActionResult> CreateRole(string roleName)
+		{
+			await _roleManager.CreateAsync(new IdentityRole<int> { Name = roleName });
+			return Ok();
+		}
+
+
 		//App user Get by id - working 
+		[Authorize(Roles = "Admin")]
 		[HttpGet("[action]")]
 		public async Task<IActionResult> AppUserGet(int id)
 		{

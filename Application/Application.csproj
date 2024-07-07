@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AbstractServices\" />
     <Folder Include="Behaviours\Commands\" />
     <Folder Include="Behaviours\Queries\" />
   </ItemGroup>

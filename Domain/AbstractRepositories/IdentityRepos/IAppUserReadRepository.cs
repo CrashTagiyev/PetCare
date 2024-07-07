@@ -10,6 +10,6 @@ namespace Domain.AbstractRepositories.IdentityRepos
 {
 	public interface IAppUserReadRepository:IGenericReadRepository<AppUser>
 	{
-
+		Task<AppUser?> FinByRefreshToken(string refreshToken);
 	}
 }

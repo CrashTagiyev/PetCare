@@ -1,10 +1,11 @@
 using System.Net;
 using System.Net.Mail;
+using Application.AbstractServices;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.ExternalServices;
 
-public class EmailService(IConfiguration config)
+public class EmailService(IConfiguration config): IEmailService
 {
     private readonly IConfiguration _config = config;
     
