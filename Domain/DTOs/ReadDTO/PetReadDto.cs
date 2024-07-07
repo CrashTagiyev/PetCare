@@ -14,6 +14,7 @@ public class PetReadDto
     public bool IsAdopted { get; set; }
     public string Health { get; set; }
     public decimal Weight { get; set; }
+    public string Breed { get; set; }
     
     public PetTypeReadDto PetType { get; set; }
     public ShelterReadDto  Shelter { get; set; }

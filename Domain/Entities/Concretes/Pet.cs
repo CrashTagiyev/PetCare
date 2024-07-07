@@ -19,6 +19,7 @@ namespace Domain.Entities.Concretes
 		public bool IsAdopted { get; set; } = false;
 		public string Health { get; set; }
 		public decimal Weight { get; set; }
+		public int BreedId { get; set; }
 
 		//Foreign key
 		public int PetTypeId { get; set; }
