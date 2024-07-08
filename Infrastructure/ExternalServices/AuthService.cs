@@ -163,8 +163,6 @@ namespace Infrastructure.ExternalServices
 			};
 		}
 
-
-
 		//Refresh tokeninde deyishiklikler edecem yoxlamamisham amma mence sehvdi
 		public async Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response)
 		{
@@ -202,7 +200,33 @@ namespace Infrastructure.ExternalServices
 			};
 		}
 
+		public async Task<ForgotPasswordResponse> ForgotPassword(ForgotPasswordRequest request)
+		{
+			var user = await _userManager.FindByEmailAsync(request.Email);
+			if (user is not null)
+			{
+				var token = await _userManager.GeneratePasswordResetTokenAsync(user!);
+				await _emailService.SendResetPassword(user, token);
+				return new ForgotPasswordResponse { StatusCode = HttpStatusCode.OK, StatusMessage = "Reset password link send to your email", Token = token, UserId = user.Id };
+			}
+			return new ForgotPasswordResponse { StatusCode = HttpStatusCode.NotFound, StatusMessage = "Incorrect email.Email was not found" };
+		}
 
+		public async Task<ResetPasswordResponse> ResetPassword(ResetPasswordRequest request)
+		{
+			var user = await _appUserReadRepository.GetByIdAsync(request.UserId);
+			if (user is not null)
+			{
+				var result = await _userManager.ResetPasswordAsync(user, request.Token, request.NewPassword);
+				if (result.Succeeded)
+				{
+					return new ResetPasswordResponse { StatusCode = HttpStatusCode.OK, StatusMessage = "Password has successfully changed" };
+				}
+				return new ResetPasswordResponse { StatusCode = HttpStatusCode.OK, StatusMessage = "Something is wrong" };
 
+			}
+			return new ResetPasswordResponse { StatusCode = HttpStatusCode.NotFound, StatusMessage = "User with this id did not found" };
+
+		}
 	}
 }

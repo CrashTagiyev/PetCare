@@ -43,7 +43,7 @@ namespace Presentation.Controllers
 				return BadRequest();
 
 			var result = await _authService.Register(registerRequest);
-			return Ok(result);
+			return Ok(new {statusCode=result.StatusCode,statusMessage=result.StatusMessage});
 		}
 
 
@@ -52,6 +52,20 @@ namespace Presentation.Controllers
 		{
 			var response = await _authService.ConfirmEmail(userId,token);
 			return Ok(response);
+		}
+
+		[HttpPost("ForgotPassword")]
+		public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest request)
+		{
+			var response = await _authService.ForgotPassword(request);
+			return Ok(new {statusMessage=response.StatusMessage,statusCode=response.StatusCode,token=response.Token,userId=response.UserId});
+		}
+
+		[HttpPost("ResetPassword")]
+		public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordRequest request)
+		{
+			var response = await _authService.ResetPassword(request);
+			return Ok(new { statusMessage = response.StatusMessage, statusCode = response.StatusCode });
 		}
 
 	}

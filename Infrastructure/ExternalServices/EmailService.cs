@@ -40,7 +40,42 @@ public class EmailService : IEmailService
 	public async Task SendEmailConfirm(AppUser user)
 	{
 		var token = await _userManager.GenerateEmailConfirmationTokenAsync(user!);
-		var confirmationLink = $"http://localhost:5067/api/Account/ConfirmEmail?userId={user!.Id}&token={token}";
-		await SendEmailAsync(user.Email!, "Confirm Your Email", $"Please confirm your account by <a href='{confirmationLink}'>clicking here</a>.", true);
+		var confirmationLink = _config["ActionUrls:ConfirmEmail"] + $"?userId={user!.Id}&token={token}";
+		var title = "Confirm Your Email";
+		var body = $"Please confirm your account by <a href='{confirmationLink}'>clicking here</a>.";
+
+
+		await SendEmailAsync(user.Email!, title,body, true);
+	}
+
+	public async Task SendResetPassword(AppUser user,string token)
+	{
+	
+		var confirmationLink = _config["ActionUrls:ResetPassword"] + $"?userId={user!.Id}&token={token}";
+		var title = "Reset passsword";
+		var body = $@"For reset your password by <a href='{confirmationLink}'>clicking here</a>.";
+
+
+
+
+		await SendEmailAsync(user.Email!, title, body, true);
 	}
 }
+
+
+    //<html>
+    //    <body>
+    //        <p>To reset your password, please click the link below and fill out the form:</p>
+    //        <form id = 'resetForm' action='{confirmationLink}' method='get'>
+    //            <input type = 'hidden' name='UserId' value='{user.Id}' />
+    //            <input type = 'hidden' name='Token' value='{token}' />
+    //            <label for='NewPassword'>New Password:</label>
+    //            <input type = 'password' id='NewPassword' name='NewPassword' required />
+    //            <br />
+    //            <label for='ConfirmPassword'>Confirm Password:</label>
+    //            <input type = 'password' id='ConfirmPassword' name='ConfirmPassword' required />
+    //            <br />
+    //            <input type = 'submit' value='Reset Password' />
+    //        </form>
+    //    </body>
+    //</html>";
