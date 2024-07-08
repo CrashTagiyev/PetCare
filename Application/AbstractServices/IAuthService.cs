@@ -10,5 +10,6 @@ namespace Application.AbstractServices
 		Task<ConfirmEmailResponse> ConfirmEmail(int userId,string token);
 		Task<LoginResponse> Login(LoginRequest dto, HttpResponse response);
 		Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response);
+
 	}
 }

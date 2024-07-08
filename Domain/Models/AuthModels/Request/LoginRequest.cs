@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -9,8 +10,9 @@ namespace Domain.Models.AuthModels.Request
 {
 	public class LoginRequest
 	{
-		public string EmailAddress { get; set; }
-		public string PasswordHash { get; set; }
+		[EmailAddress]
+		public string EmailAddress { get; set; }= string.Empty;
+		public string PasswordHash { get; set; } = string.Empty;
 	
 	}
 }

@@ -5,6 +5,6 @@ namespace Domain.Models.AuthModels.Response;
 
 public class RegisterResponse:IResponse
 {
-    public string StatusMessage { get; set; }
+    public string StatusMessage { get; set; } = string.Empty;
     public HttpStatusCode StatusCode { get; set; }
 }
