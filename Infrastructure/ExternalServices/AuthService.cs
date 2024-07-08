@@ -126,7 +126,7 @@ namespace Infrastructure.ExternalServices
 					StatusCode = HttpStatusCode.BadRequest
 				};
 
-			var result = await _userManager.CheckPasswordAsync(user, dto.PasswordHash);
+			var result = await _userManager.CheckPasswordAsync(user, dto.Password);
 			if (!result)
 				return new LoginResponse()
 				{
