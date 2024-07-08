@@ -6,5 +6,6 @@ namespace Application.AbstractServices
 	{
 		Task SendEmailAsync(string toEmail, string subject, string body, bool isBodyHTML);
 		Task SendEmailConfirm(AppUser user);
+		Task SendResetPassword(AppUser user,string token);
 	}
 }
