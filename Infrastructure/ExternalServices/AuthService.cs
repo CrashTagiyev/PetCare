@@ -163,7 +163,6 @@ namespace Infrastructure.ExternalServices
 			};
 		}
 
-		//Refresh tokeninde deyishiklikler edecem yoxlamamisham amma mence sehvdi
 		public async Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response)
 		{
 			var refreshToken = request.Cookies["refreshToken"];
@@ -196,6 +195,7 @@ namespace Infrastructure.ExternalServices
 			return new LoginResponse
 			{
 				AccessToken = accessToken,
+				RefreshToken = refreshToken,
 				StatusCode = HttpStatusCode.OK
 			};
 		}

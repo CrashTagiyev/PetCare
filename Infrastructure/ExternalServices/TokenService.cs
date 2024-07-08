@@ -4,6 +4,7 @@ using Domain.Models.AuthModels.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.WebSockets;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,7 +28,7 @@ namespace Infrastructure.ExternalServices
 			var roles = string.Join(",", dto.Roles!);
 			var tokenDescription = new SecurityTokenDescriptor()
 			{
-				Expires = DateTime.UtcNow.AddMinutes(3),
+				Expires = DateTime.Now.AddSeconds(33),
 				Issuer = _configuration["Jwt:Issuer"],
 				Audience = _configuration["Jwt:Audience"],
 				SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256),
@@ -38,9 +39,11 @@ namespace Infrastructure.ExternalServices
 				new Claim(ClaimTypes.Email, dto.Email!)
 				})
 			};
-
-
-			var tokenHandler = new JwtSecurityTokenHandler();
+            Console.WriteLine("\n------------------------------------------");
+            Console.WriteLine(DateTime.Now);
+            Console.WriteLine(tokenDescription.Expires);
+			Console.WriteLine("\n------------------------------------------");
+            var tokenHandler = new JwtSecurityTokenHandler();
 			SecurityToken? token = tokenHandler.CreateToken(tokenDescription);
 
 
@@ -53,7 +56,7 @@ namespace Infrastructure.ExternalServices
 			var refreshToken = new RefreshToken()
 			{
 				Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-				ExpireTime = DateTime.UtcNow.AddMinutes(15),
+				ExpireTime = DateTime.UtcNow.AddMinutes(1),
 				CreateTime = DateTime.UtcNow
 			};
 			return refreshToken;

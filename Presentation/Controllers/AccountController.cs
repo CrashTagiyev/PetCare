@@ -28,7 +28,7 @@ namespace Presentation.Controllers
 
 
 		[HttpPost("Refresh")]
-		public async Task<IActionResult> Refresh(LoginRequest loginRequest)
+		public async Task<IActionResult> Refresh()
 		{
 			var acceccToken = await _authService.RefreshToken(Request, Response);
 			return Ok(new { accessToken = acceccToken.AccessToken, message = acceccToken.StatusMessage });
