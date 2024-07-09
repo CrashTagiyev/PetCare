@@ -5,7 +5,7 @@ namespace Application.AbstractServices
 {
 	public interface ITokenService
 	{
-		string GenerateAccessToken(TokenRequestDTO dto);
-		RefreshToken GenerateRefreshToken();
+		Task<string> GenerateAccessToken(TokenRequestDTO dto);
+		Task<RefreshToken> GenerateRefreshToken();
 	}
 }

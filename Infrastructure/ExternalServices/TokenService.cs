@@ -21,43 +21,41 @@ namespace Infrastructure.ExternalServices
 			_configuration = configuration;
 		}
 
-		public string GenerateAccessToken(TokenRequestDTO dto)
+		public async Task<string> GenerateAccessToken(TokenRequestDTO dto)
 		{
 			var secredKey = _configuration["Jwt:Key"]!;
 			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secredKey));
 			var roles = string.Join(",", dto.Roles!);
 			var tokenDescription = new SecurityTokenDescriptor()
 			{
-				Expires = DateTime.Now.AddSeconds(33),
+				Expires = DateTime.Now.AddHours(_configuration.GetValue<int>("JWT:AccessTokenExpireHours")),
 				Issuer = _configuration["Jwt:Issuer"],
 				Audience = _configuration["Jwt:Audience"],
 				SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256),
-
+				
 				Subject = new ClaimsIdentity(new Claim[] {
 				new Claim(ClaimTypes.Name, dto.UserName!),
 				new Claim(ClaimTypes.Role,roles),
 				new Claim(ClaimTypes.Email, dto.Email!)
 				})
 			};
-            Console.WriteLine("\n------------------------------------------");
+
             Console.WriteLine(DateTime.Now);
             Console.WriteLine(tokenDescription.Expires);
-			Console.WriteLine("\n------------------------------------------");
             var tokenHandler = new JwtSecurityTokenHandler();
 			SecurityToken? token = tokenHandler.CreateToken(tokenDescription);
-
 
 			return tokenHandler.WriteToken(token);
 		}
 
 
-		public RefreshToken GenerateRefreshToken()
+		public async Task<RefreshToken> GenerateRefreshToken()
 		{
 			var refreshToken = new RefreshToken()
 			{
 				Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-				ExpireTime = DateTime.UtcNow.AddMinutes(1),
-				CreateTime = DateTime.UtcNow
+				ExpireTime = DateTime.Now.AddHours(_configuration.GetValue<int>("JWT:RefreshTokenExpireHours")),
+				CreateTime = DateTime.Now
 			};
 			return refreshToken;
 		}

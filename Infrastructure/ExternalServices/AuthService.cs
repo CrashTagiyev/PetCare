@@ -5,7 +5,6 @@ using Domain.DTOs.TokenDTOs;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
 using Domain.Models.AuthModels.Response;
-using Infrastructure.HelperMethods.Extenstions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -149,12 +148,12 @@ namespace Infrastructure.ExternalServices
 					new Claim(ClaimTypes.Role, string.Join(",", roles.ToList()))
 				}
 			};
+			var accessToken = await _tokenService.GenerateAccessToken(tokenRequestDto);
+			var refreshToken = await _tokenService.GenerateRefreshToken();
 
-			var accessToken = _tokenService.GenerateAccessToken(tokenRequestDto);
-			var refreshToken = _tokenService.GenerateRefreshToken();
-
-			_userManager.SetRefreshToken(user, refreshToken, response);
-
+			user.RefreshToken = refreshToken.Token;
+			user.RefreshTokenExpireTime = refreshToken.ExpireTime;
+			await _userManager.UpdateAsync(user);
 			return new LoginResponse
 			{
 				AccessToken = accessToken,
@@ -163,9 +162,8 @@ namespace Infrastructure.ExternalServices
 			};
 		}
 
-		public async Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response)
+		public async Task<LoginResponse> RefreshToken(string refreshToken)
 		{
-			var refreshToken = request.Cookies["refreshToken"];
 			if (string.IsNullOrEmpty(refreshToken))
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token" };
 
@@ -187,16 +185,16 @@ namespace Infrastructure.ExternalServices
 				Roles = userRoles,
 
 			};
-			var accessToken = _tokenService.GenerateAccessToken(tokenRequest);
+			var accessToken =await _tokenService.GenerateAccessToken(tokenRequest);
 
-			var refreshTokenObj = _tokenService.GenerateRefreshToken();
-			_userManager.SetRefreshToken(user, refreshTokenObj, response);
+			var refreshTokenObj =await _tokenService.GenerateRefreshToken();
 
 			return new LoginResponse
 			{
 				AccessToken = accessToken,
-				RefreshToken = refreshToken,
-				StatusCode = HttpStatusCode.OK
+				RefreshToken = refreshTokenObj.Token,
+				StatusCode = HttpStatusCode.OK,
+				StatusMessage= "Refresh token successfully refreshed"
 			};
 		}
 

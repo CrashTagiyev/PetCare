@@ -9,7 +9,7 @@ namespace Application.AbstractServices
 		Task<RegisterResponse> Register(RegisterRequest request);
 		Task<ConfirmEmailResponse> ConfirmEmail(int userId, string token);
 		Task<LoginResponse> Login(LoginRequest dto, HttpResponse response);
-		Task<LoginResponse> RefreshToken(HttpRequest request, HttpResponse response);
+		Task<LoginResponse> RefreshToken(string refreshToken);
 		Task<ForgotPasswordResponse> ForgotPassword(ForgotPasswordRequest request);
 		Task<ResetPasswordResponse> ResetPassword(ResetPasswordRequest request);
 
