@@ -49,7 +49,7 @@ namespace Presentation.Controllers
 		}
 
 
-		[HttpGet("COnfirmEmail")]
+		[HttpGet("ConfirmEmail")]
 		public async Task<IActionResult> ConfirmEmail([FromQuery] int userId, [FromQuery] string token)
 		{
 			var response = await _authService.ConfirmEmail(userId, token);
