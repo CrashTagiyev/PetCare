@@ -31,5 +31,9 @@ namespace Domain.Identity
 		public ICollection<Donation>? Donations { get; set; }
 		public ICollection<AcceptRequest>? AcceptRequests { get; set; }
 		public ICollection<Adoption>? Adoptions { get; set; }
+
+		//Chatting
+		public ICollection<Chat> Chats { get; set; }
+		public ICollection<Message> Messages { get; set; }
 	}
 }

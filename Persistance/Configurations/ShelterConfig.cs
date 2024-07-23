@@ -11,12 +11,12 @@ namespace Persistance.Configurations
 			//Relations
 			builder.HasOne(s => s.Company)
 				.WithMany(s => s.Shelters)
-				.HasForeignKey(sb => sb.CompanyId).OnDelete(DeleteBehavior.Cascade);
+				.HasForeignKey(sb => sb.CompanyId).OnDelete(DeleteBehavior.Restrict);
 
 			builder.HasOne(s => s.Location)
 				.WithOne(l => l.Shelter)
 				.HasForeignKey<Location>(l => l.ShelterId)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 
 			//Properties
 			builder.Property(s => s.CompanyId).IsRequired();

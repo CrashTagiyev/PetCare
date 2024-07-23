@@ -34,9 +34,9 @@ namespace Infrastructure.ExternalServices
 				SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256),
 				
 				Subject = new ClaimsIdentity(new Claim[] {
-				new Claim(ClaimTypes.Name, dto.UserName!),
 				new Claim(ClaimTypes.Role,roles),
-				new Claim(ClaimTypes.Email, dto.Email!)
+				new Claim(ClaimTypes.Email, dto.Email!),
+				new Claim("username",dto.UserName)
 				})
 			};
 

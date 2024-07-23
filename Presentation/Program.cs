@@ -1,7 +1,8 @@
-	using Application.BuilderRegisters;
+using Application.BuilderRegisters;
 using Domain.BuilderRegisters;
 using Domain.Identity;
 using Infrastructure.BuilderRegisters;
+using Infrastructure.Hubs.ChatHub;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -16,11 +17,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy("AllowSpecificOrigin",
-			builder => builder.WithOrigins("http://localhost:5173")
+			builder => builder.WithOrigins("http://localhost:5173").WithOrigins("http://localhost:3000").WithOrigins("http://localhost:5173")
 						  .AllowAnyMethod()
 						  .AllowCredentials()
 						  .AllowAnyHeader());
 });
+
+
+builder.Services.AddSignalR();
+
 // Add services to the container.
 builder.Services.AddControllers()
 		 .AddJsonOptions(options =>
@@ -124,6 +129,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 app.UseCors("AllowSpecificOrigin");
+app.MapHub<ChatHub>("/chathub");
 app.UseAuthentication();
 app.UseAuthorization();
 

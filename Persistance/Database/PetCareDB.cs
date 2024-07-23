@@ -23,6 +23,8 @@ namespace Persistance.Database
 			builder.ApplyConfiguration(new BreedConfig());
 			builder.ApplyConfiguration(new DonationConfig());
 			builder.ApplyConfiguration(new LocationConfig());
+			builder.ApplyConfiguration(new MessageConfiguration());
+			builder.ApplyConfiguration(new ChatConfiguration());
 
 
 
@@ -49,6 +51,8 @@ namespace Persistance.Database
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }
 		public DbSet<Donation> Donations { get; set; }
 		public DbSet<Shelter> Shelters { get; set; }
+		public DbSet<Chat> Chats { get; set; }
+		public DbSet<Message> Messages { get; set; }
 
 	}
 }

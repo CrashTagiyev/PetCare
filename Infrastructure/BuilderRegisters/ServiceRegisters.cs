@@ -12,5 +12,10 @@ namespace Infrastructure.BuilderRegisters
 			services.AddScoped<IAuthService, AuthService>();
 			services.AddScoped<ITokenService, TokenService>();
 		}
+
+		
 	}
+
+
+	
 }

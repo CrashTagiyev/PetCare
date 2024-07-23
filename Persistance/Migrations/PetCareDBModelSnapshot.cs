@@ -54,6 +54,9 @@ namespace Persistance.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("YearsOfPetExperience")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PetId");
@@ -125,6 +128,45 @@ namespace Persistance.Migrations
                     b.HasIndex("PetTypeId");
 
                     b.ToTable("Breeds");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Concretes.Chat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ChatName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VetId");
+
+                    b.ToTable("Chats");
                 });
 
             modelBuilder.Entity("Domain.Entities.Concretes.Donation", b =>
@@ -200,6 +242,45 @@ namespace Persistance.Migrations
                         .IsUnique();
 
                     b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Concretes.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChatId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChatId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Domain.Entities.Concretes.Pet", b =>
@@ -587,7 +668,7 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Identity.AppUser", "User")
                         .WithMany("Adoptions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Pet");
@@ -600,10 +681,29 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Entities.Concretes.PetType", "PetType")
                         .WithMany("Breeds")
                         .HasForeignKey("PetTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("PetType");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Concretes.Chat", b =>
+                {
+                    b.HasOne("Domain.Identity.AppUser", "User")
+                        .WithMany("Chats")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Identity.AppUser", "Vet")
+                        .WithMany()
+                        .HasForeignKey("VetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Vet");
                 });
 
             modelBuilder.Entity("Domain.Entities.Concretes.Donation", b =>
@@ -630,10 +730,29 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Entities.Concretes.Shelter", "Shelter")
                         .WithOne("Location")
                         .HasForeignKey("Domain.Entities.Concretes.Location", "ShelterId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Shelter");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Concretes.Message", b =>
+                {
+                    b.HasOne("Domain.Entities.Concretes.Chat", "Chat")
+                        .WithMany("Messages")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Identity.AppUser", "Sender")
+                        .WithMany("Messages")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Chat");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("Domain.Entities.Concretes.Pet", b =>
@@ -647,7 +766,7 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Entities.Concretes.Shelter", "Shelter")
                         .WithMany("Pets")
                         .HasForeignKey("ShelterId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("PetType");
@@ -660,7 +779,7 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Identity.AppUser", "Company")
                         .WithMany("Shelters")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Company");
@@ -717,6 +836,11 @@ namespace Persistance.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Domain.Entities.Concretes.Chat", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
             modelBuilder.Entity("Domain.Entities.Concretes.Pet", b =>
                 {
                     b.Navigation("AcceptRequests");
@@ -745,7 +869,11 @@ namespace Persistance.Migrations
 
                     b.Navigation("Adoptions");
 
+                    b.Navigation("Chats");
+
                     b.Navigation("Donations");
+
+                    b.Navigation("Messages");
 
                     b.Navigation("Shelters");
                 });

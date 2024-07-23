@@ -1,5 +1,6 @@
 ﻿using Domain.AbstractRepositories.IdentityRepos;
 using Domain.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
@@ -8,8 +9,10 @@ namespace Persistance.Repositories.IdentityRepos
 {
 	public class AppUserReadRepository : GenericRepository<AppUser>, IAppUserReadRepository
 	{
-		public AppUserReadRepository(PetCareDB context) : base(context)
+		private readonly UserManager<AppUser> _userManager;
+		public AppUserReadRepository(PetCareDB context, UserManager<AppUser> userManager) : base(context)
 		{
+			_userManager = userManager;
 		}
 
 		public async Task<AppUser?> FinByRefreshToken(string refreshToken)
@@ -27,5 +30,6 @@ namespace Persistance.Repositories.IdentityRepos
 			return await _table.FirstOrDefaultAsync(u => u.Id == id);
 		}
 
+	
 	}
 }

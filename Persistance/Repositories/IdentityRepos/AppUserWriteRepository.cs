@@ -1,6 +1,7 @@
 ﻿using Domain.AbstractRepositories.EntityRepos.GenericRepos;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
@@ -9,8 +10,10 @@ namespace Persistance.Repositories.IdentityRepos
 {
 	internal class AppUserWriteRepository : GenericRepository<AppUser>, IAppUserWriteRepository
 	{
-		public AppUserWriteRepository(PetCareDB context) : base(context)
+		private readonly UserManager<AppUser> _userManager;
+		public AppUserWriteRepository(PetCareDB context, UserManager<AppUser> userManager) : base(context)
 		{
+			_userManager = userManager;
 		}
 
 		public async Task CreateAsync(AppUser entity)

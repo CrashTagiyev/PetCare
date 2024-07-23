@@ -11,7 +11,7 @@ namespace Persistance.Configurations
 			//Relations
 			builder.HasOne(p => p.Shelter)
 				.WithMany(sb => sb.Pets)
-				.HasForeignKey(p => p.ShelterId).OnDelete(DeleteBehavior.Cascade);
+				.HasForeignKey(p => p.ShelterId).OnDelete(DeleteBehavior.Restrict);
 
 			builder.HasOne(p => p.PetType)
 				.WithMany(pt => pt.Pets)

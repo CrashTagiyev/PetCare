@@ -94,6 +94,7 @@ namespace Presentation.Controllers
 			await _appUserWriteRepository.CreateAsync(newUser);
 			await _userManager.AddPasswordAsync(newUser, "123qweA@");
 			await _userManager.AddToRoleAsync(newUser, role);
+
 			return Ok();
 		}
 

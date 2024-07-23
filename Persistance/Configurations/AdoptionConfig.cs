@@ -17,7 +17,7 @@ namespace Persistance.Configurations
 			builder.HasOne(a => a.User)
 				.WithMany(a => a.Adoptions)
 				.HasForeignKey(u => u.UserId)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 
 			//Properties
 			builder.Property(a => a.PetId).IsRequired();

@@ -133,6 +133,7 @@ namespace Infrastructure.ExternalServices
 					StatusMessage = "Incorrect email or password",
 				};
 
+
 			var roles = await _userManager.GetRolesAsync(user);
 			var tokenRequestDto = new TokenRequestDTO
 			{
@@ -161,12 +162,11 @@ namespace Infrastructure.ExternalServices
 				StatusCode = HttpStatusCode.OK
 			};
 		}
-
 		public async Task<LoginResponse> RefreshToken(string refreshToken)
 		{
 			if (string.IsNullOrEmpty(refreshToken))
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token" };
-
+		
 			var user = await _appUserReadRepository.FinByRefreshToken(refreshToken);
 			if (user is null)
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token,User did with this refresh token did not found" };
@@ -197,7 +197,6 @@ namespace Infrastructure.ExternalServices
 				StatusMessage= "Refresh token successfully refreshed"
 			};
 		}
-
 		public async Task<ForgotPasswordResponse> ForgotPassword(ForgotPasswordRequest request)
 		{
 			var user = await _userManager.FindByEmailAsync(request.Email);
@@ -209,7 +208,6 @@ namespace Infrastructure.ExternalServices
 			}
 			return new ForgotPasswordResponse { StatusCode = HttpStatusCode.NotFound, StatusMessage = "Incorrect email.Email was not found" };
 		}
-
 		public async Task<ResetPasswordResponse> ResetPassword(ResetPasswordRequest request)
 		{
 			var user = await _appUserReadRepository.GetByIdAsync(request.UserId);
@@ -220,7 +218,12 @@ namespace Infrastructure.ExternalServices
 				{
 					return new ResetPasswordResponse { StatusCode = HttpStatusCode.OK, StatusMessage = "Password has successfully changed" };
 				}
-				return new ResetPasswordResponse { StatusCode = HttpStatusCode.OK, StatusMessage = "Something is wrong" };
+				var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+				return new ResetPasswordResponse
+				{
+					StatusCode = HttpStatusCode.BadRequest,
+					StatusMessage = $"Password reset failed: {errors}"
+				};
 
 			}
 			return new ResetPasswordResponse { StatusCode = HttpStatusCode.NotFound, StatusMessage = "User with this id did not found" };

@@ -12,7 +12,7 @@ namespace Persistance.Configurations
 			builder.HasOne(b => b.PetType)
 				.WithMany(pt => pt.Breeds)
 				.HasForeignKey(b => b.PetTypeId)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 
 			//Properties
 			builder.Property(b => b.PetTypeId).IsRequired();
