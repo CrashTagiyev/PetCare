@@ -1,6 +1,6 @@
 using System.Net;
 using System.Net.Mail;
-using Application.AbstractServices;
+using Application.ServiceAbstracts;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

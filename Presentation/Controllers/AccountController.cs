@@ -1,4 +1,4 @@
-﻿using Application.AbstractServices;
+﻿using Application.ServiceAbstracts;
 using Domain.Models.AuthModels.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +23,6 @@ namespace Presentation.Controllers
 		[HttpPost("Login")]
 		public async Task<IActionResult> LogIn(LoginRequest loginRequest)
 		{
-		
-			//await Console.Out.WriteLineAsync("-------------------------------");
-			//await Console.Out.WriteLineAsync(loginRequest.EmailAddress);
-			//await Console.Out.WriteLineAsync(loginRequest.Password);
-			//await Console.Out.WriteLineAsync("-------------------------------");
 			var response = await _authService.Login(loginRequest, Response);
 			return Ok(new { token = response.AccessToken, refreshToken = response.RefreshToken, message = response.StatusMessage, statusCode = response.StatusCode });
 		}
@@ -57,16 +52,6 @@ namespace Presentation.Controllers
 
 				return BadRequest(new { errors });
 			}
-			//await Console.Out.WriteLineAsync("---------------------------");
-			//await Console.Out.WriteLineAsync(registerRequest.UserName);
-			//await Console.Out.WriteLineAsync(registerRequest.Email);
-			//await Console.Out.WriteLineAsync(registerRequest.Password);
-			//await Console.Out.WriteLineAsync(registerRequest.Firstname);
-			//await Console.Out.WriteLineAsync(registerRequest.Lastname);
-			//await Console.Out.WriteLineAsync(registerRequest.DateOfBirth.ToString());
-			//await Console.Out.WriteLineAsync(registerRequest.City);
-			//await Console.Out.WriteLineAsync(registerRequest.Address);
-			//await Console.Out.WriteLineAsync("-------------------------");
 
 			var result = await _authService.Register(registerRequest);
 			if (result.StatusCode != HttpStatusCode.OK)
@@ -88,9 +73,7 @@ namespace Presentation.Controllers
 		[HttpPost("ForgotPassword")]
 		public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest request)
 		{
-            await Console.Out.WriteLineAsync("-------------------------------");
-            await Console.Out.WriteLineAsync(request.Email);
-            await Console.Out.WriteLineAsync("-------------------------------");
+
             var response = await _authService.ForgotPassword(request);
 			return Ok(new { statusMessage = response.StatusMessage, statusCode = response.StatusCode, token = response.Token, userId = response.UserId });
 		}
@@ -98,12 +81,6 @@ namespace Presentation.Controllers
 		[HttpPost("ResetPassword")]
 		public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
 		{
-            await Console.Out.WriteLineAsync("----------------------------");
-            await Console.Out.WriteLineAsync(request.Token);
-            await Console.Out.WriteLineAsync(request.UserId.ToString());
-            await Console.Out.WriteLineAsync(request.NewPassword);
-            await Console.Out.WriteLineAsync("---------------------------- ");
-
 			var response = await _authService.ResetPassword(request);
 			return Ok(new { statusMessage = response.StatusMessage, statusCode = response.StatusCode });
 		}

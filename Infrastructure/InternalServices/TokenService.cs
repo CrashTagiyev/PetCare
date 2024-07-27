@@ -1,4 +1,4 @@
-﻿using Application.AbstractServices;
+﻿using Application.ServiceAbstracts;
 using Domain.DTOs.TokenDTOs;
 using Domain.Models.AuthModels.Tokens;
 using Microsoft.Extensions.Configuration;

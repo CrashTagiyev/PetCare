@@ -1,4 +1,4 @@
-﻿using Application.AbstractServices;
+﻿using Application.ServiceAbstracts;
 using AutoMapper;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.TokenDTOs;

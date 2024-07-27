@@ -2,7 +2,7 @@
 using Domain.Models.AuthModels.Response;
 using Microsoft.AspNetCore.Http;
 
-namespace Application.AbstractServices
+namespace Application.ServiceAbstracts
 {
 	public interface IAuthService
 	{

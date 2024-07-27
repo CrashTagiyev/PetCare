@@ -1,5 +1,6 @@
-﻿using Application.AbstractServices;
+﻿using Application.ServiceAbstracts;
 using Infrastructure.ExternalServices;
+using Infrastructure.InternalServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.BuilderRegisters
@@ -11,6 +12,7 @@ namespace Infrastructure.BuilderRegisters
 			services.AddScoped<IEmailService, EmailService>();
 			services.AddScoped<IAuthService, AuthService>();
 			services.AddScoped<ITokenService, TokenService>();
+			services.AddScoped<IHubService, HubService>();
 		}
 
 		

@@ -23,10 +23,14 @@ namespace Persistance.BuilderRegisters
 			services.AddScoped<IDonationWriteRepository, DonationWriteRepository>();
 			services.AddScoped<ILocationWriteRepository, LocationWriteRepository>();
 			services.AddScoped<IShelterWriteRepository, ShelterWriteRepository>();
+			services.AddScoped<IChatWriteRepository, ChatWriteRepository>();
+			services.AddScoped<IMessageWriteRepository,MessageWriteRepository>();
 
 				//App user
 			services.AddScoped<IAppUserWriteRepository, AppUserWriteRepository>();
 			
+			//-----------------------------------------------------------------------------
+
 			//Read repos
 
 				//Entities
@@ -38,6 +42,8 @@ namespace Persistance.BuilderRegisters
 			services.AddScoped<IDonationReadRepository, DonationReadRepository>();
 			services.AddScoped<ILocationReadRepository, LocationReadRepository>();
 			services.AddScoped<IShelterReadRepository, ShelterReadRepository>();
+			services.AddScoped<IChatReadRepository, ChatReadRepository>();
+			services.AddScoped<IMessageReadRepository, MessageReadRepository>();
 
 				//App user
 			services.AddScoped<IAppUserReadRepository, AppUserReadRepository>();

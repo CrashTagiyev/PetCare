@@ -1,6 +1,6 @@
 ﻿using Domain.Identity;
 
-namespace Application.AbstractServices
+namespace Application.ServiceAbstracts
 {
 	public interface IEmailService
 	{

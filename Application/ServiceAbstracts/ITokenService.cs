@@ -1,7 +1,7 @@
 ﻿using Domain.DTOs.TokenDTOs;
 using Domain.Models.AuthModels.Tokens;
 
-namespace Application.AbstractServices
+namespace Application.ServiceAbstracts
 {
 	public interface ITokenService
 	{
