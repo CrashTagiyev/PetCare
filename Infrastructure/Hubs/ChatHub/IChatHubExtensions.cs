@@ -1,15 +1,10 @@
-﻿using Domain.Models.ChatHubModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.DTOs.ReadDTO;
 
 namespace Infrastructure.Hubs.ChatHub
 {
 	public interface IChatHubExtensions
 	{
-		Task SendMessage( string username,string message, string groupName);
-		Task GetConnectedChatsMessages(string groupName);
+		Task SendMessage(string username, string message, string groupName);
+		Task GetConnectedChatsMessages(List<MessageReadDTO> messages);
 	}
 }

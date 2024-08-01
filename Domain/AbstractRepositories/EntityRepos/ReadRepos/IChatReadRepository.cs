@@ -14,5 +14,6 @@ namespace Domain.AbstractRepositories.EntityRepos.ReadRepos
 		Task<Chat?> GetChatByChatName(string chatName);
 		Task<Chat?> GetChatByNameAndReverseName(string chatName);
 		Task<ICollection<Chat>> GetUserChats(string userName);
+		
 	}
 }

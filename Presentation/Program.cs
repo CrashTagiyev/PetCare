@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy("AllowSpecificOrigin",
-			builder => builder.WithOrigins("http://localhost:5173").WithOrigins("http://localhost:3000").WithOrigins("http://localhost:5173")
+			builder => builder.WithOrigins("http://localhost:5174").WithOrigins("http://localhost:3000").WithOrigins("http://localhost:5173")
 						  .AllowAnyMethod()
 						  .AllowCredentials()
 						  .AllowAnyHeader());
@@ -129,7 +129,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 app.UseCors("AllowSpecificOrigin");
-app.MapHub<ChatHub>("/chathub");
+app.MapHub<ChatHub>("api/chathub");
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -1,9 +1,7 @@
 ﻿using Application.ServiceAbstracts;
 using Domain.Models.AuthModels.Request;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Presentation.Controllers
 {
@@ -12,10 +10,12 @@ namespace Presentation.Controllers
 	public class AccountController : ControllerBase
 	{
 		private readonly IAuthService _authService;
+		private readonly IHubService _hubService;
 
-		public AccountController(IAuthService authService)
+		public AccountController(IAuthService authService, IHubService hubService)
 		{
 			_authService = authService;
+			_hubService = hubService;
 		}
 
 
@@ -74,15 +74,24 @@ namespace Presentation.Controllers
 		public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest request)
 		{
 
-            var response = await _authService.ForgotPassword(request);
+			var response = await _authService.ForgotPassword(request);
 			return Ok(new { statusMessage = response.StatusMessage, statusCode = response.StatusCode, token = response.Token, userId = response.UserId });
 		}
-		
+
 		[HttpPost("ResetPassword")]
 		public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
 		{
 			var response = await _authService.ResetPassword(request);
 			return Ok(new { statusMessage = response.StatusMessage, statusCode = response.StatusCode });
+		}
+
+
+		[HttpGet("GetUsersChats")]
+		public async Task<IActionResult> GetUsersChats([FromQuery]string userName)
+		{
+            Console.WriteLine(userName);
+            var responseData = await _hubService.GetUsersChats(userName);
+			return Ok(new { chats = responseData });
 		}
 
 	}

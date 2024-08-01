@@ -26,5 +26,10 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 		{
 			return await _table.FirstOrDefaultAsync(m => m.Id == id);
 		}
+
+		public async Task<ICollection<Message>> GetMessagesByChatName(string chatName)
+		{
+			return await _table.Include(m => m.Sender).Include(m => m.Chat).Where(m => m.Chat.ChatName.Contains(chatName)).ToListAsync();
+		}
 	}
 }

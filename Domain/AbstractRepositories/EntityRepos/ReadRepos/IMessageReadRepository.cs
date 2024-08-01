@@ -5,6 +5,6 @@ namespace Domain.AbstractRepositories.EntityRepos.ReadRepos
 {
 	public interface IMessageReadRepository : IGenericReadRepository<Message>
 	{
-
+		Task<ICollection<Message>> GetMessagesByChatName(string chatName);
 	}
 }

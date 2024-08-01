@@ -7,8 +7,6 @@ using Domain.Entities.Concretes;
 using Domain.Identity;
 using Domain.Models.ChatHubModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infrastructure.InternalServices
 {
@@ -24,7 +22,7 @@ namespace Infrastructure.InternalServices
 
 		public async Task CreateChatAtDb(UserConnection connection)
 		{
-			var isChatExist = await _chatReadRepository.GetChatByNameAndReverseName(connection.groupname);
+			var isChatExist = await _chatReadRepository.GetChatByNameAndReverseName(connection.chatName);
 
 			if (isChatExist is null)
 			{
@@ -32,7 +30,7 @@ namespace Infrastructure.InternalServices
 				var vets = await _userManager.GetUsersInRoleAsync("Vet");
 
 
-				var splitGroupName = connection.groupname.Split('+');
+				var splitGroupName = connection.chatName.Split('+');
 
 				AppUser? user = users.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[0])) ??
 								users.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[1]));
@@ -44,7 +42,7 @@ namespace Infrastructure.InternalServices
 				{
 					var newChat = new Chat
 					{
-						ChatName = connection.groupname,
+						ChatName = connection.chatName,
 						VetId = vet.Id,
 						UserId = user.Id
 					};
@@ -53,7 +51,6 @@ namespace Infrastructure.InternalServices
 
 			}
 		}
-
 		public async Task SaveMessageToDb(SendMessageModel sendMessageModel)
 		{
 			var senderUser = await _userManager.FindByNameAsync(sendMessageModel.username);
@@ -73,12 +70,28 @@ namespace Infrastructure.InternalServices
 				}
 			}
 		}
-
 		public async Task<ICollection<ChatReadDTO>?> GetUsersChats(string userName)
 		{
 			var chats = await _chatReadRepository.GetUserChats(userName);
-			return chats.Select(_mapper.Map<ChatReadDTO>).ToList();
+			return chats.Select(c => new ChatReadDTO
+			{
+				ChatName = c.ChatName,
+				AppUserName = c.User.UserName!,
+				VetUserName = c.Vet.UserName!,
+
+			}).ToList();
 		}
 
+		public async Task<ICollection<MessageReadDTO>> GetChatsMessages(string chatName)
+		{
+			var messages = await _messageReadRepository.GetMessagesByChatName(chatName);
+			var messageDTOs = messages.Select(m => new MessageReadDTO
+			{
+				SentAt = m.SentAt,
+				SenderName = m.Sender.UserName!,
+				Content = m.Content
+			}).ToList();
+			return messageDTOs;
+		}
 	}
 }

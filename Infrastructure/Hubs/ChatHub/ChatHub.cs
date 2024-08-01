@@ -14,9 +14,16 @@ namespace Infrastructure.Hubs.ChatHub
 
 		public async Task CreateConnection(UserConnection connection)
 		{
-			await _hubService.CreateChatAtDb(connection);
-			await Groups.AddToGroupAsync(Context.ConnectionId, connection.groupname);
-			await Clients.Group(connection.groupname).GetConnectedChatsMessages(connection.groupname);
+            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine(connection.username);
+            Console.WriteLine(connection.chatName);
+            Console.WriteLine("-----------------------------------------------");
+            await _hubService.CreateChatAtDb(connection);
+			await Groups.AddToGroupAsync(Context.ConnectionId, connection.chatName);
+
+			var connectedChatsMessage = await _hubService.GetChatsMessages(connection.chatName);
+
+			await Clients.Group(connection.chatName).GetConnectedChatsMessages(connectedChatsMessage.ToList());
 		}
 
 		public async Task SendMessageToChat(SendMessageModel sendMessageModel)

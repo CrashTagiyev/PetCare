@@ -8,5 +8,6 @@ namespace Application.ServiceAbstracts
 		Task CreateChatAtDb(UserConnection connection);
 		Task SaveMessageToDb(SendMessageModel sendMessageModel);
 		Task<ICollection<ChatReadDTO>?> GetUsersChats(string userName);
+		Task<ICollection<MessageReadDTO>> GetChatsMessages(string chatName);
 	}
 }
