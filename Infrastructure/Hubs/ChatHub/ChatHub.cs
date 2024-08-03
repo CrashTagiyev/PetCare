@@ -1,6 +1,8 @@
 ﻿using Application.ServiceAbstracts;
+using Domain.DTOs.ReadDTO;
 using Domain.Models.ChatHubModels;
 using Microsoft.AspNetCore.SignalR;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Infrastructure.Hubs.ChatHub
 {
@@ -14,10 +16,7 @@ namespace Infrastructure.Hubs.ChatHub
 
 		public async Task CreateConnection(UserConnection connection)
 		{
-            Console.WriteLine("-----------------------------------------------");
-            Console.WriteLine(connection.username);
-            Console.WriteLine(connection.chatName);
-            Console.WriteLine("-----------------------------------------------");
+
             await _hubService.CreateChatAtDb(connection);
 			await Groups.AddToGroupAsync(Context.ConnectionId, connection.chatName);
 
@@ -29,7 +28,13 @@ namespace Infrastructure.Hubs.ChatHub
 		public async Task SendMessageToChat(SendMessageModel sendMessageModel)
 		{
 			await _hubService.SaveMessageToDb(sendMessageModel);
-			await Clients.Group(sendMessageModel.groupName).SendMessage(sendMessageModel.username, sendMessageModel.message, sendMessageModel.groupName);
+			var newMessage = new MessageReadDTO()
+			{
+				Content = sendMessageModel.message,
+				SenderName = sendMessageModel.username,
+				SentAt = DateTime.Now,
+			};
+			await Clients.Group(sendMessageModel.chatName).SendMessage(newMessage);
 		}
 
 

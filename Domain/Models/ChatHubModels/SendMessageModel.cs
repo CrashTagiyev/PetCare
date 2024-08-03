@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.ChatHubModels
 {
-	public record SendMessageModel(string username,string message, string groupName);
+	public record SendMessageModel(string username,string message, string chatName);
 }

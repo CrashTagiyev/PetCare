@@ -57,7 +57,7 @@ namespace Infrastructure.InternalServices
 			if (senderUser is not null)
 			{
 
-				var chat = await _chatReadRepository.GetChatByNameAndReverseName(sendMessageModel.groupName);
+				var chat = await _chatReadRepository.GetChatByNameAndReverseName(sendMessageModel.chatName);
 				if (chat is not null)
 				{
 					await _messageWriteRepository.CreateAsync(new Message

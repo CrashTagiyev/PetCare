@@ -94,5 +94,12 @@ namespace Presentation.Controllers
 			return Ok(new { chats = responseData });
 		}
 
+		[HttpGet("GetChatsMessages")]
+		public async Task<IActionResult> GetChatsMessages([FromQuery] string chatName)
+		{
+			Console.WriteLine(chatName);
+			var responseData = await _hubService.GetChatsMessages(chatName);
+			return Ok(new { messages = responseData.ToList() });
+		}
 	}
 }
