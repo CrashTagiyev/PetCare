@@ -3,7 +3,6 @@ using Domain.Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Persistance.Repositories.EntityRepos.ReadRepos
 {
@@ -32,18 +31,16 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 		{
 			var splitGroupName = chatName.Split('+');
 			var reverseGroupName = string.Join("+", splitGroupName.Reverse());
-			var chat = await _table.Include(c=>c.Messages).FirstOrDefaultAsync(c => c.ChatName == reverseGroupName || c.ChatName == chatName);
+			var chat = await _table.Include(c => c.Messages).FirstOrDefaultAsync(c => c.ChatName == reverseGroupName || c.ChatName == chatName);
 			return chat;
 		}
-
-
 
 		public async Task<ICollection<Chat>> GetUserChats(string userName)
 		{
 			var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
 			if (user is not null)
-				return await _table.Include(c=>c.User).Include(c=>c.Vet).Where(c => c.UserId == user!.Id || c.VetId==user!.Id).ToListAsync();
-			return null!;
+				return await _table.Include(c => c.User).Include(c => c.Vet).Where(c => c.UserId == user!.Id || c.VetId == user!.Id).ToListAsync();
+			return Enumerable.Empty<Chat>().ToList();
 		}
 	}
 }

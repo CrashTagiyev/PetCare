@@ -8,10 +8,10 @@ namespace Domain.Entities.Concretes
 		public int ChatId { get; set; }
 		public int SenderId { get; set; }
 		public string Content { get; set; }
-		public DateTime SentAt { get; set; }
+        public bool IsSeen { get; set; }
 
-		// Navigation properties
-		public Chat Chat { get; set; }
+        // Navigation properties
+        public Chat Chat { get; set; }
 		public AppUser Sender { get; set; }
 	}
 }

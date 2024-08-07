@@ -10,15 +10,31 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Infrastructure.InternalServices
 {
-	public class HubService(IChatWriteRepository chatWriteRepository, IChatReadRepository chatReadRepository, UserManager<AppUser> userManager, IMapper mapper, IMessageWriteRepository messageWriteRepository, IMessageReadRepository messageReadRepository) : IHubService
+	public class HubService : IHubService
 	{
-		private readonly IChatWriteRepository _chatWriteRepository = chatWriteRepository;
-		private readonly IChatReadRepository _chatReadRepository = chatReadRepository;
-		private readonly IMessageWriteRepository _messageWriteRepository = messageWriteRepository;
-		private readonly IMessageReadRepository _messageReadRepository = messageReadRepository;
-		private readonly UserManager<AppUser> _userManager = userManager;
-		private readonly IMapper _mapper = mapper;
+		private readonly IChatWriteRepository _chatWriteRepository;
+		private readonly IChatReadRepository _chatReadRepository;
 
+		private readonly IMessageWriteRepository _messageWriteRepository;
+		private readonly IMessageReadRepository _messageReadRepository;
+
+		private readonly INotificationWriteRepository _notificationWriteRepository;
+		private readonly INotificationReadRepository _notificationReadRepository;
+
+		private readonly UserManager<AppUser> _userManager;
+		private readonly IMapper _mapper;
+
+		public HubService(IChatWriteRepository chatWriteRepository, IChatReadRepository chatReadRepository, UserManager<AppUser> userManager, IMapper mapper, IMessageWriteRepository messageWriteRepository, IMessageReadRepository messageReadRepository, INotificationReadRepository notificationReadRepository, INotificationWriteRepository notificationWriteRepository)
+		{
+			_chatWriteRepository = chatWriteRepository;
+			_chatReadRepository = chatReadRepository;
+			_messageWriteRepository = messageWriteRepository;
+			_messageReadRepository = messageReadRepository;
+			_userManager = userManager;
+			_mapper = mapper;
+			_notificationReadRepository = notificationReadRepository;
+			_notificationWriteRepository = notificationWriteRepository;
+		}
 
 		public async Task CreateChatAtDb(UserConnection connection)
 		{
@@ -65,12 +81,12 @@ namespace Infrastructure.InternalServices
 						SenderId = senderUser.Id,
 						Content = sendMessageModel.message,
 						ChatId = chat.Id,
-						SentAt = DateTime.Now,
+						IsSeen = false
 					});
 				}
 			}
 		}
-		public async Task<ICollection<ChatReadDTO>?> GetUsersChats(string userName)
+		public async Task<ICollection<ChatReadDTO>> GetUsersChats(string userName)
 		{
 			var chats = await _chatReadRepository.GetUserChats(userName);
 			return chats.Select(c => new ChatReadDTO
@@ -81,17 +97,68 @@ namespace Infrastructure.InternalServices
 
 			}).ToList();
 		}
-
-		public async Task<ICollection<MessageReadDTO>> GetChatsMessages(string chatName)
+		public async Task<ICollection<MessageReadDTO>> GetChatsMessages(string username, string chatName)
 		{
 			var messages = await _messageReadRepository.GetMessagesByChatName(chatName);
+
+			foreach (var message in messages)
+			{
+				if (message.Sender.UserName != username)
+				{
+					message.IsSeen = true;
+					await _messageWriteRepository.UpdateAsync(message);
+				}
+			};
+
 			var messageDTOs = messages.Select(m => new MessageReadDTO
 			{
-				SentAt = m.SentAt,
+				CreatedTime = m.CreatedTime,
 				SenderName = m.Sender.UserName!,
-				Content = m.Content
+				Content = m.Content,
+				IsSeen = m.IsSeen,
 			}).ToList();
+
+
 			return messageDTOs;
+		}
+
+		public async Task<string> GetRecieverNameByGroupName(string groupName, string senderName)
+		{
+			var splitGroupName = groupName.Split('+');
+			var sendedToName = splitGroupName.FirstOrDefault(un => !un.StartsWith(senderName));
+			return sendedToName!;
+		}
+
+		public async Task SaveNotificationToDb(NotificationModel notification)
+		{
+			var recieverUser = await _userManager.FindByNameAsync(notification.ReceiverUserName);
+			if (recieverUser is not null)
+			{
+
+				var newNotification = new Notification()
+				{
+					Content = notification.Content,
+					SenderUserName = notification.SenderUserName,
+					ReceiverUserName = notification.ReceiverUserName,
+					UserId= recieverUser.Id
+				};
+
+				await _notificationWriteRepository.CreateAsync(newNotification);
+				
+			}
+
+		}
+
+		public async Task<ICollection<NotificationModel>> GetUsersNotifications(string userName)
+		{
+			var notifications=await _notificationReadRepository.GetNotificationsByUsername(userName);
+			return notifications.Select(n => new NotificationModel()
+			{
+				Content = n.Content,
+				SenderUserName = n.SenderUserName,
+				SendedAt=n.CreatedTime.ToShortDateString() + " " +  n.CreatedTime.ToShortTimeString(),
+				
+			}).ToList();
 		}
 	}
 }

@@ -87,18 +87,27 @@ namespace Presentation.Controllers
 
 
 		[HttpGet("GetUsersChats")]
-		public async Task<IActionResult> GetUsersChats([FromQuery]string userName)
+		public async Task<IActionResult> GetUsersChats([FromQuery] string userName)
 		{
-            Console.WriteLine(userName);
-            var responseData = await _hubService.GetUsersChats(userName);
-			return Ok(new { chats = responseData });
+			try
+			{
+
+				var responseData = await _hubService.GetUsersChats(userName);
+					return Ok(new { chats = responseData });
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+			}
 		}
 
 		[HttpGet("GetChatsMessages")]
-		public async Task<IActionResult> GetChatsMessages([FromQuery] string chatName)
+		public async Task<IActionResult> GetChatsMessages([FromQuery]string username,[FromQuery] string chatName)
 		{
+	
 			Console.WriteLine(chatName);
-			var responseData = await _hubService.GetChatsMessages(chatName);
+			var responseData = await _hubService.GetChatsMessages(username,chatName);
 			return Ok(new { messages = responseData.ToList() });
 		}
 	}

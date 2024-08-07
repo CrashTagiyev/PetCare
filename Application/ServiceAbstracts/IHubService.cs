@@ -7,7 +7,11 @@ namespace Application.ServiceAbstracts
 	{
 		Task CreateChatAtDb(UserConnection connection);
 		Task SaveMessageToDb(SendMessageModel sendMessageModel);
-		Task<ICollection<ChatReadDTO>?> GetUsersChats(string userName);
-		Task<ICollection<MessageReadDTO>> GetChatsMessages(string chatName);
+		Task SaveNotificationToDb(NotificationModel notification);
+		Task<ICollection<ChatReadDTO>> GetUsersChats(string userName);
+		Task<ICollection<MessageReadDTO>> GetChatsMessages(string username,string chatName);
+		Task<ICollection<NotificationModel>> GetUsersNotifications(string userName);
+		Task<string> GetRecieverNameByGroupName(string groupName, string senderName);
+	
 	}
 }

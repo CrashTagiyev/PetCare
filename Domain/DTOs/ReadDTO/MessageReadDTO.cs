@@ -4,6 +4,7 @@
 	{
 		public string SenderName { get; set; }
 		public string Content { get; set; }
-		public DateTime SentAt { get; set; }
+		public bool IsSeen { get; set; }
+		public DateTime CreatedTime { get; set; }
 	}
 }

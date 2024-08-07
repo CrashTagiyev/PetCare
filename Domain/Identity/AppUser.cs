@@ -35,5 +35,9 @@ namespace Domain.Identity
 		//Chatting
 		public ICollection<Chat> Chats { get; set; }
 		public ICollection<Message> Messages { get; set; }
+
+		//Notifications
+		public ICollection<Notification> Notifications { get; set; }	
+
 	}
 }

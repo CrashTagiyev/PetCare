@@ -25,8 +25,10 @@ namespace Persistance.BuilderRegisters
 			services.AddScoped<IShelterWriteRepository, ShelterWriteRepository>();
 			services.AddScoped<IChatWriteRepository, ChatWriteRepository>();
 			services.AddScoped<IMessageWriteRepository,MessageWriteRepository>();
+			services.AddScoped<INotificationReadRepository,NotificationReadRepository>();
+			services.AddScoped<INotificationWriteRepository,NotificationWriteRepository>();
 
-				//App user
+			//App user
 			services.AddScoped<IAppUserWriteRepository, AppUserWriteRepository>();
 			
 			//-----------------------------------------------------------------------------

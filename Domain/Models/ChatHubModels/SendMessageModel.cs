@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Domain.Models.ChatHubModels
 {
-	public record SendMessageModel(string username,string message, string chatName);
+	public class SendMessageModel
+	{
+		public string username { get; set; }
+		public string message { get; set; }
+		public string chatName { get; set; }
+		public bool isSeen { get; set; }
+	}
 }
