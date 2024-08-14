@@ -13,7 +13,7 @@ namespace Persistance.Configurations.IdentityConfigs
 
 			for (int i = 1; i <= 60; i++)
 			{
-				var user=new AppUser
+				var user = new AppUser
 				{
 					Id = i + 2000,
 					DateOfBirth = new DateTime(1999, 12, 31).AddDays(i), // Slightly varying DOB

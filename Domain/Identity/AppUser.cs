@@ -7,11 +7,11 @@ namespace Domain.Identity
 {
 	public class AppUser : IdentityUser<int>,IBaseEntity
 	{
-		public string? Firstname { get; set; }
-		public string? Lastname { get; set; }
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
 		public DateTime? DateOfBirth { get; set; }
-		public string? City { get; set; }
-		public string? Address { get; set; }
+		public string City { get; set; }
+		public string Address { get; set; }
 
 		// Refresh Token properties
 		public string? RefreshToken { get; set; }
@@ -24,21 +24,25 @@ namespace Domain.Identity
 		public bool IsDeleted { get; set; }
         public string? ProfileImageUrl { get; set; }
 
-        //Navigation properties
-        //Company
-        public virtual ICollection<Shelter>? Shelters { get; set; }
+		////Vet
+		public int Likes { get; set; } = 0;
+		public int Dislikes { get; set; } = 0;
+		public string? About { get; set; }
 
+		//Company
+		public virtual ICollection<Shelter>? Shelters { get; set; }
+		
 		//App Users
-		public ICollection<Donation>? Donations { get; set; }
-		public ICollection<AcceptRequest>? AcceptRequests { get; set; }
-		public ICollection<Adoption>? Adoptions { get; set; }
+		public virtual ICollection<Donation>? Donations { get; set; }
+		public virtual ICollection<AcceptRequest>? AcceptRequests { get; set; }
+		public virtual ICollection<Adoption>? Adoptions { get; set; }
 
-		//Chatting
-		public ICollection<Chat> Chats { get; set; }
-		public ICollection<Message> Messages { get; set; }
+        //Chatting between Vet  && User || Company
+        public virtual ICollection<Chat> Chats { get; set; }
+		public virtual ICollection<Message> Messages { get; set; }
 
 		//Notifications
-		public ICollection<Notification> Notifications { get; set; }	
+		public virtual ICollection<Notification> Notifications { get; set; }	
 
 	}
 }

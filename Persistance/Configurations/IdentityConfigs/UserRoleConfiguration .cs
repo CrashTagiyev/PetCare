@@ -8,32 +8,23 @@ namespace Persistance.Configurations.IdentityConfigs
 	{
 		public void Configure(EntityTypeBuilder<IdentityUserRole<int>> builder)
 		{
-			try
+			var usersRoles = new List<IdentityUserRole<int>>();
+			for (int i = 0; i <= 60; i++)
 			{
-
-				var usersRoles = new List<IdentityUserRole<int>>();
-				for (int i = 0; i <= 60; i++)
+				if (i > 0)
 				{
-					if (i > 0)
-					{
-						var userRole = new IdentityUserRole<int>();
-						userRole.UserId = i + 2000;
-						if (i <= 20)
-							userRole.RoleId = 1;
-						else if (i < 40)
-							userRole.RoleId =3;
-						else
-							userRole.RoleId = 2;
-						usersRoles.Add(userRole);
-					}
+					var userRole = new IdentityUserRole<int>();
+					userRole.UserId = i + 2000;
+					if (i <= 20)
+						userRole.RoleId = 1;
+					else if (i < 40)
+						userRole.RoleId = 3;
+					else
+						userRole.RoleId = 2;
+					usersRoles.Add(userRole);
 				}
-				builder.HasData(usersRoles);
 			}
-			catch (Exception ex)
-			{
-
-                Console.WriteLine(ex.Message);
-            }
+			builder.HasData(usersRoles);
 		}
 	}
 }

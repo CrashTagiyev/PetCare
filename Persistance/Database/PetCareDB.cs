@@ -29,11 +29,11 @@ namespace Persistance.Database
 			builder.ApplyConfiguration(new LocationConfig());
 			builder.ApplyConfiguration(new MessageConfiguration());
 			builder.ApplyConfiguration(new ChatConfiguration());
-			builder.ApplyConfiguration(new RoleConfig());
 			builder.ApplyConfiguration(new UserConfigruation());
+			builder.ApplyConfiguration(new RoleConfig());
 			builder.ApplyConfiguration(new UserRoleConfiguration());
 
-			
+
 			//builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
 			//builder.Entity<Pet>().HasQueryFilter(p => !p.IsAdopted);
 			//builder.Entity<Shelter>().HasQueryFilter(p => !p.IsDeleted);
