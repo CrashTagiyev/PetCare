@@ -1,4 +1,5 @@
 ﻿using Application.ServiceAbstracts;
+using Application.ServiceAbstracts.UserServices;
 using Azure.Storage.Blobs;
 using Infrastructure.ExternalServices;
 using Infrastructure.InternalServices;
@@ -18,7 +19,8 @@ namespace Infrastructure.BuilderRegisters
 			services.AddScoped<ITokenService, TokenService>();
 			services.AddScoped<IHubService, HubService>();
 			services.AddScoped<IBlobService, BlobService>();
-			
+			services.AddScoped<IVetService, VetService>();
+
 		}
 
 		public static void AddPetCareImageBlobServiceClient(this IHostApplicationBuilder builder)

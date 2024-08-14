@@ -17,14 +17,14 @@ namespace Persistance.Configurations.IdentityConfigs
 			new IdentityRole<int>
 			{
 				Id = 2,
-				Name = "Vet",
-				NormalizedName = "VET"
+				Name = "Company",
+				NormalizedName = "COMPANY"
 			},
 			new IdentityRole<int>
 			{
 				Id = 3,
-				Name = "Company",
-				NormalizedName = "COMPANY"
+				Name = "Vet",
+				NormalizedName = "VET"
 			},
 			new IdentityRole<int>
 			{

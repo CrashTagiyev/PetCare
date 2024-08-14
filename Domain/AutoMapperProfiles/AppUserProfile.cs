@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
 using System;
@@ -13,7 +14,11 @@ namespace Domain.AutoMapperProfiles
 	{
         public AppUserProfile()
         {
+            //Auth
             CreateMap<RegisterRequest, AppUser>();
+            
+            //Vet
+            CreateMap<AppUser,VetInfoDTO>();
         }
     }
 }

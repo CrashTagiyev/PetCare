@@ -5,5 +5,7 @@ namespace Domain.AbstractRepositories.IdentityRepos
 {
 	public interface IAppUserWriteRepository : IGenericWriteRepository<AppUser>
 	{
+		Task LikeVet(int id);
+		Task DislikeVet(int id);
 	}
 }

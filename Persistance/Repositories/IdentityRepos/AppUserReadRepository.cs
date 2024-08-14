@@ -29,12 +29,13 @@ namespace Persistance.Repositories.IdentityRepos
 
 		public async Task<AppUser?> GetByIdAsync(int id)
 		{
-			return await _table.FirstOrDefaultAsync(u => u.Id == id);
+			var user = await _table.FirstOrDefaultAsync(u => u.Id == id);
+			return user ?? throw new Exception("User did not found\nFunction name:GetByIdAsync");
 		}
 
 		public async Task<bool> IsEmailConfirmedAsync(string email)
 		{
-			var user=  await _table.FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+			var user = await _table.FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 			if (user != null)
 				return user.EmailConfirmed;
 			return false;

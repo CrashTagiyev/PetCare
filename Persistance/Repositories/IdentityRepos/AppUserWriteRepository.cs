@@ -1,5 +1,4 @@
-﻿using Domain.AbstractRepositories.EntityRepos.GenericRepos;
-using Domain.AbstractRepositories.IdentityRepos;
+﻿using Domain.AbstractRepositories.IdentityRepos;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +31,31 @@ namespace Persistance.Repositories.IdentityRepos
 				await SaveChangesDbAsync();
 			}
 		}
+
+		public async Task DislikeVet(int id)
+		{
+			var vet = await _table.FirstOrDefaultAsync(u => u.Id == id);
+			
+			if (vet is null)
+				throw new Exception("Vet did not found\nFunction name:DislikeVet");
+
+			++vet.Dislikes;
+			await SaveChangesDbAsync();
+
+		}
+
+		public async Task LikeVet(int id)
+		{
+			var vet = await _table.FirstOrDefaultAsync(u => u.Id == id);
+
+			if (vet is null)
+				throw new Exception("Vet did not found\nFunction name:LikeVet");
+
+			++vet.Likes;
+			await SaveChangesDbAsync();
+
+		}
+
 		public async Task UpdateAsync(AppUser entity)
 		{
 			_table.Update(entity);
