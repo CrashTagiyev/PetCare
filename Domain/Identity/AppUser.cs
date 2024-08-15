@@ -7,27 +7,23 @@ namespace Domain.Identity
 {
 	public class AppUser : IdentityUser<int>,IBaseEntity
 	{
-		public string Firstname { get; set; }
-		public string Lastname { get; set; }
+		public string? Firstname { get; set; }
+		public string? Lastname { get; set; }
 		public DateTime? DateOfBirth { get; set; }
 		public string City { get; set; }
 		public string Address { get; set; }
-
-		// Refresh Token properties
 		public string? RefreshToken { get; set; }
 		public DateTime? RefreshTokenExpireTime { get; set; }
 		public DateTime? RefreshTokenCreateTime { get; set; } = DateTime.Now;
-
-		//Base entity props
 		public DateTime CreatedTime { get; set; }= DateTime.UtcNow;
 		public DateTime LastUpdatedTime { get; set; }
 		public bool IsDeleted { get; set; }
         public string? ProfileImageUrl { get; set; }
 
 		////Vet
-		public int Likes { get; set; } = 0;
-		public int Dislikes { get; set; } = 0;
-		public string? About { get; set; }
+		public int? Likes { get; set; } = 1;
+		public int? Dislikes { get; set; } = 1;
+		public string? About { get; set; }= string.Empty;	
 
 		//Company
 		public virtual ICollection<Shelter>? Shelters { get; set; }

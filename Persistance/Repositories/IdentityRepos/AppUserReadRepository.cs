@@ -35,7 +35,8 @@ namespace Persistance.Repositories.IdentityRepos
 
 		public async Task<bool> IsEmailConfirmedAsync(string email)
 		{
-			var user = await _table.FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+			//var user = await _table.FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+			var user = await _userManager.FindByEmailAsync(email);
 			if (user != null)
 				return user.EmailConfirmed;
 			return false;
@@ -43,12 +44,14 @@ namespace Persistance.Repositories.IdentityRepos
 
 		public async Task<bool> IsEmailExistAsync(string email)
 		{
-			return await _table.AnyAsync(u => u.NormalizedEmail == email.ToUpper());
+			var user = await _userManager.FindByEmailAsync(email);
+			return user is not null ? true : false;
 		}
 
 		public async Task<bool> IsUserNameExistAsync(string username)
 		{
-			return await _table.AnyAsync(u => u.NormalizedUserName == username.ToUpper());
+			var user = await _userManager.FindByNameAsync(username);
+			return user is not null ? true : false;
 		}
 	}
 }

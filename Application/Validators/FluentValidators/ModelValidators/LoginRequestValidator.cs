@@ -27,7 +27,7 @@ public class LoginRequestValidator : AbstractValidator<LoginRequest>
 			.WithMessage("Email does not exist.")
 			.EmailAddress().WithMessage("Email addres is not valid");
 
-
+	
 
 		RuleFor(l => l.Password)
 			.NotEmpty().WithMessage("Password is required.")

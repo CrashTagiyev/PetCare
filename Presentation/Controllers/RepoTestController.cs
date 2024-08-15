@@ -92,6 +92,9 @@ namespace Presentation.Controllers
 				UserName = username,
 				Email = email,
 				EmailConfirmed = true,
+				Address="baku",
+				City="baku"
+			
 			};
 			await _appUserWriteRepository.CreateAsync(newUser);
 			await _userManager.AddPasswordAsync(newUser, "123qweA@");

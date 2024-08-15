@@ -115,7 +115,7 @@ namespace Infrastructure.ExternalServices
 					Roles = roles.ToList(),
 					FirstName=user.Firstname,
 					LastName=user.Lastname,
-					ProfileImageUrl = user.ProfileImageUrl,
+					ProfileImageUrl = user.ProfileImageUrl??string.Empty,
 					Claims = new List<Claim>
 				{
 					new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),

@@ -23,7 +23,9 @@ namespace Persistance.Configurations.IdentityConfigs
 					LastUpdatedTime = DateTime.UtcNow,
 					IsDeleted = false,
 					EmailConfirmed = true,
+					About=$"NULL",
 					PasswordHash= "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
+					SecurityStamp= "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
 					ProfileImageUrl = $"https://picsum.photos/seed/user{i}/200/300" // Using Lorem Picsum for random images
 				};
 				if (i <= 20)

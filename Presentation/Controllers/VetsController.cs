@@ -22,7 +22,7 @@ namespace Presentation.Controllers
 		}
 
 		[HttpGet("[action]")]
-		public async Task<IActionResult> GetVetsList(int id)
+		public async Task<IActionResult> GetVetsList()
 		{
 			var vetsList = await _vetService.GetVetInfoDTOList();
 			return Ok(vetsList);
