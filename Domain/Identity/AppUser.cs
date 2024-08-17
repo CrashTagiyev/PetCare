@@ -10,8 +10,8 @@ namespace Domain.Identity
 		public string? Firstname { get; set; }
 		public string? Lastname { get; set; }
 		public DateTime? DateOfBirth { get; set; }
-		public string City { get; set; }
-		public string Address { get; set; }
+		public string? City { get; set; }
+		public string? Address { get; set; }
 		public string? RefreshToken { get; set; }
 		public DateTime? RefreshTokenExpireTime { get; set; }
 		public DateTime? RefreshTokenCreateTime { get; set; } = DateTime.Now;
@@ -23,11 +23,15 @@ namespace Domain.Identity
 		////Vet
 		public int? Likes { get; set; } = 1;
 		public int? Dislikes { get; set; } = 1;
-		public string? About { get; set; }= string.Empty;	
+		public ICollection<PetType> ProficientPetTypes { get; set; }
 
 		//Company
+		public string? CompanyName { get; set; }
 		public virtual ICollection<Shelter>? Shelters { get; set; }
 		
+		//Vet/Company
+		public string? About { get; set; }= string.Empty;	
+
 		//App Users
 		public virtual ICollection<Donation>? Donations { get; set; }
 		public virtual ICollection<AcceptRequest>? AcceptRequests { get; set; }

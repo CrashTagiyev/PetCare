@@ -20,7 +20,7 @@ namespace Presentation.Controllers
 			var vet = await _vetService.GetVetInfoDTO(id);
 			return Ok(vet);
 		}
-
+	
 		[HttpGet("[action]")]
 		public async Task<IActionResult> GetVetsList()
 		{

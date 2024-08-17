@@ -39,6 +39,8 @@ namespace Presentation.Controllers
 						ms => ms.Key,
 						ms => ms.Value.Errors.Select(e => e.ErrorMessage).ToArray());
 
+
+
 				return BadRequest(new { errors });
 			}
 
@@ -56,11 +58,12 @@ namespace Presentation.Controllers
 			return Ok(new { accessToken = response.AccessToken, refreshToken = response.RefreshToken, message = response.StatusMessage });
 		}
 
-		[HttpPost("Register")]
 
+
+		//Sign Ups User/Vet/Company
+		[HttpPost("[action]")]
 		public async Task<IActionResult> Register([FromForm] RegisterRequest registerRequest)
 		{
-
 
 			if (!ModelState.IsValid)
 			{
@@ -74,7 +77,7 @@ namespace Presentation.Controllers
 
 			}
 
-			// Proceed with registration
+			 //Proceed with registration
 			var result = await _authService.Register(registerRequest);
 			if (result.StatusCode != HttpStatusCode.OK)
 			{
@@ -84,6 +87,55 @@ namespace Presentation.Controllers
 
 			return Ok(new { statusCode = result.StatusCode, statusMessage = result.StatusMessage });
 		}
+
+		[HttpPost("[action]")]
+		public async Task<IActionResult> RegisterVet([FromForm] RegisterVetRequest registerVetRequest)
+		{
+
+			if (!ModelState.IsValid)
+			{
+				var errors = ModelState
+					.Where(ms => ms.Value.Errors.Count > 0)
+					.ToDictionary(
+						ms => ms.Key,
+						ms => ms.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+
+				return BadRequest(new { errors });
+
+			}
+
+			var result = await _authService.RegisterVet(registerVetRequest);
+			if (result.StatusCode != HttpStatusCode.OK)
+			{
+				return BadRequest(new { errors = result.StatusMessage });
+			}
+
+			return Ok(new { statusCode = result.StatusCode, statusMessage = result.StatusMessage });
+		}
+
+		[HttpPost("[action]")]
+		public async Task<IActionResult> RegisterCompany([FromForm] RegisterCompanyRequest registerCompanyRequest)
+		{
+			//Validation check
+			if (!ModelState.IsValid)
+			{
+				var errors = ModelState
+					.Where(ms => ms.Value.Errors.Count > 0)
+					.ToDictionary(
+						ms => ms.Key,
+						ms => ms.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+
+				return BadRequest(new { errors });
+			}
+
+			var result = await _authService.RegisterCompany(registerCompanyRequest);
+			if (result.StatusCode != HttpStatusCode.OK)
+				return BadRequest(new { errors = result.StatusMessage });
+
+			return Ok(new { statusCode = result.StatusCode, statusMessage = result.StatusMessage });
+		}
+
+
 
 
 

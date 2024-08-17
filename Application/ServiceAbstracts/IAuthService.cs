@@ -6,7 +6,9 @@ namespace Application.ServiceAbstracts
 {
 	public interface IAuthService
 	{
-		Task<RegisterResponse> Register(RegisterRequest request);
+		Task<RegisterResponse> Register(RegisterRequest registerRequest);
+		Task<RegisterResponse> RegisterCompany(RegisterCompanyRequest registerCompanyRequest);
+		Task<RegisterResponse> RegisterVet(RegisterVetRequest registerVetRequest);
 		Task<ConfirmEmailResponse> ConfirmEmail(int userId, string token);
 		Task<LoginResponse> Login(LoginRequest loginRequest);
 		Task<LoginResponse> RefreshToken(string refreshToken);

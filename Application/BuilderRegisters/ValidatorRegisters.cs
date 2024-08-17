@@ -30,6 +30,7 @@ namespace Application.BuilderRegisters
 			services.AddScoped<IValidator<RegisterRequest>,RegisterRequestValidator>();
 			services.AddScoped<IValidator<ForgotPasswordRequest>,ForgotPasswordValidator>();
 			services.AddScoped<IValidator<ResetPasswordRequest>,ResetPasswordValidator>();
+			services.AddScoped<IValidator<RegisterCompanyRequest>,RegisterCompanyRequestValidator>();
 		}
 	}
 }

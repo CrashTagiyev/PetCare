@@ -13,15 +13,9 @@ public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
 		RuleFor(x => x.UserName)
 			.NotEmpty().WithMessage("User name is required.")
 			.MaximumLength(50).WithMessage("User name cannot exceed 50 characters.")
-			.MustAsync(async(un,ct) => await appUserReadRepository.IsUserNameExistAsync(un))
-			.WithMessage("User name already exists.")
-			.MustAsync(async (un, cancellationToken) =>
-			{
-				var isUsernameExist = await userManager.FindByNameAsync(un);
-				if (isUsernameExist is not null)
-					return false;
-				return true;
-			}).WithMessage("Username already exist");
+			.MustAsync(async (un, ct) => !await appUserReadRepository.IsUserNameExistAsync(un))
+			.WithMessage("This username already exists.");
+	
 
 		RuleFor(x => x.Firstname)
 			.NotEmpty().WithMessage("First name is required.")

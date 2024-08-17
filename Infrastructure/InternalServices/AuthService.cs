@@ -1,12 +1,13 @@
 ﻿using Application.ServiceAbstracts;
 using AutoMapper;
 using Azure.Core;
+using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.TokenDTOs;
+using Domain.Entities.Concretes;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
 using Domain.Models.AuthModels.Response;
-using Domain.Models.AuthModels.Tokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System.Net;
@@ -23,8 +24,9 @@ namespace Infrastructure.ExternalServices
 		private readonly IAppUserReadRepository _appUserReadRepository;
 		private readonly IMapper _mapper;
 		private readonly IBlobService _blobService;
+		private readonly IPetTypeReadRepository _petTypeReadRepository;
 
-		public AuthService(UserManager<AppUser> myUserManager, ITokenService tokenService, IEmailService emailService, IConfiguration configuration, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService)
+		public AuthService(UserManager<AppUser> myUserManager, ITokenService tokenService, IEmailService emailService, IConfiguration configuration, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService, IPetTypeReadRepository petTypeReadRepository)
 		{
 			_userManager = myUserManager;
 			_tokenService = tokenService;
@@ -33,6 +35,7 @@ namespace Infrastructure.ExternalServices
 			_appUserReadRepository = appUserReadRepository;
 			_mapper = mapper;
 			_blobService = blobService;
+			_petTypeReadRepository = petTypeReadRepository;
 		}
 
 		public async Task<RegisterResponse> Register(RegisterRequest request)
@@ -63,7 +66,80 @@ namespace Infrastructure.ExternalServices
 			};
 			return badResponse;
 		}
+		public async Task<RegisterResponse> RegisterCompany(RegisterCompanyRequest request)
+		{
+			try
+			{
 
+				var user = _mapper.Map<AppUser>(request);
+
+				if (request.ProfileImage is not null)
+					user.ProfileImageUrl = await _blobService.UploadImageFileAsync(request.ProfileImage);
+
+				var result = await _userManager.CreateAsync(user, request.Password!);
+
+				if (result.Succeeded)
+				{
+					await _userManager.AddToRoleAsync(user, "Company");
+					//await _emailService.SendEmailConfirm(user);
+					var successRespose = new RegisterResponse
+					{
+						StatusMessage = "Account created successfully.Please confirm registration from the email",
+						StatusCode = HttpStatusCode.Created
+					};
+					return successRespose;
+				}
+				var badResponse = new RegisterResponse
+				{
+					StatusMessage = "Registration failed.something vent wrong",
+					StatusCode = HttpStatusCode.Created
+				};
+				return badResponse;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+			}
+		}
+		public async Task<RegisterResponse> RegisterVet(RegisterVetRequest registerVetRequest)
+		{
+			var vet = _mapper.Map<AppUser>(registerVetRequest);
+
+			if (registerVetRequest.ProfileImage is not null)
+			{
+				vet.ProfileImageUrl = await _blobService.UploadImageFileAsync(registerVetRequest.ProfileImage);
+			}
+
+			vet.ProficientPetTypes = new List<PetType>();
+			var petTypes = await _petTypeReadRepository.GetAllAsync();
+			var proficientPetTypes = petTypes.Where(pt => registerVetRequest.ProficientPetTypesIds[0].Split(",").Contains(pt.Id.ToString())).ToList();
+
+			foreach (var petType in proficientPetTypes)
+			{
+				vet.ProficientPetTypes.Add(petType);
+			}
+
+			var result = await _userManager.CreateAsync(vet, registerVetRequest.Password!);
+
+			if (result.Succeeded)
+			{
+				await _userManager.AddToRoleAsync(vet, "Vet");
+				//await _emailService.SendEmailConfirm(user);
+				var successRespose = new RegisterResponse
+				{
+					StatusMessage = "Account created successfully.Please confirm registration from the email",
+					StatusCode = HttpStatusCode.Created
+				};
+				return successRespose;
+			}
+			var badResponse = new RegisterResponse
+			{
+				StatusMessage = "Registration failed.something vent wrong",
+				StatusCode = HttpStatusCode.Created
+			};
+			return badResponse;
+		}
 		public async Task<ConfirmEmailResponse> ConfirmEmail(int userId, string token)
 		{
 			var user = await _appUserReadRepository.GetByIdAsync(userId);
@@ -113,9 +189,9 @@ namespace Infrastructure.ExternalServices
 					Id = user.Id,
 					UserName = user.UserName!,
 					Roles = roles.ToList(),
-					FirstName=user.Firstname,
-					LastName=user.Lastname,
-					ProfileImageUrl = user.ProfileImageUrl??string.Empty,
+					FirstName = user.Firstname,
+					LastName = user.Lastname,
+					ProfileImageUrl = user.ProfileImageUrl ?? string.Empty,
 					Claims = new List<Claim>
 				{
 					new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
@@ -150,7 +226,7 @@ namespace Infrastructure.ExternalServices
 
 			var user = await _appUserReadRepository.FinByRefreshToken(refreshToken);
 			if (user is null)
-				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token,User did with this refresh token did not found" };
+				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token,User  with this refresh token did not found" };
 
 
 			if (user.RefreshTokenExpireTime < DateTime.Now)
@@ -210,5 +286,7 @@ namespace Infrastructure.ExternalServices
 			return new ResetPasswordResponse { StatusCode = HttpStatusCode.NotFound, StatusMessage = "User with this id did not found" };
 
 		}
+
+
 	}
 }

@@ -1,19 +1,16 @@
 ﻿using Domain.Entities.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Identity;
 
 namespace Domain.Entities.Concretes
 {
-	public class PetType:Entity
+	public class PetType : Entity
 	{
-        public string? TypeName { get; set; }
+		public string? TypeName { get; set; }
 
-        public ICollection<Breed>? Breeds { get; set; }
+		public ICollection<Breed>? Breeds { get; set; }
 
-        //Property Navigations
-        public ICollection<Pet>? Pets { get; set; }
+		//Property Navigations
+		public ICollection<Pet>? Pets { get; set; }
+		public ICollection<AppUser> Vets { get; set; }
 	}
 }

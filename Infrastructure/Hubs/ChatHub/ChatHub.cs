@@ -18,7 +18,7 @@ namespace Infrastructure.Hubs.ChatHub
 
 		public async Task CreateChatConnection(UserConnection connection)
 		{
-		
+						
 			if (!_userConnections.ContainsKey(connection.username))
 			{
 				_userConnections[connection.username] = new List<string>();

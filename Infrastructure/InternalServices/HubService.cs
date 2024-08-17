@@ -42,7 +42,7 @@ namespace Infrastructure.InternalServices
 
 			if (isChatExist is null)
 			{
-				var users = await _userManager.GetUsersInRoleAsync("AppUser");
+				var users = await _userManager.GetUsersInRoleAsync("User");
 				var vets = await _userManager.GetUsersInRoleAsync("Vet");
 
 
