@@ -8,6 +8,8 @@ namespace Domain.Entities.Concretes
 
 		//Foreign keys
 		public int CompanyId { get; set; }
+		public string? AboutShelter {  get; set; }
+		public string? AdoptionPolicy { get; set; }
 
 		//Navigation properties
 		public virtual AppUser Company { get; set; }

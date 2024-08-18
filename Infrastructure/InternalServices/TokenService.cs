@@ -34,6 +34,7 @@ namespace Infrastructure.ExternalServices
 					Subject = new ClaimsIdentity(new Claim[] {
 					new Claim(ClaimTypes.Role,roles),
 					new Claim(ClaimTypes.Email, dto.Email!),
+					new Claim("id",dto.Id.ToString() ?? string.Empty),
 					new Claim("username",dto.UserName ?? string.Empty),
 					new Claim("firstname",dto.FirstName?? string.Empty),
 					new Claim("lastname",dto.LastName?? string.Empty),
