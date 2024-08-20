@@ -108,8 +108,19 @@ builder.Services.AddAuthentication(x =>
 		ValidIssuer = builder.Configuration["JWT:Issuer"],
 		ValidAudience = builder.Configuration["JWT:Audience"],
 		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]!)),
-
+	
 	};
+
+	//options.Events = new JwtBearerEvents
+	//{
+	//	OnMessageReceived= context =>
+	//	{
+	//		context.Request.Cookies.TryGetValue("accessToken", out var accessToken);
+	//		if (!string.IsNullOrEmpty(accessToken))
+	//			context.Token = accessToken;
+	//		return Task.CompletedTask;
+	//	}
+	//};
 });
 
 

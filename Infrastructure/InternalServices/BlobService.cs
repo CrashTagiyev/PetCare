@@ -17,26 +17,20 @@ namespace Infrastructure.InternalServices
 		}
 		public async Task<string> UploadImageFileAsync(IFormFile file)
 		{
-			// Get the blob container
 			var blobStorageContainerName = _blobServiceClient.GetBlobContainerClient(_configuration.GetValue<string>("PetCareImageBlobContainer"));
 
-			// Get the blob client
 			var blobStorageClient = blobStorageContainerName.GetBlobClient(file.FileName + Guid.NewGuid().ToString());
 
-			// Read file stream
 			using (var streamContent = file.OpenReadStream())
 			{
-				// Upload file with proper content type
 				var blobHttpHeaders = new BlobHttpHeaders
 				{
 					ContentType = file.ContentType
 				};
 				await blobStorageClient.UploadAsync(streamContent, new BlobUploadOptions { HttpHeaders = blobHttpHeaders });
 
-				// Generate URL for the uploaded file
 				var blobUrl = blobStorageClient.Uri.ToString();
 
-				// Return the URL
 				return blobUrl;
 			}
 		}
@@ -44,31 +38,25 @@ namespace Infrastructure.InternalServices
 		{
 
 			List<string> fileUrls = new List<string>();
-			// Get the blob container
 			var blobStorageContainerName = _blobServiceClient.GetBlobContainerClient(_configuration.GetValue<string>("PetCareImageBlobContainer"));
 
 			foreach (var file in fileCollection)
 			{
 
-				// Get the blob client
 				var blobStorageClient = blobStorageContainerName.GetBlobClient(file.FileName + Guid.NewGuid().ToString());
 
-				// Read file stream
 				using (var streamContent = file.OpenReadStream())
 				{
-					// Upload file with proper content type
 					var blobHttpHeaders = new BlobHttpHeaders
 					{
 						ContentType = file.ContentType
 					};
 					await blobStorageClient.UploadAsync(streamContent, new BlobUploadOptions { HttpHeaders = blobHttpHeaders });
 
-					// Generate URL for the uploaded file
 					var blobUrl = blobStorageClient.Uri.ToString();
 					fileUrls.Add(blobUrl);
 				}
 			}
-			// Return the URL
 			return fileUrls;
 		}
 

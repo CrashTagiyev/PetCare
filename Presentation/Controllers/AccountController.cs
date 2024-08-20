@@ -44,18 +44,17 @@ namespace Presentation.Controllers
 				return BadRequest(new { errors });
 			}
 
-			var response = await _authService.Login(loginRequest);
-			return Ok(new { token = response.AccessToken, refreshToken = response.RefreshToken, message = response.StatusMessage, statusCode = response.StatusCode });
+			var response = await _authService.Login(loginRequest,HttpContext);
+			return Ok(new { accessToken = response.AccessToken,message = response.StatusMessage, statusCode = response.StatusCode });
 		}
 
 
 
 		[HttpPost("RefreshToken")]
-		public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest refreshTokenRequest)
+		public async Task<IActionResult> RefreshToken()
 		{
-			await Console.Out.WriteLineAsync(refreshTokenRequest.RefreshToken);
-			var response = await _authService.RefreshToken(refreshTokenRequest.RefreshToken);
-			return Ok(new { accessToken = response.AccessToken, refreshToken = response.RefreshToken, message = response.StatusMessage });
+			var response = await _authService.RefreshToken( HttpContext);
+			return Ok(new { accessToken = response.AccessToken, message = response.StatusMessage });
 		}
 
 

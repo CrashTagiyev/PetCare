@@ -27,7 +27,8 @@ namespace Infrastructure.ExternalServices
 			var roles = string.Join(",", dto.Roles!);
 				var tokenDescription = new SecurityTokenDescriptor()
 				{
-					Expires = DateTime.Now.AddHours(_configuration.GetValue<int>("JWT:AccessTokenExpireHours")),
+					//Expires = DateTime.UtcNow.add(_configuration.GetValue<int>("JWT:AccessTokenExpireHours")),
+					Expires = DateTime.UtcNow.AddMinutes(5),
 					Issuer = _configuration["Jwt:Issuer"],
 					Audience = _configuration["Jwt:Audience"],
 					SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256),

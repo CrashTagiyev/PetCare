@@ -1,6 +1,5 @@
 ﻿using Application.ServiceAbstracts;
 using AutoMapper;
-using Azure.Core;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.TokenDTOs;
@@ -8,6 +7,7 @@ using Domain.Entities.Concretes;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
 using Domain.Models.AuthModels.Response;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System.Net;
@@ -175,7 +175,7 @@ namespace Infrastructure.ExternalServices
 
 
 		}
-		public async Task<LoginResponse> Login(LoginRequest loginRequest)
+		public async Task<LoginResponse> Login(LoginRequest loginRequest, HttpContext context)
 		{
 
 			var user = await _userManager.FindByEmailAsync(loginRequest.EmailAddress);
@@ -203,14 +203,15 @@ namespace Infrastructure.ExternalServices
 				};
 				var accessToken = await _tokenService.GenerateAccessToken(tokenRequestDto);
 				var refreshToken = await _tokenService.GenerateRefreshToken();
-
-				user.RefreshToken = refreshToken.Token;
 				user.RefreshTokenExpireTime = refreshToken.ExpireTime;
+				user.RefreshToken = refreshToken.Token;
+				user.RefreshTokenCreateTime = refreshToken.CreateTime;
 				await _userManager.UpdateAsync(user);
+				await SetRefreshTokenInsideHttpOnlyCookie(user.RefreshToken, context);
+
 				return new LoginResponse
 				{
 					AccessToken = accessToken,
-					RefreshToken = refreshToken.Token,
 					StatusCode = HttpStatusCode.OK
 				};
 			}
@@ -219,17 +220,20 @@ namespace Infrastructure.ExternalServices
 				StatusCode = HttpStatusCode.BadRequest
 			};
 		}
-		public async Task<LoginResponse> RefreshToken(string refreshToken)
+		public async Task<LoginResponse> RefreshToken(HttpContext context)
 		{
+
+			context.Request.Cookies.TryGetValue("refreshToken", out var refreshToken);
+
 			if (string.IsNullOrEmpty(refreshToken))
-				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token" };
+				return new LoginResponse { StatusCode = HttpStatusCode.NotFound, StatusMessage = "Invalid refresh token" };
 
 			var user = await _appUserReadRepository.FinByRefreshToken(refreshToken);
 			if (user is null)
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Invalid refresh token,User  with this refresh token did not found" };
 
 
-			if (user.RefreshTokenExpireTime < DateTime.Now)
+			if (user.RefreshTokenExpireTime < DateTime.UtcNow)
 				return new LoginResponse { StatusCode = HttpStatusCode.Forbidden, StatusMessage = "Refresh tokens expiretime has outdated" };
 
 
@@ -240,19 +244,48 @@ namespace Infrastructure.ExternalServices
 				Email = user.Email!,
 				Id = user.Id,
 				Roles = userRoles,
+				ProfileImageUrl = user.ProfileImageUrl,
 
 			};
 			var accessToken = await _tokenService.GenerateAccessToken(tokenRequest);
 
 			var refreshTokenObj = await _tokenService.GenerateRefreshToken();
+			user.RefreshToken = refreshTokenObj.Token;
+			user.RefreshTokenExpireTime = refreshTokenObj.ExpireTime;
+			user.RefreshTokenCreateTime = refreshTokenObj.CreateTime;
+			var result = await _userManager.UpdateAsync(user);
+			if (result.Succeeded)
+			{
+				context.Response.Cookies.Append("refreshToken", user.RefreshToken, new CookieOptions
+				{
+					HttpOnly = true,
+					Expires = DateTime.UtcNow.AddMinutes(10),
+					SameSite = SameSiteMode.None,
+					IsEssential = true,
+					Secure = true   /*->it`s for https or ssl*/
+				});
 
+			}
+			//await SetRefreshTokenInsideHttpOnlyCookie(user.RefreshToken, context);
 			return new LoginResponse
 			{
 				AccessToken = accessToken,
-				RefreshToken = refreshTokenObj.Token,
 				StatusCode = HttpStatusCode.OK,
-				StatusMessage = "Refresh token successfully refreshed"
+				StatusMessage = "Refresh token successfully refreshed and set on httponly cookie"
 			};
+		}
+		public async Task SetRefreshTokenInsideHttpOnlyCookie(string refreshToken, HttpContext context)
+		{
+			//refresh token set on httponly cookie
+			context.Response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
+			{
+				HttpOnly = true,
+				Expires = DateTime.UtcNow.AddMinutes(10),
+				SameSite = SameSiteMode.None,
+				IsEssential = true,
+				Secure = true   /*->it`s for https or ssl*/
+			});
+			await Task.CompletedTask;
 		}
 		public async Task<ForgotPasswordResponse> ForgotPassword(ForgotPasswordRequest request)
 		{

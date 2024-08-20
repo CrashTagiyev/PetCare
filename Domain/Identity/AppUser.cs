@@ -14,7 +14,7 @@ namespace Domain.Identity
 		public string? Address { get; set; }
 		public string? RefreshToken { get; set; }
 		public DateTime? RefreshTokenExpireTime { get; set; }
-		public DateTime? RefreshTokenCreateTime { get; set; } = DateTime.Now;
+		public DateTime? RefreshTokenCreateTime { get; set; } = DateTime.UtcNow;
 		public DateTime CreatedTime { get; set; }= DateTime.UtcNow;
 		public DateTime LastUpdatedTime { get; set; }
 		public bool IsDeleted { get; set; }

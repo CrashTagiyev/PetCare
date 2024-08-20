@@ -1,4 +1,5 @@
 ﻿using Application.ServiceAbstracts.UserServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -15,6 +16,7 @@ namespace Presentation.Controllers
 		}
 
 		[HttpGet("[action]")]
+		[Authorize(Roles ="Vet")]
 		public async Task<IActionResult> GetVet(int id)
 		{
 			var vet = await _vetService.GetVetInfoDTO(id);

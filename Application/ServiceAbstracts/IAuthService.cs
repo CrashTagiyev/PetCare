@@ -10,8 +10,9 @@ namespace Application.ServiceAbstracts
 		Task<RegisterResponse> RegisterCompany(RegisterCompanyRequest registerCompanyRequest);
 		Task<RegisterResponse> RegisterVet(RegisterVetRequest registerVetRequest);
 		Task<ConfirmEmailResponse> ConfirmEmail(int userId, string token);
-		Task<LoginResponse> Login(LoginRequest loginRequest);
-		Task<LoginResponse> RefreshToken(string refreshToken);
+		Task<LoginResponse> Login(LoginRequest loginRequest,HttpContext context);
+		Task<LoginResponse> RefreshToken(HttpContext context);
+		Task SetRefreshTokenInsideHttpOnlyCookie(string refreshToken, HttpContext context);
 		Task<ForgotPasswordResponse> ForgotPassword(ForgotPasswordRequest request);
 		Task<ResetPasswordResponse> ResetPassword(ResetPasswordRequest request);
 
