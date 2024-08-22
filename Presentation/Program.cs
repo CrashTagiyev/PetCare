@@ -110,7 +110,6 @@ builder.Services.AddAuthentication(x =>
 		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]!)),
 	
 	};
-
 	//options.Events = new JwtBearerEvents
 	//{
 	//	OnMessageReceived= context =>

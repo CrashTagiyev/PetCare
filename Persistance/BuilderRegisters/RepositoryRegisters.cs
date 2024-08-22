@@ -21,7 +21,7 @@ namespace Persistance.BuilderRegisters
 			services.AddScoped<IPetWriteRepository, PetWriteRepository>();
 			services.AddScoped<IPetTypeWriteRepository, PetTypeWriteRepository>();
 			services.AddScoped<IDonationWriteRepository, DonationWriteRepository>();
-			services.AddScoped<ILocationWriteRepository, LocationWriteRepository>();
+			//services.AddScoped<ILocationWriteRepository, LocationWriteRepository>();
 			services.AddScoped<IShelterWriteRepository, ShelterWriteRepository>();
 			services.AddScoped<IChatWriteRepository, ChatWriteRepository>();
 			services.AddScoped<IMessageWriteRepository,MessageWriteRepository>();
@@ -42,7 +42,7 @@ namespace Persistance.BuilderRegisters
 			services.AddScoped<IPetReadRepository, PetReadRepository>();
 			services.AddScoped<IPetTypeReadRepository, PetTypeReadRepository>();
 			services.AddScoped<IDonationReadRepository, DonationReadRepository>();
-			services.AddScoped<ILocationReadRepository, LocationReadRepository>();
+			//services.AddScoped<ILocationReadRepository, LocationReadRepository>();
 			services.AddScoped<IShelterReadRepository, ShelterReadRepository>();
 			services.AddScoped<IChatReadRepository, ChatReadRepository>();
 			services.AddScoped<IMessageReadRepository, MessageReadRepository>();

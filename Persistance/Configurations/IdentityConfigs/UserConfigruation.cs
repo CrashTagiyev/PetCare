@@ -46,6 +46,7 @@ namespace Persistance.Configurations.IdentityConfigs
 					user.NormalizedEmail = $"COMPANY{i}@EXAMPLE.COM";
 					user.Firstname = $"CompanyFirstName{i}";
 					user.Lastname = $"CompanyLastName{i}";
+					user.CompanyName = $"Company Name{i}";
 				}
 				else if (i <= 60)
 				{

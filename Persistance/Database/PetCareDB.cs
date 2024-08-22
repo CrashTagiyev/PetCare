@@ -26,7 +26,7 @@ namespace Persistance.Database
 			builder.ApplyConfiguration(new PetTypeConfig());
 			builder.ApplyConfiguration(new BreedConfig());
 			builder.ApplyConfiguration(new DonationConfig());
-			builder.ApplyConfiguration(new LocationConfig());
+			//builder.ApplyConfiguration(new LocationConfig());
 			builder.ApplyConfiguration(new MessageConfiguration());
 			builder.ApplyConfiguration(new ChatConfiguration());
 			builder.ApplyConfiguration(new UserConfigruation());
@@ -56,7 +56,7 @@ namespace Persistance.Database
 
 		public DbSet<Pet> Pets { get; set; }
 		public DbSet<PetType> PetTypes { get; set; }
-		public DbSet<Location> Locations { get; set; }
+		//public DbSet<Location> Locations { get; set; }
 		public DbSet<Breed> Breeds { get; set; }
 		public DbSet<Adoption> Adoptions { get; set; }
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }

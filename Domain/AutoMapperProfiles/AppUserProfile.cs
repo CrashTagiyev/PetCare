@@ -22,7 +22,8 @@ namespace Domain.AutoMapperProfiles
             //Vet
             CreateMap<AppUser,VetInfoDTO>();
 
-            //
+           //Company
+           CreateMap<AppUser,CompanyProfileReadDTO>(); 
         }
     }
 }

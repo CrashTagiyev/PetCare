@@ -10,11 +10,12 @@ namespace Domain.Entities.Concretes
 		public int CompanyId { get; set; }
 		public string? AboutShelter {  get; set; }
 		public string? AdoptionPolicy { get; set; }
+		public string? City { get; set; }
+		public string? Street { get; set; }
 
 		//Navigation properties
 		public virtual AppUser Company { get; set; }
-		public virtual Location Location { get; set; }
-		public ICollection<Pet> Pets { get; set; }
+		public virtual ICollection<Pet> Pets { get; set; }
 
 
 

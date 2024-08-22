@@ -10,11 +10,11 @@ public class LocationProfile: Profile
     public LocationProfile()
     {
         // LocationReadDto ...
-        CreateMap<Location, LocationReadDto>();
-        CreateMap<LocationReadDto, Location>();
+        //CreateMap<Location, LocationReadDto>();
+        //CreateMap<LocationReadDto, Location>();
         
-        // LocationWriteDto ...
-        CreateMap<LocationWriteDto, Location>();
-        CreateMap<Location, LocationWriteDto>();
+        //// LocationWriteDto ...
+        //CreateMap<LocationWriteDto, Location>();
+        //CreateMap<Location, LocationWriteDto>();
     }
 }

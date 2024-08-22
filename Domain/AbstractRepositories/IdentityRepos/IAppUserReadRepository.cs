@@ -9,5 +9,6 @@ namespace Domain.AbstractRepositories.IdentityRepos
 		Task<bool> IsUserNameExistAsync(string username);
 		Task<bool> IsEmailExistAsync(string email);
 		Task<bool> IsEmailConfirmedAsync(string email);
+		Task<ICollection<AppUser>> GetCompanies();
 	}
 }

@@ -20,6 +20,7 @@ namespace Infrastructure.BuilderRegisters
 			services.AddScoped<IHubService, HubService>();
 			services.AddScoped<IBlobService, BlobService>();
 			services.AddScoped<IVetService, VetService>();
+			services.AddScoped<ICompanyService, CompanyService>();
 
 		}
 

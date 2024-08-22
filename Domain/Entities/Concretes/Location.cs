@@ -10,7 +10,6 @@ namespace Domain.Entities.Concretes
 	public class Location:Entity
 	{
         public string? City { get; set; }
-        public string? Region { get; set; }
         public string? Street { get; set; }
 
 

@@ -12,7 +12,7 @@ namespace Persistance.Configurations
 			
 			//Properties
 			builder.Property(l => l.City).IsRequired();
-			builder.Property(l => l.Region).IsRequired();
+			
 			builder.Property(l => l.ShelterId).IsRequired();
 
 		}

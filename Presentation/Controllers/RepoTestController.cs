@@ -58,11 +58,11 @@ namespace Presentation.Controllers
 
 		//Location repos
 		#region location repos
-		private readonly ILocationReadRepository _locationReadRepository;
-		private readonly ILocationWriteRepository _locationWriteRepository;
+		//private readonly ILocationReadRepository _locationReadRepository;
+		//private readonly ILocationWriteRepository _locationWriteRepository;
 		#endregion
 
-		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper, ILocationReadRepository locationReadRepository, ILocationWriteRepository locationWriteRepository, IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, RoleManager<IdentityRole<int>> roleManager, IBlobService blobService)
+		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper,  IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, RoleManager<IdentityRole<int>> roleManager, IBlobService blobService)
 		{
 			_appUserWriteRepository = appUserWriteRepository;
 			_appUserReadRepository = appUserReadRepository;
@@ -74,8 +74,8 @@ namespace Presentation.Controllers
 			_petReadRepository = petReadRepository;
 			_petWriteRepository = petWriteRepository;
 			_mapper = mapper;
-			_locationReadRepository = locationReadRepository;
-			_locationWriteRepository = locationWriteRepository;
+			//_locationReadRepository = locationReadRepository;
+			//_locationWriteRepository = locationWriteRepository;
 			_shelterReadRepository = shelterReadRepository;
 			_shelterWriteRepository = shelterWriteRepository;
 			_roleManager = roleManager;
@@ -288,21 +288,21 @@ namespace Presentation.Controllers
 		//Location repo test -
 		#region Location test
 		[HttpPost("[action]")]
-		public async Task<IActionResult> LocationCreate([FromBody] LocationWriteDto locationWriteDto)
-		{
-			var location = _mapper.Map<Location>(locationWriteDto);
-			await _locationWriteRepository.CreateAsync(location);
-			return Ok();
-		}
+		//public async Task<IActionResult> LocationCreate([FromBody] LocationWriteDto locationWriteDto)
+		//{
+		//	var location = _mapper.Map<Location>(locationWriteDto);
+		//	//await _locationWriteRepository.CreateAsync(location);
+		//	return Ok();
+		//}
 
-		[HttpGet("[action]")]
-		public async Task<IActionResult> LocationGet(int id)
-		{
-			var location = await _locationReadRepository.GetByIdAsync(id);
-			var locationDTO = _mapper.Map<LocationReadDto>(location);
+		//[HttpGet("[action]")]
+		//public async Task<IActionResult> LocationGet(int id)
+		//{
+		//	var location = await _locationReadRepository.GetByIdAsync(id);
+		//	var locationDTO = _mapper.Map<LocationReadDto>(location);
 
-			return Ok(location);
-		}
+		//	return Ok(location);
+		//}
 		#endregion
 
 		#region Shelter repo test
@@ -327,7 +327,6 @@ namespace Presentation.Controllers
 		{
 			var shelter = await _shelterReadRepository.GetByIdAsync(id);
 			var shelterReadDTO = _mapper.Map<ShelterReadDto>(shelter);
-			shelterReadDTO.Location = _mapper.Map<LocationReadDto>(shelter.Location);
 
 			shelterReadDTO.Company = shelter!.Company.UserName!;
 			return Ok(shelterReadDTO);

@@ -33,6 +33,18 @@ namespace Persistance.Repositories.IdentityRepos
 			return user ?? throw new Exception("User did not found\nFunction name:GetByIdAsync");
 		}
 
+		public async Task<ICollection<AppUser>> GetCompanies()
+		{
+			var companies = await _context.Users
+		.Where(u => _context.UserRoles
+		.Any(ur => ur.UserId == u.Id && _context.Roles
+		.Any(r => r.Id == ur.RoleId && r.Name == "Company")))
+		.Include(u => u.Shelters) 
+		.ToListAsync();
+
+			return companies;
+		}
+
 		public async Task<bool> IsEmailConfirmedAsync(string email)
 		{
 			//var user = await _table.FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());

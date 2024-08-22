@@ -18,9 +18,9 @@ namespace Persistance.Configurations.IdentityConfigs
 					if (i <= 20)
 						userRole.RoleId = 1;
 					else if (i < 40)
-						userRole.RoleId = 3;
-					else
 						userRole.RoleId = 2;
+					else
+						userRole.RoleId = 3;
 					usersRoles.Add(userRole);
 				}
 			}

@@ -259,7 +259,7 @@ namespace Infrastructure.ExternalServices
 				context.Response.Cookies.Append("refreshToken", user.RefreshToken, new CookieOptions
 				{
 					HttpOnly = true,
-					Expires = DateTime.UtcNow.AddMinutes(10),
+					Expires = DateTime.UtcNow.AddHours(1),
 					SameSite = SameSiteMode.None,
 					IsEssential = true,
 					Secure = true   /*->it`s for https or ssl*/
@@ -280,7 +280,7 @@ namespace Infrastructure.ExternalServices
 			context.Response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
 			{
 				HttpOnly = true,
-				Expires = DateTime.UtcNow.AddMinutes(10),
+				Expires = DateTime.UtcNow.AddHours(1),
 				SameSite = SameSiteMode.None,
 				IsEssential = true,
 				Secure = true   /*->it`s for https or ssl*/
