@@ -31,14 +31,16 @@ namespace Persistance.Configurations
 				var shelter = new Shelter
 				{
 					Id = i + 1000,
+					ShelterName =$"Shelter Name {i}",
 					CompanyId = i + 2000, // Matching the CompanyId with the AppUser Id for companies
 					AboutShelter = $"This is about shelter for Company{i}.",
 					AdoptionPolicy = $"Adoption policy for Company{i}.",
 					City = "Baku",
-					Street = $"Street {i}",
+					Address = $"Street {i}",
 					CreatedTime = DateTime.UtcNow,
 					LastUpdatedTime = DateTime.UtcNow,
-					IsDeleted = false
+					IsDeleted = false,
+					ShelterImageUrl= $"https://picsum.photos/seed/user{i}/200/300"
 				};
 
 				shelters.Add(shelter);

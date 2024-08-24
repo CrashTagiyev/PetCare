@@ -1,4 +1,6 @@
 ﻿using Domain.AbstractRepositories.EntityRepos.GenericRepos;
+using Domain.DTOs.ReadDTO;
+using Domain.Entities.Concretes;
 using Domain.Identity;
 
 namespace Domain.AbstractRepositories.IdentityRepos
@@ -10,5 +12,6 @@ namespace Domain.AbstractRepositories.IdentityRepos
 		Task<bool> IsEmailExistAsync(string email);
 		Task<bool> IsEmailConfirmedAsync(string email);
 		Task<ICollection<AppUser>> GetCompanies();
+		Task<ICollection<Shelter>> GetCompanySheltersByIdAsync(int companyId);	 
 	}
 }

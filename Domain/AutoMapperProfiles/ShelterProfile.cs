@@ -11,9 +11,6 @@ public class ShelterProfile : Profile
 	{
 		// ShelterReadDto ...
 		CreateMap<Shelter, ShelterReadDto>();
-		
-
-
 		CreateMap<ShelterReadDto, Shelter>();
 
 		// ShelterWriteDto ...

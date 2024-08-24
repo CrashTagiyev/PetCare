@@ -1,7 +1,9 @@
 ﻿using Domain.AbstractRepositories.IdentityRepos;
+using Domain.Entities.Concretes;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
 
@@ -39,10 +41,19 @@ namespace Persistance.Repositories.IdentityRepos
 		.Where(u => _context.UserRoles
 		.Any(ur => ur.UserId == u.Id && _context.Roles
 		.Any(r => r.Id == ur.RoleId && r.Name == "Company")))
-		.Include(u => u.Shelters) 
+		.Include(u => u.Shelters)
 		.ToListAsync();
 
 			return companies;
+		}
+
+		public async Task<ICollection<Shelter>> GetCompanySheltersByIdAsync(int companyId)
+		{
+			var company = await _table.Include(c => c.Shelters).FirstOrDefaultAsync(c => c.Id == companyId);
+			if (company is not null && !company.Shelters.IsNullOrEmpty())
+				return company.Shelters!;
+
+			throw new Exception("Shelters did not found");
 		}
 
 		public async Task<bool> IsEmailConfirmedAsync(string email)

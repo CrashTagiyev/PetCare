@@ -1,4 +1,6 @@
-﻿using Application.Validators.FluentValidators.ModelValidators;
+﻿using Application.Validators.FluentValidators.DtoValidatons;
+using Application.Validators.FluentValidators.ModelValidators;
+using Domain.DTOs.WriteDTO;
 using Domain.Models.AuthModels.Request;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +33,7 @@ namespace Application.BuilderRegisters
 			services.AddScoped<IValidator<ForgotPasswordRequest>,ForgotPasswordValidator>();
 			services.AddScoped<IValidator<ResetPasswordRequest>,ResetPasswordValidator>();
 			services.AddScoped<IValidator<RegisterCompanyRequest>,RegisterCompanyRequestValidator>();
+			services.AddScoped<IValidator<ShelterWriteDto>, ShelterWriteDtoValidator>();
 		}
 	}
 }

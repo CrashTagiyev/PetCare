@@ -306,31 +306,31 @@ namespace Presentation.Controllers
 		#endregion
 
 		#region Shelter repo test
-		[HttpPost("[action]")]
-		public async Task<IActionResult> ShelterCreate([FromBody] ShelterWriteDto shelterWriteDto)
-		{
-			try
-			{
-				var shelter = _mapper.Map<Shelter>(shelterWriteDto);
-				await _shelterWriteRepository.CreateAsync(shelter);
+		//[HttpPost("[action]")]
+		//public async Task<IActionResult> ShelterCreate([FromBody] ShelterWriteDto shelterWriteDto)
+		//{
+		//	try
+		//	{
+		//		var shelter = _mapper.Map<Shelter>(shelterWriteDto);
+		//		await _shelterWriteRepository.CreateAsync(shelter);
 
-				return Ok(shelter);
-			}
-			catch (Exception ex)
-			{
-				return Ok(ex.Message);
-			}
-		}
+		//		return Ok(shelter);
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		return Ok(ex.Message);
+		//	}
+		//}
 
-		[HttpGet("[action]")]
-		public async Task<IActionResult> ShelterGet(int id)
-		{
-			var shelter = await _shelterReadRepository.GetByIdAsync(id);
-			var shelterReadDTO = _mapper.Map<ShelterReadDto>(shelter);
+		//[HttpGet("[action]")]
+		//public async Task<IActionResult> ShelterGet(int id)
+		//{
+		//	var shelter = await _shelterReadRepository.GetByIdAsync(id);
+		//	var shelterReadDTO = _mapper.Map<ShelterReadDto>(shelter);
 
-			shelterReadDTO.Company = shelter!.Company.UserName!;
-			return Ok(shelterReadDTO);
-		}
+		//	shelterReadDTO.Company = shelter!.Company.UserName!;
+		//	return Ok(shelterReadDTO);
+		//}
 
 		[HttpGet("[action]")]
 		public async Task<IActionResult> ShelterGetAll()

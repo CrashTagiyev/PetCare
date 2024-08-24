@@ -1,4 +1,5 @@
-﻿using Domain.DTOs.ReadDTO.IdentityDTOs;
+﻿using Domain.DTOs.ReadDTO;
+using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.DTOs.WriteDTO;
 using System.Net;
 
@@ -8,5 +9,6 @@ namespace Application.ServiceAbstracts.UserServices
 	{
 		Task<CompanyProfileReadDTO> GetCompanyProfileInfo(int id);
 		Task<HttpStatusCode> CreateShelter(ShelterWriteDto shelterWriteDto);
+		Task<List<ShelterReadDto>> GetCompanySheltersById(int companyId);	
 	}
 }

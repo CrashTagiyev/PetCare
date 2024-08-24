@@ -55,14 +55,14 @@ namespace Infrastructure.ExternalServices
 				var successRespose = new RegisterResponse
 				{
 					StatusMessage = "Account created successfully.Please confirm registration from the email",
-					StatusCode = HttpStatusCode.Created
+					StatusCode = HttpStatusCode.OK
 				};
 				return successRespose;
 			}
 			var badResponse = new RegisterResponse
 			{
 				StatusMessage = "Registration failed.something vent wrong",
-				StatusCode = HttpStatusCode.Created
+				StatusCode = HttpStatusCode.BadRequest
 			};
 			return badResponse;
 		}

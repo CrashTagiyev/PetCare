@@ -21,6 +21,7 @@ namespace Infrastructure.BuilderRegisters
 			services.AddScoped<IBlobService, BlobService>();
 			services.AddScoped<IVetService, VetService>();
 			services.AddScoped<ICompanyService, CompanyService>();
+			services.AddScoped<IShelterService, ShelterService>();
 
 		}
 

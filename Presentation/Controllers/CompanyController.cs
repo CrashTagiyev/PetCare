@@ -1,8 +1,6 @@
 ﻿using Application.ServiceAbstracts.UserServices;
 using Domain.DTOs.WriteDTO;
-using Infrastructure.InternalServices;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -20,7 +18,7 @@ namespace Presentation.Controllers
 
 
 		[HttpGet("[action]")]
-		[Authorize(Roles ="Company")]
+		[Authorize(Roles = "Company")]
 		public async Task<IActionResult> GetCompanyProfileInfo(int id)
 		{
 			var company = await _companyService.GetCompanyProfileInfo(id);
@@ -28,21 +26,26 @@ namespace Presentation.Controllers
 		}
 
 		[HttpPost("[action]")]
-		[Authorize(Roles ="Company")]
-		public async Task<IActionResult> CreateShelter(ShelterWriteDto shelterWriteDto)
+		[Authorize(Roles = "Company")]
+		public async Task<IActionResult> CreateShelterAtCompany([FromForm] ShelterWriteDto shelterWriteDto)
 		{
-			if (!ModelState.IsValid)
+			var result = await _companyService.CreateShelter(shelterWriteDto);
+
+			return Ok(result);
+		}
+		[HttpGet("[action]")]
+		[Authorize(Roles = "Company")]
+		public async Task<IActionResult> GetCompanyShelters(int companyId)
+		{
+			try
 			{
-				var errors = ModelState
-					.Where(ms => ms.Value.Errors.Count > 0)
-					.ToDictionary(
-						ms => ms.Key,
-						ms => ms.Value.Errors.Select(e => e.ErrorMessage).ToArray());
-
-				return BadRequest(new { errors });
+				var shelters= await _companyService.GetCompanySheltersById(companyId);
+				return Ok(shelters);
 			}
-
-			return Ok();
+			catch (Exception ex) 
+			{
+				return BadRequest(ex.Message);
+			}
 		}
 	}
 }

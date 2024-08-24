@@ -1,13 +1,16 @@
-﻿using Application.ServiceAbstracts.UserServices;
+﻿using Application.ServiceAbstracts;
+using Application.ServiceAbstracts.UserServices;
 using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.AbstractRepositories.IdentityRepos;
+using Domain.DTOs.ReadDTO;
 using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using System.Net;
 
 namespace Infrastructure.InternalServices
@@ -18,9 +21,10 @@ namespace Infrastructure.InternalServices
 		private readonly IAppUserWriteRepository _userWriteRepository;
 		private readonly IShelterWriteRepository _shelterWriteRepository;
 		private readonly IShelterReadRepository _shelterReadRepository;
+		private readonly IBlobService _blobService;
 		private readonly UserManager<AppUser> _userManager;
 		private readonly IMapper _mapper;
-		public CompanyService(IAppUserReadRepository userReadRepository, IAppUserWriteRepository userWriteRepository, UserManager<AppUser> userManager, IMapper mapper, IShelterWriteRepository shelterWriteRepository, IShelterReadRepository shelterReadRepository)
+		public CompanyService(IAppUserReadRepository userReadRepository, IAppUserWriteRepository userWriteRepository, UserManager<AppUser> userManager, IMapper mapper, IShelterWriteRepository shelterWriteRepository, IShelterReadRepository shelterReadRepository, IBlobService blobService)
 		{
 			_userReadRepository = userReadRepository;
 			_userWriteRepository = userWriteRepository;
@@ -28,6 +32,7 @@ namespace Infrastructure.InternalServices
 			_mapper = mapper;
 			_shelterWriteRepository = shelterWriteRepository;
 			_shelterReadRepository = shelterReadRepository;
+			_blobService = blobService;
 		}
 
 		public async Task<HttpStatusCode> CreateShelter(ShelterWriteDto shelterWriteDto)
@@ -42,7 +47,14 @@ namespace Infrastructure.InternalServices
 				return HttpStatusCode.NotFound;
 
 			var newShelter = _mapper.Map<Shelter>(shelterWriteDto);
-			company.Shelters.Add(newShelter);
+
+			if (company.Shelters.IsNullOrEmpty())
+				company.Shelters = new List<Shelter>();
+
+			company.Shelters!.Add(newShelter);
+			var imageUrl = await _blobService.UploadImageFileAsync(shelterWriteDto.ShelterImage);
+			newShelter.ShelterImageUrl = imageUrl;
+
 			await _userManager.UpdateAsync(company);
 			return HttpStatusCode.OK;
 		}
@@ -64,6 +76,13 @@ namespace Infrastructure.InternalServices
 				throw new Exception(ex.Message);
 			}
 
+		}
+
+		public async Task<List<ShelterReadDto>> GetCompanySheltersById(int companyId)
+		{
+			var shelters = await _userReadRepository.GetCompanySheltersByIdAsync(companyId);
+			var shelterDTos = shelters.Select(_mapper.Map<ShelterReadDto>).ToList();
+			return shelterDTos;
 		}
 	}
 }
