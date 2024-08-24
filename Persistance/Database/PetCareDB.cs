@@ -57,8 +57,8 @@ namespace Persistance.Database
 		public DbSet<Pet> Pets { get; set; }
 		public DbSet<PetType> PetTypes { get; set; }
 		//public DbSet<Location> Locations { get; set; }
-		public DbSet<Breed> Breeds { get; set; }
 		public DbSet<Adoption> Adoptions { get; set; }
+		public DbSet<Breed> Breeds { get; set; }
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }
 		public DbSet<Donation> Donations { get; set; }
 		public DbSet<Shelter> Shelters { get; set; }

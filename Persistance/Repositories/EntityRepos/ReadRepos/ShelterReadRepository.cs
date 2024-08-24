@@ -15,12 +15,12 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 
         public async Task<ICollection<Shelter>> GetAllAsync()
         {
-            return await _table.Include(s => s.Company).ToListAsync();
+            return await _table.Include(s => s.Company).Include(s => s.Pets).ToListAsync();
         }
 
         public async Task<Shelter?> GetByIdAsync(int id)
         {
-            return await _table.Include(s=>s.Company).FirstOrDefaultAsync(s => s.Id == id);
+            return await _table.Include(s=>s.Company).Include(s => s.Pets).FirstOrDefaultAsync(s => s.Id == id);
         }
     }
 }

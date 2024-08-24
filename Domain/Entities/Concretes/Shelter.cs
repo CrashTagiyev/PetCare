@@ -15,8 +15,8 @@ namespace Domain.Entities.Concretes
 		public string? Address { get; set; }
 		public string? ShelterImageUrl { get; set; }
 		//Navigation properties
-		public virtual AppUser Company { get; set; }
-		public virtual ICollection<Pet> Pets { get; set; }
+		public  AppUser Company { get; set; }
+		public  ICollection<Pet> Pets { get; set; }
 
 
 

@@ -1,3 +1,5 @@
+using Domain.Entities.Concretes;
+
 namespace Domain.DTOs.ReadDTO;
 
 public class ShelterReadDto

@@ -1,4 +1,5 @@
 ﻿using Application.ServiceAbstracts;
+using Domain.DTOs.WriteDTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,13 @@ namespace Presentation.Controllers
 		{
 			var shelterDTO = await _shelterService.GetShelterById();
 			return Ok(shelterDTO);
+		}
+
+		[HttpPost("[action]")]
+		public async Task<IActionResult> AddPetToShelter(int shelterId, PetWriteDto petWriteDto)
+		{
+			var result = await _shelterService.AddPetToShelter(shelterId, petWriteDto);
+			return Ok(result);
 		}
 	}
 }
