@@ -1,5 +1,6 @@
 ﻿using Domain.DTOs.ReadDTO;
 using Domain.DTOs.WriteDTO;
+using System.Net;
 
 namespace Application.ServiceAbstracts
 {
@@ -7,7 +8,6 @@ namespace Application.ServiceAbstracts
 	{
 		Task<List<ShelterReadDto>> GetAllShelters();
 		Task<ShelterReadDto> GetShelterById();
-
-		Task<string> AddPetToShelter(int shelterId,PetWriteDto petWriteDto);
+		Task<HttpStatusCode> AddPetToShelter(PetWriteDto petWriteDto);
 	}
 }

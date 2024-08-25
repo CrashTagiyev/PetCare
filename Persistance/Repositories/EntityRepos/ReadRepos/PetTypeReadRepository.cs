@@ -14,7 +14,7 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 
         public async Task<ICollection<PetType>> GetAllAsync()
         {
-            return await _table.ToListAsync();
+            return await _table.Include(pt=>pt.Breeds).Include(pt=>pt.Vets).ToListAsync();
         }
 
         public async Task<PetType?> GetByIdAsync(int id)

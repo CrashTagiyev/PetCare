@@ -1,5 +1,6 @@
 ﻿using Application.ServiceAbstracts;
 using Domain.DTOs.WriteDTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,9 +33,13 @@ namespace Presentation.Controllers
 		}
 
 		[HttpPost("[action]")]
-		public async Task<IActionResult> AddPetToShelter(int shelterId, PetWriteDto petWriteDto)
+		//[Authorize(Roles ="Company")]
+		public async Task<IActionResult> AddPetToShelter([FromForm]PetWriteDto petWriteDto)
 		{
-			var result = await _shelterService.AddPetToShelter(shelterId, petWriteDto);
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
+
+			var result = await _shelterService.AddPetToShelter(petWriteDto);
 			return Ok(result);
 		}
 	}

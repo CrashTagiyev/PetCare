@@ -6,6 +6,7 @@ using Domain.DTOs.ReadDTO;
 using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Infrastructure.InternalServices
 {
@@ -39,20 +40,20 @@ namespace Infrastructure.InternalServices
 			throw new NotImplementedException();
 		}
 
-		public async Task<string> AddPetToShelter(int shelterId,PetWriteDto petWriteDto)
+		public async Task<HttpStatusCode> AddPetToShelter(PetWriteDto petWriteDto)
 		{
 			try
 			{
-				var shelter = await _shelterReadRepository.GetByIdAsync(shelterId);
+				var shelter = await _shelterReadRepository.GetByIdAsync(petWriteDto.ShelterId);
 				if (shelter is not null)
 				{
 					var pet = _mapper.Map<Pet>(petWriteDto);
 					shelter.Pets.Add(pet);
 					await _shelterWriteRepository.UpdateAsync(shelter);
-					return "Pet is successfully added";
+					return HttpStatusCode.OK;
 				}
 
-				return "Shelter is not exist";
+				return HttpStatusCode.NotFound;
 
 			}
 			catch (Exception ex)
