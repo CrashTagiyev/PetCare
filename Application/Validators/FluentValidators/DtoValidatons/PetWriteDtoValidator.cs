@@ -37,8 +37,7 @@ namespace Application.Validators.FluentValidators.DtoValidatons
 
 			RuleFor(p => p.Age)
 				.NotEmpty().WithMessage("Pet age can not be empty")
-				.NotNull().WithMessage("Pet age can not be null")
-				.LessThan((short)21).WithMessage("Pet age must be less than 21");
+				.NotNull().WithMessage("Pet age can not be null");
 
 			RuleFor(p => p.PetTypeId)
 				.NotEmpty().WithMessage("PetType Id can not be empty")

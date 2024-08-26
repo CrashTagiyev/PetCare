@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs.ReadDTO;
+using Domain.Models.EntityModels;
 
 namespace Application.ServiceAbstracts
 {
@@ -6,5 +7,6 @@ namespace Application.ServiceAbstracts
 	{
 		Task<List<PetTypeReadDto>> GetPetTypesAsync();
 		Task<List<BreedReadDto>> GetBreedTypesByPetTypeAsync(int PetTypeId);
+		Task<List<PetReadDto>> GetFilteredPets(PetFilterModel filterModel);	
 	}
 }

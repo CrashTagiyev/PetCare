@@ -43,6 +43,7 @@ namespace Infrastructure.InternalServices
 			if (isChatExist is null)
 			{
 				var users = await _userManager.GetUsersInRoleAsync("User");
+				var companies = await _userManager.GetUsersInRoleAsync("Company");
 				var vets = await _userManager.GetUsersInRoleAsync("Vet");
 
 
@@ -50,6 +51,10 @@ namespace Infrastructure.InternalServices
 
 				AppUser? user = users.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[0])) ??
 								users.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[1]));
+
+				AppUser? company = companies.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[0])) ??
+								   companies.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[1]));
+
 
 				AppUser? vet = vets.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[1])) ??
 							   vets.FirstOrDefault(u => u.UserName!.Contains(splitGroupName[0]));
@@ -65,6 +70,16 @@ namespace Infrastructure.InternalServices
 					await _chatWriteRepository.CreateAsync(newChat);
 				}
 
+				if(company is not null && vet is not null)
+				{
+					var newChat = new Chat
+					{
+						ChatName = connection.chatName,
+						VetId = vet.Id,
+						UserId = company.Id
+					};
+					await _chatWriteRepository.CreateAsync(newChat);
+				}
 			}
 		}
 		public async Task SaveMessageToDb(SendMessageModel sendMessageModel)

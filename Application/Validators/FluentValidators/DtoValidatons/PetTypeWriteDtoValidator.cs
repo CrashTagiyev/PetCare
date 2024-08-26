@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Validators.FluentValidators.DtoValidatons
 {
-	public class PetTypeDtoValidator:AbstractValidator<PetTypeWriteDto>
+	public class PetTypeWriteDtoValidator:AbstractValidator<PetTypeWriteDto>
 	{
-        public PetTypeDtoValidator()
+        public PetTypeWriteDtoValidator()
         {
             RuleFor(pt => pt.TypeName)
                 .NotEmpty().WithMessage("Type name can not be empty")

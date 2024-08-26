@@ -1,4 +1,5 @@
-﻿using Domain.AbstractRepositories.IdentityRepos;
+﻿using Domain.AbstractRepositories.EntityRepos.ReadRepos;
+using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.WriteDTO;
 using Domain.HelperMethods;
 using Domain.Identity;
@@ -10,7 +11,7 @@ namespace Application.Validators.FluentValidators.DtoValidatons
 {
 	public class ShelterWriteDtoValidator : AbstractValidator<ShelterWriteDto>
 	{
-		public ShelterWriteDtoValidator(UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository)
+		public ShelterWriteDtoValidator(UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IShelterReadRepository shelterReadRepository)
 		{
 			RuleFor(s => s.CompanyId)
 				.NotEmpty().WithMessage("Company Id can not be empty")
@@ -24,6 +25,18 @@ namespace Application.Validators.FluentValidators.DtoValidatons
 
 					return true;
 				}).WithMessage("Copany with this ID is not exist");
+
+			RuleFor(s => s.ShelterName)
+				.MustAsync(async (shelterName, ct) =>
+				{
+					var shelters = await shelterReadRepository.GetAllAsync();
+					bool isShelterNameExist = shelters.Any(s => s.ShelterName.Contains(shelterName));
+					
+					if (isShelterNameExist)
+						return false;
+
+					return true;
+				}).WithMessage("This shelter name is already exist");
 
 			RuleFor(s => s.AdoptionPolicy)
 				.NotEmpty().WithMessage("This place cannot be empty")

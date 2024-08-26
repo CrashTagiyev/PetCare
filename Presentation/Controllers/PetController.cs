@@ -1,5 +1,5 @@
 ﻿using Application.ServiceAbstracts;
-using Microsoft.AspNetCore.Http;
+using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -16,10 +16,18 @@ namespace Presentation.Controllers
 		}
 
 
+		[HttpPost("[action]")]
+		public async Task<IActionResult> GetPetsFiltered([FromBody]PetFilterModel filterModel)
+		{
+			var filteredPetDTOs = await _petService.GetFilteredPets(filterModel);
+			return Ok(filteredPetDTOs);
+		}
+
+
 		[HttpGet("[action]")]
 		public async Task<IActionResult> GetPetTypes()
 		{
-			var petTypesDTOs =await _petService.GetPetTypesAsync();
+			var petTypesDTOs = await _petService.GetPetTypesAsync();
 			return Ok(petTypesDTOs);
 		}
 

@@ -3,6 +3,8 @@ using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.DTOs.ReadDTO;
+using Domain.Entities.Concretes;
+using Domain.Models.EntityModels;
 
 namespace Infrastructure.InternalServices
 {
@@ -30,6 +32,12 @@ namespace Infrastructure.InternalServices
 		{
 			var petTypes = await _petTypeReadRepository.GetAllAsync();
 			return petTypes.FirstOrDefault(pt => pt.Id == PetTypeId)!.Breeds!.Select(_mapper.Map<BreedReadDto>).ToList();
+		}
+
+		public async Task<List<PetReadDto>> GetFilteredPets(PetFilterModel filterModel)
+		{
+			var pets = await _petReadRepository.GetAllFilteredAsync(filterModel);
+			return pets.Select(_mapper.Map<PetReadDto>).ToList();
 		}
 
 		public async Task<List<PetTypeReadDto>> GetPetTypesAsync()

@@ -33,7 +33,7 @@ namespace Presentation.Controllers
 		}
 
 		[HttpPost("[action]")]
-		//[Authorize(Roles ="Company")]
+		[Authorize(Roles = "Company")]
 		public async Task<IActionResult> AddPetToShelter([FromForm]PetWriteDto petWriteDto)
 		{
 			if (!ModelState.IsValid)

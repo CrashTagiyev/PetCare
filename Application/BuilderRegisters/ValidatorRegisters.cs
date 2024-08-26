@@ -34,6 +34,8 @@ namespace Application.BuilderRegisters
 			services.AddScoped<IValidator<ResetPasswordRequest>,ResetPasswordValidator>();
 			services.AddScoped<IValidator<RegisterCompanyRequest>,RegisterCompanyRequestValidator>();
 			services.AddScoped<IValidator<ShelterWriteDto>, ShelterWriteDtoValidator>();
+			services.AddScoped<IValidator<PetWriteDto>, PetWriteDtoValidator>();
+			services.AddScoped<IValidator<PetTypeWriteDto>, PetTypeWriteDtoValidator>();
 		}
 	}
 }
