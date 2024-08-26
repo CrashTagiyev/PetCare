@@ -22,7 +22,7 @@ namespace Domain.Entities.Concretes
 		public int? AdoptionId { get; set; }
 		//Navigation property
 		virtual public PetType PetType { get; set; }
-		virtual public PetType Breed { get; set; }
+		virtual public Breed Breed { get; set; }
 		virtual public Shelter Shelter { get; set; }
 		virtual public Adoption? Adoption { get; set; }
 

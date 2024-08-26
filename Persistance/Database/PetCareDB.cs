@@ -21,17 +21,16 @@ namespace Persistance.Database
 
 			builder.ApplyConfiguration(new AcceptRequestConfig());
 			builder.ApplyConfiguration(new ShelterConfig());
-			builder.ApplyConfiguration(new AdoptionConfig());
-			builder.ApplyConfiguration(new PetConfig());
 			builder.ApplyConfiguration(new PetTypeConfig());
 			builder.ApplyConfiguration(new BreedConfig());
 			builder.ApplyConfiguration(new DonationConfig());
-			//builder.ApplyConfiguration(new LocationConfig());
 			builder.ApplyConfiguration(new MessageConfiguration());
 			builder.ApplyConfiguration(new ChatConfiguration());
 			builder.ApplyConfiguration(new UserConfigruation());
 			builder.ApplyConfiguration(new RoleConfig());
 			builder.ApplyConfiguration(new UserRoleConfiguration());
+			builder.ApplyConfiguration(new PetConfig());
+			builder.ApplyConfiguration(new AdoptionConfig());
 
 
 			//builder.Entity<Pet>().HasQueryFilter(p => !p.IsDeleted);
