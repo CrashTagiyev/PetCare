@@ -14,11 +14,8 @@ public class PetReadDto
     public bool IsAdopted { get; set; }
     public string Health { get; set; }
     public decimal Weight { get; set; }
-    public string Breed { get; set; }
     
     public PetTypeReadDto PetType { get; set; }
     public ShelterReadDto  Shelter { get; set; }
-    public AdoptionReadDto?  Adoption { get; set; }
-
-    public ICollection<AcceptRequestReadDto> AcceptRequests { get; set; }
+    public BreedReadDto  Breed { get; set; }
 }

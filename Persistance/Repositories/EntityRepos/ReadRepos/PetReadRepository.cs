@@ -21,7 +21,7 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 
 		public async Task<List<Pet>> GetAllFilteredAsync(PetFilterModel filterModel)
 		{
-			var pets = _table.AsQueryable();
+			var pets = _table.Include(p=>p.Breed).Include(p=>p.PetType).Include(p=>p.Shelter).AsQueryable();
 			if (filterModel is not null && filterModel.IsAll is false)
 			{
 				if (filterModel.PetTypeId is not null && filterModel.PetTypeId > 0)
