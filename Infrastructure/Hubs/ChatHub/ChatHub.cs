@@ -55,12 +55,10 @@ namespace Infrastructure.Hubs.ChatHub
 			}
 			return base.OnDisconnectedAsync(exception);
 		}
-
 		public static bool IsUserConnected(string username)
 		{
 			return _userConnections.ContainsKey(username) && _userConnections[username].Count > 0;
 		}
-
 		public async Task SendMessageToChat(SendMessageModel sendMessageModel)
 		{
 			var newMessage = new MessageReadDTO()

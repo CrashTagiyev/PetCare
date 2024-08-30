@@ -8,5 +8,6 @@ namespace Application.ServiceAbstracts
 		Task<List<PetTypeReadDto>> GetPetTypesAsync();
 		Task<List<BreedReadDto>> GetBreedTypesByPetTypeAsync(int PetTypeId);
 		Task<List<PetReadDto>> GetFilteredPets(PetFilterModel filterModel);	
+		Task<PetReadDto> GetPetByIdAsync(int PetId);
 	}
 }

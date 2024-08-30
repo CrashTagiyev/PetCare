@@ -21,7 +21,7 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 
 		public async Task<List<Pet>> GetAllFilteredAsync(PetFilterModel filterModel)
 		{
-			var pets = _table.Include(p=>p.Breed).Include(p=>p.PetType).Include(p=>p.Shelter).AsQueryable();
+			var pets = _table.Include(p => p.Breed).Include(p => p.PetType).Include(p => p.Shelter).AsQueryable();
 			if (filterModel is not null && filterModel.IsAll is false)
 			{
 				if (filterModel.PetTypeId is not null && filterModel.PetTypeId > 0)
@@ -51,12 +51,14 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 				if (!string.IsNullOrEmpty(filterModel.PetName))
 					pets = pets.Where(p => p.PetName!.Contains(filterModel.PetName!));
 			}
+
+		
 			return await pets.ToListAsync();
 		}
 
 		public async Task<Pet?> GetByIdAsync(int id)
 		{
-			return await _table.FirstOrDefaultAsync(p => p.Id == id);
+			return await _table.Include(p => p.Breed).Include(p => p.PetType).Include(p => p.Shelter).FirstOrDefaultAsync(p => p.Id == id);
 		}
 	}
 }

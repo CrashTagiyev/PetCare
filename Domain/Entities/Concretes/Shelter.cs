@@ -14,6 +14,8 @@ namespace Domain.Entities.Concretes
 		public string? City { get; set; }
 		public string? Address { get; set; }
 		public string? ShelterImageUrl { get; set; }
+		public string? PhoneNumber { get; set; }
+		public string? EmailAddress { get; set; }
 		//Navigation properties
 		public  AppUser Company { get; set; }
 		public  ICollection<Pet> Pets { get; set; }

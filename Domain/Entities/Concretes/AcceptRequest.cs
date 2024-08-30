@@ -8,7 +8,6 @@ namespace Domain.Entities.Concretes
 	{
 		public Acceptstatus AcceptStatus { get; set; }
 		public string Description { get; set; }
-		public int YearsOfPetExperience { get; set; }
 		//Foreign keys
 		public int PetId { get; set; }
 		public int UserId { get; set; }

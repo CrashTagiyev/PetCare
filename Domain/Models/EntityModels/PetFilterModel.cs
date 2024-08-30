@@ -14,5 +14,7 @@ namespace Domain.Models.EntityModels
 		public decimal? MaxWeight { get; set; }
 		public int? BreedId { get; set; }
 		public int? PetTypeId { get; set; }
-	}
+		public int PageNumber { get; set; }
+		public int PageSize { get; set; }
+    }
 }

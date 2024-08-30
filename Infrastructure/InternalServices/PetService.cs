@@ -40,6 +40,12 @@ namespace Infrastructure.InternalServices
 			return pets.Select(_mapper.Map<PetReadDto>).ToList();
 		}
 
+		public async Task<PetReadDto> GetPetByIdAsync(int PetId)
+		{
+			var pet = await _petReadRepository.GetByIdAsync(PetId);
+			return _mapper.Map<PetReadDto>(pet);
+		}
+
 		public async Task<List<PetTypeReadDto>> GetPetTypesAsync()
 		{
 			var petTypes = await _petTypeReadRepository.GetAllAsync();

@@ -40,7 +40,9 @@ namespace Persistance.Configurations
 					CreatedTime = DateTime.UtcNow,
 					LastUpdatedTime = DateTime.UtcNow,
 					IsDeleted = false,
-					ShelterImageUrl= $"https://picsum.photos/seed/user{i}/200/300"
+					ShelterImageUrl= $"https://picsum.photos/seed/user{i}/200/300",
+					PhoneNumber = "+994501234567",
+					EmailAddress=$"ShelterEmailAddress{i}@gmail.com"
 				};
 
 				shelters.Add(shelter);
