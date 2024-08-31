@@ -1,8 +1,11 @@
 ﻿using Application.ServiceAbstracts;
+using Domain.DTOs.ReadDTO;
 using Domain.DTOs.WriteDTO;
+using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace Presentation.Controllers
 {
@@ -17,12 +20,16 @@ namespace Presentation.Controllers
 			_shelterService = shelterService;
 		}
 
-		[HttpGet("[action]")]
-		public async Task<IActionResult> GetShelters()
+		[HttpPost("[action]")]
+		public async Task<IActionResult> GetShelters([FromBody]ShelterFilterModel shelterFilterModel)
 		{
 			var shelterDTOs = await _shelterService.GetAllShelters();
-			return Ok(shelterDTOs);
+			int totalShelters = shelterDTOs.Count();
+			int skip = (shelterFilterModel!.PageNumber - 1) * shelterFilterModel.PageSize;
+			shelterDTOs = shelterDTOs.Skip(skip).Take(shelterFilterModel.PageSize).ToList();	
+			return Ok(new { sheltersArray = shelterDTOs, totalShelters = totalShelters });
 		}
+
 
 
 		[HttpGet("[action]")]
