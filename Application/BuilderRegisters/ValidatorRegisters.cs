@@ -3,7 +3,7 @@ using Application.Validators.FluentValidators.ModelValidators;
 using Domain.DTOs.WriteDTO;
 using Domain.Models.AuthModels.Request;
 using FluentValidation;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration; 
 using Microsoft.Extensions.DependencyInjection;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 namespace Application.BuilderRegisters
