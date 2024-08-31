@@ -1,4 +1,5 @@
 ﻿using Application.ServiceAbstracts.UserServices;
+using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,11 +24,14 @@ namespace Presentation.Controllers
 			return Ok(vet);
 		}
 	
-		[HttpGet("[action]")]
-		public async Task<IActionResult> GetVetsList()
+		[HttpPost("[action]")]
+		public async Task<IActionResult> GetVetsList([FromBody]VetFilterModel vetFilterModel)
 		{
 			var vetsList = await _vetService.GetVetInfoDTOList();
-			return Ok(vetsList);
+			int totalVets = vetsList.Count();
+			int skip = (vetFilterModel!.PageNumber - 1) * vetFilterModel.PageSize;
+			vetsList = vetsList.Skip(skip).Take(vetFilterModel.PageSize).ToList();
+			return Ok(new { vetsList, totalVets });
 		}
 	}
 }
