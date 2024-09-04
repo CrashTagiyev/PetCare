@@ -3,11 +3,8 @@ using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.AbstractRepositories.IdentityRepos;
-using Domain.DTOs.ReadDTO;
-using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
 using Domain.Identity;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -62,7 +59,7 @@ namespace Presentation.Controllers
 		//private readonly ILocationWriteRepository _locationWriteRepository;
 		#endregion
 
-		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper,  IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, RoleManager<IdentityRole<int>> roleManager, IBlobService blobService)
+		public RepoTestController(IAppUserWriteRepository appUserWriteRepository, IAppUserReadRepository appUserReadRepository, UserManager<AppUser> userManager, IPetTypeWriteRepository petTypeWriteRepository, IPetTypeReadRepository petTypeReadRepository, IBreedWriteRepository bioWriteRepository, IBreedReadRepository bioReadRepository, IPetReadRepository petReadRepository, IPetWriteRepository petWriteRepository, IMapper mapper, IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, RoleManager<IdentityRole<int>> roleManager, IBlobService blobService)
 		{
 			_appUserWriteRepository = appUserWriteRepository;
 			_appUserReadRepository = appUserReadRepository;
@@ -85,16 +82,16 @@ namespace Presentation.Controllers
 		//APpUser repo Test - checked
 		#region AppUser repository tesing
 		[HttpPost("[action]")]
-		public async Task<IActionResult> AppUserCreate(string username, string email,string role)
+		public async Task<IActionResult> AppUserCreateWithRole(string username, string email, string role)
 		{
 			var newUser = new AppUser()
 			{
 				UserName = username,
 				Email = email,
 				EmailConfirmed = true,
-				Address="baku",
-				City="baku"
-			
+				Address = "baku",
+				City = "baku"
+
 			};
 			await _appUserWriteRepository.CreateAsync(newUser);
 			await _userManager.AddPasswordAsync(newUser, "123qweA@");
@@ -133,7 +130,7 @@ namespace Presentation.Controllers
 		public async Task<IActionResult> GetAllByRole([FromQuery] string roleName)
 		{
 
-            var users= await _userManager.GetUsersInRoleAsync(roleName);
+			var users = await _userManager.GetUsersInRoleAsync(roleName);
 			return Ok(users);
 		}
 

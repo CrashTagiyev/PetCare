@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistance.Database;
 
@@ -11,9 +12,11 @@ using Persistance.Database;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(PetCareDB))]
-    partial class PetCareDBModelSnapshot : ModelSnapshot
+    [Migration("20240903075746_nug1")]
+    partial class nug1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,7 +156,7 @@ namespace Persistance.Migrations
                         {
                             Id = 1,
                             BreedName = "Labrador Retriever",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9980),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1666),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -162,7 +165,7 @@ namespace Persistance.Migrations
                         {
                             Id = 2,
                             BreedName = "German Shepherd",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9987),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1674),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -171,7 +174,7 @@ namespace Persistance.Migrations
                         {
                             Id = 3,
                             BreedName = "Golden Retriever",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9989),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1675),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -180,7 +183,7 @@ namespace Persistance.Migrations
                         {
                             Id = 4,
                             BreedName = "French Bulldog",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9990),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1676),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -189,7 +192,7 @@ namespace Persistance.Migrations
                         {
                             Id = 5,
                             BreedName = "Bulldog",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9992),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1678),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -198,7 +201,7 @@ namespace Persistance.Migrations
                         {
                             Id = 6,
                             BreedName = "Beagle",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9993),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1679),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -207,7 +210,7 @@ namespace Persistance.Migrations
                         {
                             Id = 7,
                             BreedName = "Poodle",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9995),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1680),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -216,7 +219,7 @@ namespace Persistance.Migrations
                         {
                             Id = 8,
                             BreedName = "Rottweiler",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9996),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1682),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -225,7 +228,7 @@ namespace Persistance.Migrations
                         {
                             Id = 9,
                             BreedName = "Yorkshire Terrier",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(9998),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1683),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -234,7 +237,7 @@ namespace Persistance.Migrations
                         {
                             Id = 10,
                             BreedName = "Boxer",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1684),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -243,7 +246,7 @@ namespace Persistance.Migrations
                         {
                             Id = 11,
                             BreedName = "Dachshund",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(1),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1742),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -252,7 +255,7 @@ namespace Persistance.Migrations
                         {
                             Id = 12,
                             BreedName = "Pembroke Welsh Corgi",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(2),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1744),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -261,7 +264,7 @@ namespace Persistance.Migrations
                         {
                             Id = 13,
                             BreedName = "Doberman Pinscher",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(4),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1745),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -270,7 +273,7 @@ namespace Persistance.Migrations
                         {
                             Id = 14,
                             BreedName = "Shih Tzu",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(5),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1746),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -279,7 +282,7 @@ namespace Persistance.Migrations
                         {
                             Id = 15,
                             BreedName = "Siberian Husky",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(6),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1748),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -288,7 +291,7 @@ namespace Persistance.Migrations
                         {
                             Id = 16,
                             BreedName = "Great Dane",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(7),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1749),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -297,7 +300,7 @@ namespace Persistance.Migrations
                         {
                             Id = 17,
                             BreedName = "Border Collie",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(9),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1750),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -306,7 +309,7 @@ namespace Persistance.Migrations
                         {
                             Id = 18,
                             BreedName = "Chihuahua",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(10),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1752),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -315,7 +318,7 @@ namespace Persistance.Migrations
                         {
                             Id = 19,
                             BreedName = "Boston Terrier",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(11),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1753),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -324,7 +327,7 @@ namespace Persistance.Migrations
                         {
                             Id = 20,
                             BreedName = "Australian Shepherd",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(13),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1754),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -333,7 +336,7 @@ namespace Persistance.Migrations
                         {
                             Id = 21,
                             BreedName = "Pug",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(14),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1756),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -342,7 +345,7 @@ namespace Persistance.Migrations
                         {
                             Id = 22,
                             BreedName = "Havanese",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(15),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1757),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -351,7 +354,7 @@ namespace Persistance.Migrations
                         {
                             Id = 23,
                             BreedName = "Maltese",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(17),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1759),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -360,7 +363,7 @@ namespace Persistance.Migrations
                         {
                             Id = 24,
                             BreedName = "Saint Bernard",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(18),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1760),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -369,7 +372,7 @@ namespace Persistance.Migrations
                         {
                             Id = 25,
                             BreedName = "Akita",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(19),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1761),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -378,7 +381,7 @@ namespace Persistance.Migrations
                         {
                             Id = 26,
                             BreedName = "Alaskan Malamute",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(20),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1763),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -387,7 +390,7 @@ namespace Persistance.Migrations
                         {
                             Id = 27,
                             BreedName = "Bichon Frise",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(22),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1764),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -396,7 +399,7 @@ namespace Persistance.Migrations
                         {
                             Id = 28,
                             BreedName = "Bull Terrier",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(23),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1765),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -405,7 +408,7 @@ namespace Persistance.Migrations
                         {
                             Id = 29,
                             BreedName = "Cane Corso",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(24),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1767),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -414,7 +417,7 @@ namespace Persistance.Migrations
                         {
                             Id = 30,
                             BreedName = "Chow Chow",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(26),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1769),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -423,7 +426,7 @@ namespace Persistance.Migrations
                         {
                             Id = 31,
                             BreedName = "Cocker Spaniel",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(27),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1771),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -432,7 +435,7 @@ namespace Persistance.Migrations
                         {
                             Id = 32,
                             BreedName = "Dogo Argentino",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(28),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1772),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -441,7 +444,7 @@ namespace Persistance.Migrations
                         {
                             Id = 33,
                             BreedName = "English Springer Spaniel",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(30),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1773),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -450,7 +453,7 @@ namespace Persistance.Migrations
                         {
                             Id = 34,
                             BreedName = "Irish Setter",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(31),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1775),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -459,7 +462,7 @@ namespace Persistance.Migrations
                         {
                             Id = 35,
                             BreedName = "Jack Russell Terrier",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(32),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1777),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -468,7 +471,7 @@ namespace Persistance.Migrations
                         {
                             Id = 36,
                             BreedName = "Lhasa Apso",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(34),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1778),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -477,7 +480,7 @@ namespace Persistance.Migrations
                         {
                             Id = 37,
                             BreedName = "Miniature Schnauzer",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(35),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1780),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -486,7 +489,7 @@ namespace Persistance.Migrations
                         {
                             Id = 38,
                             BreedName = "Neapolitan Mastiff",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(36),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1781),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -495,7 +498,7 @@ namespace Persistance.Migrations
                         {
                             Id = 39,
                             BreedName = "Old English Sheepdog",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(37),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1783),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -504,7 +507,7 @@ namespace Persistance.Migrations
                         {
                             Id = 40,
                             BreedName = "Papillon",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(39),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1784),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -513,7 +516,7 @@ namespace Persistance.Migrations
                         {
                             Id = 41,
                             BreedName = "Pekingese",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(40),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1786),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -522,7 +525,7 @@ namespace Persistance.Migrations
                         {
                             Id = 42,
                             BreedName = "Petit Basset Griffon Vendeen",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(41),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1787),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -531,7 +534,7 @@ namespace Persistance.Migrations
                         {
                             Id = 43,
                             BreedName = "Pomeranian",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(43),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1788),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -540,7 +543,7 @@ namespace Persistance.Migrations
                         {
                             Id = 44,
                             BreedName = "Portuguese Water Dog",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(45),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1791),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -549,7 +552,7 @@ namespace Persistance.Migrations
                         {
                             Id = 45,
                             BreedName = "Samoyed",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(46),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1792),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -558,7 +561,7 @@ namespace Persistance.Migrations
                         {
                             Id = 46,
                             BreedName = "Scottish Terrier",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(47),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1794),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -567,7 +570,7 @@ namespace Persistance.Migrations
                         {
                             Id = 47,
                             BreedName = "Shiba Inu",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(49),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1795),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -576,7 +579,7 @@ namespace Persistance.Migrations
                         {
                             Id = 48,
                             BreedName = "Weimaraner",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(50),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1796),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -585,7 +588,7 @@ namespace Persistance.Migrations
                         {
                             Id = 49,
                             BreedName = "Whippet",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(51),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1798),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 1
@@ -594,7 +597,7 @@ namespace Persistance.Migrations
                         {
                             Id = 50,
                             BreedName = "Persian",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(52),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1799),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -603,7 +606,7 @@ namespace Persistance.Migrations
                         {
                             Id = 51,
                             BreedName = "Maine Coon",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(54),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1800),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -612,7 +615,7 @@ namespace Persistance.Migrations
                         {
                             Id = 52,
                             BreedName = "Siamese",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(55),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1801),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -621,7 +624,7 @@ namespace Persistance.Migrations
                         {
                             Id = 53,
                             BreedName = "Ragdoll",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(56),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1803),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -630,7 +633,7 @@ namespace Persistance.Migrations
                         {
                             Id = 54,
                             BreedName = "British Shorthair",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(58),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1804),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -639,7 +642,7 @@ namespace Persistance.Migrations
                         {
                             Id = 55,
                             BreedName = "Sphynx",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(59),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1806),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -648,7 +651,7 @@ namespace Persistance.Migrations
                         {
                             Id = 56,
                             BreedName = "Bengal",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(60),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1807),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -657,7 +660,7 @@ namespace Persistance.Migrations
                         {
                             Id = 57,
                             BreedName = "Scottish Fold",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(61),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1808),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -666,7 +669,7 @@ namespace Persistance.Migrations
                         {
                             Id = 58,
                             BreedName = "Abyssinian",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(63),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1809),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -675,7 +678,7 @@ namespace Persistance.Migrations
                         {
                             Id = 59,
                             BreedName = "Burmese",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(64),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1811),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -684,7 +687,7 @@ namespace Persistance.Migrations
                         {
                             Id = 60,
                             BreedName = "Somali",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(66),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1812),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -693,7 +696,7 @@ namespace Persistance.Migrations
                         {
                             Id = 61,
                             BreedName = "Manx",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(67),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1814),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -702,7 +705,7 @@ namespace Persistance.Migrations
                         {
                             Id = 62,
                             BreedName = "Norwegian Forest Cat",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(68),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1815),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -711,7 +714,7 @@ namespace Persistance.Migrations
                         {
                             Id = 63,
                             BreedName = "Devon Rex",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(69),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1817),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -720,7 +723,7 @@ namespace Persistance.Migrations
                         {
                             Id = 64,
                             BreedName = "Cornish Rex",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(71),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1818),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -729,7 +732,7 @@ namespace Persistance.Migrations
                         {
                             Id = 65,
                             BreedName = "Russian Blue",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(72),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1819),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -738,7 +741,7 @@ namespace Persistance.Migrations
                         {
                             Id = 66,
                             BreedName = "Birman",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(74),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1821),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -747,7 +750,7 @@ namespace Persistance.Migrations
                         {
                             Id = 67,
                             BreedName = "Ocicat",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(75),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1822),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -756,7 +759,7 @@ namespace Persistance.Migrations
                         {
                             Id = 68,
                             BreedName = "American Shorthair",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(76),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1823),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -765,7 +768,7 @@ namespace Persistance.Migrations
                         {
                             Id = 69,
                             BreedName = "Turkish Angora",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(78),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1824),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -774,7 +777,7 @@ namespace Persistance.Migrations
                         {
                             Id = 70,
                             BreedName = "Selkirk Rex",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(79),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1826),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -783,7 +786,7 @@ namespace Persistance.Migrations
                         {
                             Id = 71,
                             BreedName = "Exotic Shorthair",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(80),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1827),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -792,7 +795,7 @@ namespace Persistance.Migrations
                         {
                             Id = 72,
                             BreedName = "LaPerm",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(81),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1828),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -801,7 +804,7 @@ namespace Persistance.Migrations
                         {
                             Id = 73,
                             BreedName = "Havana Brown",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(84),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1830),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -810,7 +813,7 @@ namespace Persistance.Migrations
                         {
                             Id = 74,
                             BreedName = "Tonkinese",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(85),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1832),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -819,7 +822,7 @@ namespace Persistance.Migrations
                         {
                             Id = 75,
                             BreedName = "Egyptian Mau",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(86),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1833),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -828,7 +831,7 @@ namespace Persistance.Migrations
                         {
                             Id = 76,
                             BreedName = "Singapura",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(88),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1834),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -837,7 +840,7 @@ namespace Persistance.Migrations
                         {
                             Id = 77,
                             BreedName = "Japanese Bobtail",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(89),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1836),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -846,7 +849,7 @@ namespace Persistance.Migrations
                         {
                             Id = 78,
                             BreedName = "American Curl",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(90),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1837),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 2
@@ -855,7 +858,7 @@ namespace Persistance.Migrations
                         {
                             Id = 79,
                             BreedName = "Parrot",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(92),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1838),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -864,7 +867,7 @@ namespace Persistance.Migrations
                         {
                             Id = 80,
                             BreedName = "Canary",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(93),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1839),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -873,7 +876,7 @@ namespace Persistance.Migrations
                         {
                             Id = 81,
                             BreedName = "Budgerigar",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(94),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1841),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -882,7 +885,7 @@ namespace Persistance.Migrations
                         {
                             Id = 82,
                             BreedName = "Cockatiel",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(95),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1842),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -891,7 +894,7 @@ namespace Persistance.Migrations
                         {
                             Id = 83,
                             BreedName = "Lovebird",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(97),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1843),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -900,7 +903,7 @@ namespace Persistance.Migrations
                         {
                             Id = 84,
                             BreedName = "Macaw",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(98),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1844),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -909,7 +912,7 @@ namespace Persistance.Migrations
                         {
                             Id = 85,
                             BreedName = "Conure",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(99),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1846),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -918,7 +921,7 @@ namespace Persistance.Migrations
                         {
                             Id = 86,
                             BreedName = "African Grey Parrot",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(101),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1847),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -927,7 +930,7 @@ namespace Persistance.Migrations
                         {
                             Id = 87,
                             BreedName = "Finches",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(102),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1848),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -936,7 +939,7 @@ namespace Persistance.Migrations
                         {
                             Id = 88,
                             BreedName = "Quaker Parrot",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(103),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1849),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -945,7 +948,7 @@ namespace Persistance.Migrations
                         {
                             Id = 89,
                             BreedName = "Amazon Parrot",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(105),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1851),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -954,7 +957,7 @@ namespace Persistance.Migrations
                         {
                             Id = 90,
                             BreedName = "Eclectus Parrot",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(106),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1852),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -963,7 +966,7 @@ namespace Persistance.Migrations
                         {
                             Id = 91,
                             BreedName = "Pigeon",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(107),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1853),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -972,7 +975,7 @@ namespace Persistance.Migrations
                         {
                             Id = 92,
                             BreedName = "Dove",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(109),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1855),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -981,7 +984,7 @@ namespace Persistance.Migrations
                         {
                             Id = 93,
                             BreedName = "Cockatoo",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(154),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1856),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -990,7 +993,7 @@ namespace Persistance.Migrations
                         {
                             Id = 94,
                             BreedName = "Sun Conure",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(155),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1857),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -999,7 +1002,7 @@ namespace Persistance.Migrations
                         {
                             Id = 95,
                             BreedName = "Hyacinth Macaw",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(157),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1859),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -1008,7 +1011,7 @@ namespace Persistance.Migrations
                         {
                             Id = 96,
                             BreedName = "Lorikeet",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(158),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1860),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -1017,7 +1020,7 @@ namespace Persistance.Migrations
                         {
                             Id = 97,
                             BreedName = "Zebra Finch",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(159),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1862),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -1026,7 +1029,7 @@ namespace Persistance.Migrations
                         {
                             Id = 98,
                             BreedName = "Gouldian Finch",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(161),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1863),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -1035,7 +1038,7 @@ namespace Persistance.Migrations
                         {
                             Id = 99,
                             BreedName = "Canary Winged Parakeet",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(162),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1864),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -1044,7 +1047,7 @@ namespace Persistance.Migrations
                         {
                             Id = 100,
                             BreedName = "Quail",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(163),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1865),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 3
@@ -1053,7 +1056,7 @@ namespace Persistance.Migrations
                         {
                             Id = 101,
                             BreedName = "Iguana",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(164),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1867),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1062,7 +1065,7 @@ namespace Persistance.Migrations
                         {
                             Id = 102,
                             BreedName = "Gecko",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(167),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1869),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1071,7 +1074,7 @@ namespace Persistance.Migrations
                         {
                             Id = 103,
                             BreedName = "Bearded Dragon",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(168),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1870),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1080,7 +1083,7 @@ namespace Persistance.Migrations
                         {
                             Id = 104,
                             BreedName = "Chameleon",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(169),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1872),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1089,7 +1092,7 @@ namespace Persistance.Migrations
                         {
                             Id = 105,
                             BreedName = "Python",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(171),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1873),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1098,7 +1101,7 @@ namespace Persistance.Migrations
                         {
                             Id = 106,
                             BreedName = "Boa Constrictor",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(172),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1874),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1107,7 +1110,7 @@ namespace Persistance.Migrations
                         {
                             Id = 107,
                             BreedName = "Skink",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(173),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1876),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1116,7 +1119,7 @@ namespace Persistance.Migrations
                         {
                             Id = 108,
                             BreedName = "Tortoise",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(174),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1877),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1125,7 +1128,7 @@ namespace Persistance.Migrations
                         {
                             Id = 109,
                             BreedName = "Turtle",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(176),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1879),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1134,7 +1137,7 @@ namespace Persistance.Migrations
                         {
                             Id = 110,
                             BreedName = "Monitor Lizard",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(177),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1881),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1143,7 +1146,7 @@ namespace Persistance.Migrations
                         {
                             Id = 111,
                             BreedName = "Water Dragon",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(178),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1882),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1152,7 +1155,7 @@ namespace Persistance.Migrations
                         {
                             Id = 112,
                             BreedName = "Uromastyx",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(179),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1884),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1161,7 +1164,7 @@ namespace Persistance.Migrations
                         {
                             Id = 113,
                             BreedName = "Horned Toad",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(181),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1886),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 4
@@ -1170,7 +1173,7 @@ namespace Persistance.Migrations
                         {
                             Id = 114,
                             BreedName = "Hamster",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(182),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1887),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1179,7 +1182,7 @@ namespace Persistance.Migrations
                         {
                             Id = 115,
                             BreedName = "Guinea Pig",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(183),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1889),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1188,7 +1191,7 @@ namespace Persistance.Migrations
                         {
                             Id = 116,
                             BreedName = "Rat",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(185),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1890),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1197,7 +1200,7 @@ namespace Persistance.Migrations
                         {
                             Id = 117,
                             BreedName = "Mouse",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(186),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1892),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1206,7 +1209,7 @@ namespace Persistance.Migrations
                         {
                             Id = 118,
                             BreedName = "Gerbil",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(187),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1893),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1215,7 +1218,7 @@ namespace Persistance.Migrations
                         {
                             Id = 119,
                             BreedName = "Chinchilla",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(189),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1894),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1224,7 +1227,7 @@ namespace Persistance.Migrations
                         {
                             Id = 120,
                             BreedName = "Degu",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(190),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1897),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1233,7 +1236,7 @@ namespace Persistance.Migrations
                         {
                             Id = 121,
                             BreedName = "Capybara",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(191),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1898),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1242,7 +1245,7 @@ namespace Persistance.Migrations
                         {
                             Id = 122,
                             BreedName = "Prairie Dog",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(193),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1900),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 5
@@ -1251,7 +1254,7 @@ namespace Persistance.Migrations
                         {
                             Id = 123,
                             BreedName = "Goldfish",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(194),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1901),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1260,7 +1263,7 @@ namespace Persistance.Migrations
                         {
                             Id = 124,
                             BreedName = "Betta",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(195),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1902),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1269,7 +1272,7 @@ namespace Persistance.Migrations
                         {
                             Id = 125,
                             BreedName = "Guppy",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(197),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1904),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1278,7 +1281,7 @@ namespace Persistance.Migrations
                         {
                             Id = 126,
                             BreedName = "Neon Tetra",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(198),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1905),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1287,7 +1290,7 @@ namespace Persistance.Migrations
                         {
                             Id = 127,
                             BreedName = "Angelfish",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(199),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1906),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1296,7 +1299,7 @@ namespace Persistance.Migrations
                         {
                             Id = 128,
                             BreedName = "Oscar",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(200),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1908),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1305,7 +1308,7 @@ namespace Persistance.Migrations
                         {
                             Id = 129,
                             BreedName = "Clownfish",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(202),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1909),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1314,7 +1317,7 @@ namespace Persistance.Migrations
                         {
                             Id = 130,
                             BreedName = "Corydoras Catfish",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(203),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1911),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1323,7 +1326,7 @@ namespace Persistance.Migrations
                         {
                             Id = 131,
                             BreedName = "Molly",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(205),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1913),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1332,7 +1335,7 @@ namespace Persistance.Migrations
                         {
                             Id = 132,
                             BreedName = "Swordtail",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(207),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1914),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1341,7 +1344,7 @@ namespace Persistance.Migrations
                         {
                             Id = 133,
                             BreedName = "Rainbowfish",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(208),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1915),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1350,7 +1353,7 @@ namespace Persistance.Migrations
                         {
                             Id = 134,
                             BreedName = "Plecostomus",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(209),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1917),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1359,7 +1362,7 @@ namespace Persistance.Migrations
                         {
                             Id = 135,
                             BreedName = "Gourami",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(211),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1918),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1368,7 +1371,7 @@ namespace Persistance.Migrations
                         {
                             Id = 136,
                             BreedName = "Danios",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(212),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1919),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1377,7 +1380,7 @@ namespace Persistance.Migrations
                         {
                             Id = 137,
                             BreedName = "Apistogramma",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(213),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1921),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1386,7 +1389,7 @@ namespace Persistance.Migrations
                         {
                             Id = 138,
                             BreedName = "Discus",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(214),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1922),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1395,7 +1398,7 @@ namespace Persistance.Migrations
                         {
                             Id = 139,
                             BreedName = "Koi",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(216),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1923),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 6
@@ -1404,7 +1407,7 @@ namespace Persistance.Migrations
                         {
                             Id = 140,
                             BreedName = "Holstein Cow",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(217),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1962),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1413,7 +1416,7 @@ namespace Persistance.Migrations
                         {
                             Id = 141,
                             BreedName = "Angus Cow",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(218),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1964),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1422,7 +1425,7 @@ namespace Persistance.Migrations
                         {
                             Id = 142,
                             BreedName = "Jersey Cow",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(220),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1965),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1431,7 +1434,7 @@ namespace Persistance.Migrations
                         {
                             Id = 143,
                             BreedName = "Guernsey Cow",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(221),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1967),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1440,7 +1443,7 @@ namespace Persistance.Migrations
                         {
                             Id = 144,
                             BreedName = "Merino Sheep",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(222),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1968),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1449,7 +1452,7 @@ namespace Persistance.Migrations
                         {
                             Id = 145,
                             BreedName = "Suffolk Sheep",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(224),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1969),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1458,7 +1461,7 @@ namespace Persistance.Migrations
                         {
                             Id = 146,
                             BreedName = "Dorset Sheep",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(225),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1971),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1467,7 +1470,7 @@ namespace Persistance.Migrations
                         {
                             Id = 147,
                             BreedName = "Hampshire Sheep",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(226),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1972),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1476,7 +1479,7 @@ namespace Persistance.Migrations
                         {
                             Id = 148,
                             BreedName = "Berkshire Pig",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(227),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1974),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1485,7 +1488,7 @@ namespace Persistance.Migrations
                         {
                             Id = 149,
                             BreedName = "Duroc Pig",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(229),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1975),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1494,7 +1497,7 @@ namespace Persistance.Migrations
                         {
                             Id = 150,
                             BreedName = "Yorkshire Pig",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(230),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1977),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1503,7 +1506,7 @@ namespace Persistance.Migrations
                         {
                             Id = 151,
                             BreedName = "Landrace Pig",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(232),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1978),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1512,7 +1515,7 @@ namespace Persistance.Migrations
                         {
                             Id = 152,
                             BreedName = "Rhode Island Red Chicken",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(233),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1980),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1521,7 +1524,7 @@ namespace Persistance.Migrations
                         {
                             Id = 153,
                             BreedName = "Leghorn Chicken",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(234),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1982),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1530,7 +1533,7 @@ namespace Persistance.Migrations
                         {
                             Id = 154,
                             BreedName = "Plymouth Rock Chicken",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(236),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1983),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1539,7 +1542,7 @@ namespace Persistance.Migrations
                         {
                             Id = 155,
                             BreedName = "Sussex Chicken",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(238),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1985),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1548,7 +1551,7 @@ namespace Persistance.Migrations
                         {
                             Id = 156,
                             BreedName = "Turkeys",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(239),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1986),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1557,7 +1560,7 @@ namespace Persistance.Migrations
                         {
                             Id = 157,
                             BreedName = "Ducks",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(241),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1987),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1566,7 +1569,7 @@ namespace Persistance.Migrations
                         {
                             Id = 158,
                             BreedName = "Goats",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(242),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1988),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1575,7 +1578,7 @@ namespace Persistance.Migrations
                         {
                             Id = 159,
                             BreedName = "Llamas",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(243),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1990),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1584,7 +1587,7 @@ namespace Persistance.Migrations
                         {
                             Id = 160,
                             BreedName = "Alpacas",
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 381, DateTimeKind.Local).AddTicks(245),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 896, DateTimeKind.Local).AddTicks(1991),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PetTypeId = 7
@@ -1819,7 +1822,7 @@ namespace Persistance.Migrations
                             Id = 1,
                             Age = (short)3,
                             BreedId = 1,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5575),
+                            CreatedTime = new DateTime(2023, 11, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1411),
                             Description = "Friendly Labrador Retriever",
                             Gender = 1,
                             Health = "Healthy",
@@ -1838,7 +1841,7 @@ namespace Persistance.Migrations
                             Id = 2,
                             Age = (short)2,
                             BreedId = 2,
-                            CreatedTime = new DateTime(2024, 6, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5591),
+                            CreatedTime = new DateTime(2024, 2, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1428),
                             Description = "Energetic Beagle",
                             Gender = 2,
                             Health = "Healthy",
@@ -1857,7 +1860,7 @@ namespace Persistance.Migrations
                             Id = 3,
                             Age = (short)5,
                             BreedId = 3,
-                            CreatedTime = new DateTime(2023, 12, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5600),
+                            CreatedTime = new DateTime(2024, 3, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1435),
                             Description = "Loyal German Shepherd",
                             Gender = 1,
                             Health = "Healthy",
@@ -1876,7 +1879,7 @@ namespace Persistance.Migrations
                             Id = 4,
                             Age = (short)4,
                             BreedId = 4,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5606),
+                            CreatedTime = new DateTime(2024, 8, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1441),
                             Description = "Clever Border Collie",
                             Gender = 2,
                             Health = "Healthy",
@@ -1895,7 +1898,7 @@ namespace Persistance.Migrations
                             Id = 5,
                             Age = (short)2,
                             BreedId = 5,
-                            CreatedTime = new DateTime(2023, 11, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5612),
+                            CreatedTime = new DateTime(2024, 1, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1498),
                             Description = "Playful Golden Retriever",
                             Gender = 1,
                             Health = "Healthy",
@@ -1914,7 +1917,7 @@ namespace Persistance.Migrations
                             Id = 6,
                             Age = (short)2,
                             BreedId = 6,
-                            CreatedTime = new DateTime(2024, 3, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5621),
+                            CreatedTime = new DateTime(2024, 2, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1505),
                             Description = "Playful Maine Coon",
                             Gender = 2,
                             Health = "Healthy",
@@ -1933,7 +1936,7 @@ namespace Persistance.Migrations
                             Id = 7,
                             Age = (short)4,
                             BreedId = 7,
-                            CreatedTime = new DateTime(2024, 6, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5626),
+                            CreatedTime = new DateTime(2023, 10, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1511),
                             Description = "Curious Siamese",
                             Gender = 1,
                             Health = "Healthy",
@@ -1952,7 +1955,7 @@ namespace Persistance.Migrations
                             Id = 8,
                             Age = (short)3,
                             BreedId = 8,
-                            CreatedTime = new DateTime(2024, 7, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5631),
+                            CreatedTime = new DateTime(2024, 7, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1516),
                             Description = "Silent Russian Blue",
                             Gender = 1,
                             Health = "Healthy",
@@ -1971,7 +1974,7 @@ namespace Persistance.Migrations
                             Id = 9,
                             Age = (short)2,
                             BreedId = 9,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5636),
+                            CreatedTime = new DateTime(2024, 3, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1522),
                             Description = "Graceful Persian",
                             Gender = 2,
                             Health = "Healthy",
@@ -1990,7 +1993,7 @@ namespace Persistance.Migrations
                             Id = 10,
                             Age = (short)3,
                             BreedId = 10,
-                            CreatedTime = new DateTime(2023, 11, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5641),
+                            CreatedTime = new DateTime(2023, 11, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1528),
                             Description = "Adventurous Bengal",
                             Gender = 1,
                             Health = "Healthy",
@@ -2009,7 +2012,7 @@ namespace Persistance.Migrations
                             Id = 11,
                             Age = (short)1,
                             BreedId = 11,
-                            CreatedTime = new DateTime(2024, 8, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5646),
+                            CreatedTime = new DateTime(2023, 12, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1533),
                             Description = "Chirpy Canary",
                             Gender = 2,
                             Health = "Healthy",
@@ -2028,7 +2031,7 @@ namespace Persistance.Migrations
                             Id = 12,
                             Age = (short)5,
                             BreedId = 12,
-                            CreatedTime = new DateTime(2024, 2, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5651),
+                            CreatedTime = new DateTime(2023, 10, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1540),
                             Description = "Talkative Parrot",
                             Gender = 2,
                             Health = "Healthy",
@@ -2047,7 +2050,7 @@ namespace Persistance.Migrations
                             Id = 13,
                             Age = (short)2,
                             BreedId = 13,
-                            CreatedTime = new DateTime(2024, 7, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5656),
+                            CreatedTime = new DateTime(2024, 5, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1546),
                             Description = "Graceful Cockatiel",
                             Gender = 1,
                             Health = "Healthy",
@@ -2066,7 +2069,7 @@ namespace Persistance.Migrations
                             Id = 14,
                             Age = (short)3,
                             BreedId = 14,
-                            CreatedTime = new DateTime(2024, 5, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5662),
+                            CreatedTime = new DateTime(2024, 5, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1551),
                             Description = "Colorful Parakeet",
                             Gender = 2,
                             Health = "Healthy",
@@ -2085,7 +2088,7 @@ namespace Persistance.Migrations
                             Id = 15,
                             Age = (short)4,
                             BreedId = 15,
-                            CreatedTime = new DateTime(2024, 5, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5667),
+                            CreatedTime = new DateTime(2023, 12, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1557),
                             Description = "Clever African Grey",
                             Gender = 2,
                             Health = "Healthy",
@@ -2104,7 +2107,7 @@ namespace Persistance.Migrations
                             Id = 16,
                             Age = (short)4,
                             BreedId = 16,
-                            CreatedTime = new DateTime(2024, 5, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5672),
+                            CreatedTime = new DateTime(2024, 8, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1563),
                             Description = "Spiky Bearded Dragon",
                             Gender = 1,
                             Health = "Healthy",
@@ -2123,7 +2126,7 @@ namespace Persistance.Migrations
                             Id = 17,
                             Age = (short)2,
                             BreedId = 17,
-                            CreatedTime = new DateTime(2024, 7, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5677),
+                            CreatedTime = new DateTime(2023, 11, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1569),
                             Description = "Stealthy Corn Snake",
                             Gender = 1,
                             Health = "Healthy",
@@ -2142,7 +2145,7 @@ namespace Persistance.Migrations
                             Id = 18,
                             Age = (short)3,
                             BreedId = 18,
-                            CreatedTime = new DateTime(2023, 10, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5682),
+                            CreatedTime = new DateTime(2023, 10, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1574),
                             Description = "Agile Gecko",
                             Gender = 2,
                             Health = "Healthy",
@@ -2161,7 +2164,7 @@ namespace Persistance.Migrations
                             Id = 19,
                             Age = (short)1,
                             BreedId = 19,
-                            CreatedTime = new DateTime(2024, 7, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5687),
+                            CreatedTime = new DateTime(2024, 7, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1580),
                             Description = "Curious Hamster",
                             Gender = 1,
                             Health = "Healthy",
@@ -2180,7 +2183,7 @@ namespace Persistance.Migrations
                             Id = 20,
                             Age = (short)2,
                             BreedId = 20,
-                            CreatedTime = new DateTime(2024, 6, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5693),
+                            CreatedTime = new DateTime(2024, 8, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1587),
                             Description = "Fluffy Guinea Pig",
                             Gender = 2,
                             Health = "Healthy",
@@ -2199,7 +2202,7 @@ namespace Persistance.Migrations
                             Id = 21,
                             Age = (short)3,
                             BreedId = 21,
-                            CreatedTime = new DateTime(2024, 8, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5697),
+                            CreatedTime = new DateTime(2024, 7, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1593),
                             Description = "Playful Rabbit",
                             Gender = 1,
                             Health = "Healthy",
@@ -2218,7 +2221,7 @@ namespace Persistance.Migrations
                             Id = 22,
                             Age = (short)3,
                             BreedId = 22,
-                            CreatedTime = new DateTime(2024, 2, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5702),
+                            CreatedTime = new DateTime(2024, 3, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1599),
                             Description = "Charming Chinchilla",
                             Gender = 1,
                             Health = "Healthy",
@@ -2237,7 +2240,7 @@ namespace Persistance.Migrations
                             Id = 23,
                             Age = (short)2,
                             BreedId = 23,
-                            CreatedTime = new DateTime(2023, 10, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5709),
+                            CreatedTime = new DateTime(2024, 3, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1604),
                             Description = "Lively Sugar Glider",
                             Gender = 2,
                             Health = "Healthy",
@@ -2256,7 +2259,7 @@ namespace Persistance.Migrations
                             Id = 24,
                             Age = (short)2,
                             BreedId = 24,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5714),
+                            CreatedTime = new DateTime(2024, 4, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1609),
                             Description = "Spiky Hedgehog",
                             Gender = 1,
                             Health = "Healthy",
@@ -2275,7 +2278,7 @@ namespace Persistance.Migrations
                             Id = 25,
                             Age = (short)4,
                             BreedId = 25,
-                            CreatedTime = new DateTime(2023, 12, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5719),
+                            CreatedTime = new DateTime(2024, 4, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1615),
                             Description = "Soft Chinchilla",
                             Gender = 1,
                             Health = "Healthy",
@@ -2294,7 +2297,7 @@ namespace Persistance.Migrations
                             Id = 26,
                             Age = (short)1,
                             BreedId = 26,
-                            CreatedTime = new DateTime(2024, 4, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5726),
+                            CreatedTime = new DateTime(2024, 6, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1623),
                             Description = "Colorful Betta Fish",
                             Gender = 1,
                             Health = "Healthy",
@@ -2313,7 +2316,7 @@ namespace Persistance.Migrations
                             Id = 27,
                             Age = (short)2,
                             BreedId = 27,
-                            CreatedTime = new DateTime(2024, 3, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5732),
+                            CreatedTime = new DateTime(2024, 6, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1628),
                             Description = "Tiny Frog",
                             Gender = 2,
                             Health = "Healthy",
@@ -2332,7 +2335,7 @@ namespace Persistance.Migrations
                             Id = 28,
                             Age = (short)3,
                             BreedId = 28,
-                            CreatedTime = new DateTime(2024, 5, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5737),
+                            CreatedTime = new DateTime(2024, 2, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1634),
                             Description = "Creepy Tarantula",
                             Gender = 2,
                             Health = "Healthy",
@@ -2351,7 +2354,7 @@ namespace Persistance.Migrations
                             Id = 29,
                             Age = (short)2,
                             BreedId = 29,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5742),
+                            CreatedTime = new DateTime(2023, 10, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1639),
                             Description = "Amphibious Newt",
                             Gender = 2,
                             Health = "Healthy",
@@ -2370,7 +2373,7 @@ namespace Persistance.Migrations
                             Id = 30,
                             Age = (short)5,
                             BreedId = 30,
-                            CreatedTime = new DateTime(2024, 5, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5747),
+                            CreatedTime = new DateTime(2024, 4, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1645),
                             Description = "Scaly Iguana",
                             Gender = 1,
                             Health = "Healthy",
@@ -2389,7 +2392,7 @@ namespace Persistance.Migrations
                             Id = 31,
                             Age = (short)4,
                             BreedId = 31,
-                            CreatedTime = new DateTime(2024, 4, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5752),
+                            CreatedTime = new DateTime(2024, 1, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1651),
                             Description = "Guard Dog Rottweiler",
                             Gender = 1,
                             Health = "Healthy",
@@ -2408,7 +2411,7 @@ namespace Persistance.Migrations
                             Id = 32,
                             Age = (short)2,
                             BreedId = 32,
-                            CreatedTime = new DateTime(2024, 4, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5758),
+                            CreatedTime = new DateTime(2023, 11, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1656),
                             Description = "Playful Pug",
                             Gender = 1,
                             Health = "Healthy",
@@ -2427,7 +2430,7 @@ namespace Persistance.Migrations
                             Id = 33,
                             Age = (short)3,
                             BreedId = 33,
-                            CreatedTime = new DateTime(2024, 3, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5763),
+                            CreatedTime = new DateTime(2024, 1, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1662),
                             Description = "Adorable Shih Tzu",
                             Gender = 2,
                             Health = "Healthy",
@@ -2446,7 +2449,7 @@ namespace Persistance.Migrations
                             Id = 34,
                             Age = (short)4,
                             BreedId = 34,
-                            CreatedTime = new DateTime(2023, 12, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5767),
+                            CreatedTime = new DateTime(2024, 1, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1668),
                             Description = "Agile Greyhound",
                             Gender = 2,
                             Health = "Healthy",
@@ -2465,7 +2468,7 @@ namespace Persistance.Migrations
                             Id = 35,
                             Age = (short)3,
                             BreedId = 35,
-                            CreatedTime = new DateTime(2024, 6, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5773),
+                            CreatedTime = new DateTime(2024, 5, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1673),
                             Description = "Energetic Boxer",
                             Gender = 1,
                             Health = "Healthy",
@@ -2484,7 +2487,7 @@ namespace Persistance.Migrations
                             Id = 36,
                             Age = (short)2,
                             BreedId = 36,
-                            CreatedTime = new DateTime(2024, 2, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5777),
+                            CreatedTime = new DateTime(2024, 3, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1678),
                             Description = "Affectionate Ragdoll",
                             Gender = 1,
                             Health = "Healthy",
@@ -2503,7 +2506,7 @@ namespace Persistance.Migrations
                             Id = 37,
                             Age = (short)3,
                             BreedId = 37,
-                            CreatedTime = new DateTime(2023, 12, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5782),
+                            CreatedTime = new DateTime(2024, 5, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1685),
                             Description = "Quiet British Shorthair",
                             Gender = 2,
                             Health = "Healthy",
@@ -2522,7 +2525,7 @@ namespace Persistance.Migrations
                             Id = 38,
                             Age = (short)4,
                             BreedId = 38,
-                            CreatedTime = new DateTime(2024, 7, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5788),
+                            CreatedTime = new DateTime(2024, 6, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1690),
                             Description = "Mischievous Sphynx",
                             Gender = 1,
                             Health = "Healthy",
@@ -2541,7 +2544,7 @@ namespace Persistance.Migrations
                             Id = 39,
                             Age = (short)2,
                             BreedId = 39,
-                            CreatedTime = new DateTime(2024, 7, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5793),
+                            CreatedTime = new DateTime(2024, 7, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1695),
                             Description = "Active Abyssinian",
                             Gender = 2,
                             Health = "Healthy",
@@ -2560,7 +2563,7 @@ namespace Persistance.Migrations
                             Id = 40,
                             Age = (short)3,
                             BreedId = 40,
-                            CreatedTime = new DateTime(2024, 3, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5798),
+                            CreatedTime = new DateTime(2024, 1, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1701),
                             Description = "Laid-back Birman",
                             Gender = 1,
                             Health = "Healthy",
@@ -2579,7 +2582,7 @@ namespace Persistance.Migrations
                             Id = 41,
                             Age = (short)3,
                             BreedId = 41,
-                            CreatedTime = new DateTime(2024, 5, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5843),
+                            CreatedTime = new DateTime(2024, 1, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1706),
                             Description = "Bright Sun Conure",
                             Gender = 2,
                             Health = "Healthy",
@@ -2598,7 +2601,7 @@ namespace Persistance.Migrations
                             Id = 42,
                             Age = (short)1,
                             BreedId = 42,
-                            CreatedTime = new DateTime(2024, 2, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5849),
+                            CreatedTime = new DateTime(2024, 7, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1711),
                             Description = "Chirpy Canary",
                             Gender = 1,
                             Health = "Healthy",
@@ -2617,7 +2620,7 @@ namespace Persistance.Migrations
                             Id = 43,
                             Age = (short)2,
                             BreedId = 43,
-                            CreatedTime = new DateTime(2023, 12, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5855),
+                            CreatedTime = new DateTime(2023, 12, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1717),
                             Description = "Friendly Budgie",
                             Gender = 1,
                             Health = "Healthy",
@@ -2636,7 +2639,7 @@ namespace Persistance.Migrations
                             Id = 44,
                             Age = (short)2,
                             BreedId = 44,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5860),
+                            CreatedTime = new DateTime(2023, 10, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1723),
                             Description = "Talkative Parakeet",
                             Gender = 2,
                             Health = "Healthy",
@@ -2655,7 +2658,7 @@ namespace Persistance.Migrations
                             Id = 45,
                             Age = (short)4,
                             BreedId = 45,
-                            CreatedTime = new DateTime(2023, 11, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5865),
+                            CreatedTime = new DateTime(2024, 3, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1760),
                             Description = "Noisy Cockatoo",
                             Gender = 1,
                             Health = "Healthy",
@@ -2674,7 +2677,7 @@ namespace Persistance.Migrations
                             Id = 46,
                             Age = (short)5,
                             BreedId = 46,
-                            CreatedTime = new DateTime(2024, 1, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5871),
+                            CreatedTime = new DateTime(2023, 12, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1766),
                             Description = "Venomous King Cobra",
                             Gender = 1,
                             Health = "Healthy",
@@ -2693,7 +2696,7 @@ namespace Persistance.Migrations
                             Id = 47,
                             Age = (short)7,
                             BreedId = 47,
-                            CreatedTime = new DateTime(2023, 10, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5876),
+                            CreatedTime = new DateTime(2024, 8, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1771),
                             Description = "Large Komodo Dragon",
                             Gender = 1,
                             Health = "Healthy",
@@ -2712,7 +2715,7 @@ namespace Persistance.Migrations
                             Id = 48,
                             Age = (short)4,
                             BreedId = 48,
-                            CreatedTime = new DateTime(2023, 12, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5882),
+                            CreatedTime = new DateTime(2024, 2, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1778),
                             Description = "Green Iguana",
                             Gender = 2,
                             Health = "Healthy",
@@ -2731,7 +2734,7 @@ namespace Persistance.Migrations
                             Id = 49,
                             Age = (short)5,
                             BreedId = 49,
-                            CreatedTime = new DateTime(2023, 11, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5887),
+                            CreatedTime = new DateTime(2023, 11, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1784),
                             Description = "Horned Lizard",
                             Gender = 1,
                             Health = "Healthy",
@@ -2750,7 +2753,7 @@ namespace Persistance.Migrations
                             Id = 50,
                             Age = (short)100,
                             BreedId = 50,
-                            CreatedTime = new DateTime(2024, 2, 3, 14, 46, 33, 393, DateTimeKind.Local).AddTicks(5892),
+                            CreatedTime = new DateTime(2024, 2, 3, 11, 57, 45, 906, DateTimeKind.Local).AddTicks(1789),
                             Description = "Giant Tortoise",
                             Gender = 1,
                             Health = "Healthy",
@@ -2795,7 +2798,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6006),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8351),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Dogs"
@@ -2803,7 +2806,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6008),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8356),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Cats"
@@ -2811,7 +2814,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6010),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8357),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Birds"
@@ -2819,7 +2822,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6011),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8358),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Reptiles"
@@ -2827,7 +2830,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6012),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8360),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Rodents"
@@ -2835,7 +2838,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6014),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8361),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Fish"
@@ -2843,7 +2846,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6015),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8363),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Farm Animals"
@@ -2851,7 +2854,7 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedTime = new DateTime(2024, 9, 3, 14, 46, 33, 380, DateTimeKind.Local).AddTicks(6016),
+                            CreatedTime = new DateTime(2024, 9, 3, 11, 57, 45, 895, DateTimeKind.Local).AddTicks(8364),
                             IsDeleted = false,
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TypeName = "Exotic Pets"
@@ -2917,10 +2920,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company21.",
                             City = "Baku",
                             CompanyId = 2021,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4634),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7451),
                             EmailAddress = "ShelterEmailAddress21@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4636),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7452),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user21/200/300",
                             ShelterName = "Shelter Name 21"
@@ -2933,10 +2936,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company22.",
                             City = "Baku",
                             CompanyId = 2022,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4666),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7469),
                             EmailAddress = "ShelterEmailAddress22@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4666),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7470),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user22/200/300",
                             ShelterName = "Shelter Name 22"
@@ -2949,10 +2952,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company23.",
                             City = "Baku",
                             CompanyId = 2023,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4676),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7480),
                             EmailAddress = "ShelterEmailAddress23@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4676),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7480),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user23/200/300",
                             ShelterName = "Shelter Name 23"
@@ -2965,10 +2968,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company24.",
                             City = "Baku",
                             CompanyId = 2024,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4685),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7488),
                             EmailAddress = "ShelterEmailAddress24@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4685),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7489),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user24/200/300",
                             ShelterName = "Shelter Name 24"
@@ -2981,10 +2984,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company25.",
                             City = "Baku",
                             CompanyId = 2025,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4693),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7497),
                             EmailAddress = "ShelterEmailAddress25@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4694),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7497),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user25/200/300",
                             ShelterName = "Shelter Name 25"
@@ -2997,10 +3000,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company26.",
                             City = "Baku",
                             CompanyId = 2026,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4705),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7508),
                             EmailAddress = "ShelterEmailAddress26@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4706),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7508),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user26/200/300",
                             ShelterName = "Shelter Name 26"
@@ -3013,10 +3016,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company27.",
                             City = "Baku",
                             CompanyId = 2027,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4836),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7516),
                             EmailAddress = "ShelterEmailAddress27@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4836),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7516),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user27/200/300",
                             ShelterName = "Shelter Name 27"
@@ -3029,10 +3032,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company28.",
                             City = "Baku",
                             CompanyId = 2028,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4845),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7524),
                             EmailAddress = "ShelterEmailAddress28@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4845),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7524),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user28/200/300",
                             ShelterName = "Shelter Name 28"
@@ -3045,10 +3048,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company29.",
                             City = "Baku",
                             CompanyId = 2029,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4853),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7532),
                             EmailAddress = "ShelterEmailAddress29@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4854),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7532),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user29/200/300",
                             ShelterName = "Shelter Name 29"
@@ -3061,10 +3064,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company30.",
                             City = "Baku",
                             CompanyId = 2030,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4864),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7541),
                             EmailAddress = "ShelterEmailAddress30@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4865),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7542),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user30/200/300",
                             ShelterName = "Shelter Name 30"
@@ -3077,10 +3080,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company31.",
                             City = "Baku",
                             CompanyId = 2031,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4873),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7613),
                             EmailAddress = "ShelterEmailAddress31@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4874),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7613),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user31/200/300",
                             ShelterName = "Shelter Name 31"
@@ -3093,10 +3096,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company32.",
                             City = "Baku",
                             CompanyId = 2032,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4882),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7621),
                             EmailAddress = "ShelterEmailAddress32@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4882),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7622),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user32/200/300",
                             ShelterName = "Shelter Name 32"
@@ -3109,10 +3112,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company33.",
                             City = "Baku",
                             CompanyId = 2033,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4890),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7630),
                             EmailAddress = "ShelterEmailAddress33@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4891),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7630),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user33/200/300",
                             ShelterName = "Shelter Name 33"
@@ -3125,10 +3128,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company34.",
                             City = "Baku",
                             CompanyId = 2034,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4899),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7638),
                             EmailAddress = "ShelterEmailAddress34@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4900),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7638),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user34/200/300",
                             ShelterName = "Shelter Name 34"
@@ -3141,10 +3144,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company35.",
                             City = "Baku",
                             CompanyId = 2035,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4908),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7646),
                             EmailAddress = "ShelterEmailAddress35@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4908),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7646),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user35/200/300",
                             ShelterName = "Shelter Name 35"
@@ -3157,10 +3160,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company36.",
                             City = "Baku",
                             CompanyId = 2036,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4916),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7654),
                             EmailAddress = "ShelterEmailAddress36@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4917),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7655),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user36/200/300",
                             ShelterName = "Shelter Name 36"
@@ -3173,10 +3176,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company37.",
                             City = "Baku",
                             CompanyId = 2037,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4925),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7662),
                             EmailAddress = "ShelterEmailAddress37@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4926),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7663),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user37/200/300",
                             ShelterName = "Shelter Name 37"
@@ -3189,10 +3192,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company38.",
                             City = "Baku",
                             CompanyId = 2038,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4935),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7673),
                             EmailAddress = "ShelterEmailAddress38@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4936),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7673),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user38/200/300",
                             ShelterName = "Shelter Name 38"
@@ -3205,10 +3208,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company39.",
                             City = "Baku",
                             CompanyId = 2039,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4943),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7681),
                             EmailAddress = "ShelterEmailAddress39@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(4944),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7681),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user39/200/300",
                             ShelterName = "Shelter Name 39"
@@ -3221,10 +3224,10 @@ namespace Persistance.Migrations
                             AdoptionPolicy = "Adoption policy for Company40.",
                             City = "Baku",
                             CompanyId = 2040,
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(5004),
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7689),
                             EmailAddress = "ShelterEmailAddress40@gmail.com",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 380, DateTimeKind.Utc).AddTicks(5005),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 895, DateTimeKind.Utc).AddTicks(7689),
                             PhoneNumber = "+994501234567",
                             ShelterImageUrl = "https://picsum.photos/seed/user40/200/300",
                             ShelterName = "Shelter Name 40"
@@ -3354,14 +3357,14 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "5e1618a0-df2a-4c5c-9a4c-d0797a7886e0",
-                            CreatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4062),
+                            ConcurrencyStamp = "aa451165-1322-4d3c-bb7c-cc210b972c02",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1439),
                             DateOfBirth = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "crashtagiyev@gmail.com",
                             EmailConfirmed = true,
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4064),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1440),
                             Likes = 1,
                             LockoutEnabled = false,
                             NormalizedEmail = "CRASHTAGIYEV@GMAIL.COM",
@@ -3369,7 +3372,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user1/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4006),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1375),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "PetCareAdmin"
@@ -3381,15 +3384,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "16c47610-00d9-4508-933f-6818d91f973f",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4114),
+                            ConcurrencyStamp = "19461cad-c40a-497a-b86c-5eda8904ebd2",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1492),
                             DateOfBirth = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user1@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName1",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4121),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1493),
                             Lastname = "LastName1",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3398,7 +3401,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user1/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4108),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1486),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user1"
@@ -3410,15 +3413,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "2b565888-8677-4973-bb20-709b22fa2b1b",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4146),
+                            ConcurrencyStamp = "4e5315e0-c1b3-435d-a716-74cb3ca66939",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1516),
                             DateOfBirth = new DateTime(2000, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user2@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName2",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4147),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1516),
                             Lastname = "LastName2",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3427,7 +3430,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user2/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4142),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1512),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user2"
@@ -3439,15 +3442,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "ece9f981-875c-4a33-8ee9-391bee693e5f",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4172),
+                            ConcurrencyStamp = "54cc2962-2567-4e82-9602-3eed852f173a",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1529),
                             DateOfBirth = new DateTime(2000, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user3@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName3",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4172),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1530),
                             Lastname = "LastName3",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3456,7 +3459,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user3/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4156),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1526),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user3"
@@ -3468,15 +3471,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "3d31ad6d-e3b5-495c-8ce4-e2cb44628adc",
-                            CreatedTime = new DateTime(2024, 6, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4185),
+                            ConcurrencyStamp = "8054f405-ca10-4e3f-a352-ee881fea198a",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1541),
                             DateOfBirth = new DateTime(2000, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user4@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName4",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4186),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1542),
                             Lastname = "LastName4",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3485,7 +3488,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user4/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4181),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1538),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user4"
@@ -3497,15 +3500,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "4fc5ed6e-6fa7-4c6a-8458-de5e31fa52e4",
-                            CreatedTime = new DateTime(2023, 12, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4201),
+                            ConcurrencyStamp = "38000c52-3932-4cb6-8059-e6cb88ca7491",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1571),
                             DateOfBirth = new DateTime(2000, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user5@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName5",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4202),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1572),
                             Lastname = "LastName5",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3514,7 +3517,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user5/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4197),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1552),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user5"
@@ -3526,15 +3529,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "8b94c5f1-2f77-4ff9-9bb6-f045ce188951",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4214),
+                            ConcurrencyStamp = "2ccd1597-8447-4c08-a54c-79fb5fdb94b5",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1583),
                             DateOfBirth = new DateTime(2000, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user6@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName6",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4215),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1584),
                             Lastname = "LastName6",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3543,7 +3546,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user6/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4210),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1580),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user6"
@@ -3555,15 +3558,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "dc92ffa8-b64f-4ded-9800-7f2b9db213bc",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4262),
+                            ConcurrencyStamp = "7b574486-03ee-4fab-bd7d-e78423f860dc",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1594),
                             DateOfBirth = new DateTime(2000, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user7@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName7",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4263),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1595),
                             Lastname = "LastName7",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3572,7 +3575,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user7/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4223),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1591),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user7"
@@ -3584,15 +3587,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "db24b6f1-9883-45d2-a859-59a7b155768c",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4276),
+                            ConcurrencyStamp = "8e7341ab-ae50-4fca-92c9-cb970d1205b5",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1606),
                             DateOfBirth = new DateTime(2000, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user8@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName8",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4277),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1606),
                             Lastname = "LastName8",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3601,7 +3604,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user8/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4273),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1602),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user8"
@@ -3613,15 +3616,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "efcb54bc-9208-4d00-a3a0-ad193156d233",
-                            CreatedTime = new DateTime(2023, 11, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4290),
+                            ConcurrencyStamp = "0031a4c7-6ab6-4909-a47c-d77fa322c534",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1619),
                             DateOfBirth = new DateTime(2000, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user9@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName9",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4291),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1619),
                             Lastname = "LastName9",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3630,7 +3633,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user9/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4287),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1615),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user9"
@@ -3642,15 +3645,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "8e66da52-a787-451b-accf-db3dc62b0d1b",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4302),
+                            ConcurrencyStamp = "3ba8ee09-e845-4d1f-81bc-5caa232d6185",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1668),
                             DateOfBirth = new DateTime(2000, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user10@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName10",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4303),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1668),
                             Lastname = "LastName10",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3659,7 +3662,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user10/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4299),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1665),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user10"
@@ -3671,15 +3674,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "58dc66a4-292c-48b4-ba3a-6ff1cdd7919e",
-                            CreatedTime = new DateTime(2024, 6, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4321),
+                            ConcurrencyStamp = "bdebb4a5-0177-4102-b9e2-9f17316dee17",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1682),
                             DateOfBirth = new DateTime(2000, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user11@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName11",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4322),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1683),
                             Lastname = "LastName11",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3688,7 +3691,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user11/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4314),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1679),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user11"
@@ -3700,15 +3703,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "a4fc318f-248a-404d-9dda-a94d7e40e002",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4334),
+                            ConcurrencyStamp = "acc64808-7a18-4408-9b9e-7d1b3651574a",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1694),
                             DateOfBirth = new DateTime(2000, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user12@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName12",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4335),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1694),
                             Lastname = "LastName12",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3717,7 +3720,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user12/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4331),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1691),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user12"
@@ -3729,15 +3732,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "2d2b5d67-edef-4f18-8737-720abe8840a1",
-                            CreatedTime = new DateTime(2024, 7, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4346),
+                            ConcurrencyStamp = "c32f45f4-6421-455e-b43e-7e1cfb0fe6a0",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1710),
                             DateOfBirth = new DateTime(2000, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user13@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName13",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4347),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1710),
                             Lastname = "LastName13",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3746,7 +3749,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user13/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4343),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1702),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user13"
@@ -3758,15 +3761,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "776eec37-2d9c-44bf-a85f-a8c30ab28d63",
-                            CreatedTime = new DateTime(2023, 11, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4358),
+                            ConcurrencyStamp = "0d5cf893-5dd0-45fc-b664-84017ce6b59b",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1721),
                             DateOfBirth = new DateTime(2000, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user14@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName14",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4359),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1722),
                             Lastname = "LastName14",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3775,7 +3778,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user14/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4356),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1718),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user14"
@@ -3787,15 +3790,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "4b31a35a-dcec-4df8-a2eb-2f7aca2fc0a8",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4371),
+                            ConcurrencyStamp = "9328263a-4eaa-4686-a507-d14ba019a762",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1733),
                             DateOfBirth = new DateTime(2000, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user15@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName15",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4372),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1733),
                             Lastname = "LastName15",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3804,7 +3807,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user15/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4368),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1730),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user15"
@@ -3816,15 +3819,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "27ca5377-bc8e-4304-b4b8-5fc03f1fe17f",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4384),
+                            ConcurrencyStamp = "e60bcd39-be31-438c-a350-92392e6a2b51",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1744),
                             DateOfBirth = new DateTime(2000, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user16@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName16",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4384),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1745),
                             Lastname = "LastName16",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3833,7 +3836,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user16/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4380),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1741),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user16"
@@ -3845,15 +3848,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "a37d58ff-107c-41d3-975a-de48660e781a",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4473),
+                            ConcurrencyStamp = "c6da50e1-95e3-473d-9e57-2e9044ec7b8d",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1757),
                             DateOfBirth = new DateTime(2000, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user17@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName17",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4474),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1757),
                             Lastname = "LastName17",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3862,7 +3865,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user17/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4469),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1754),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user17"
@@ -3874,15 +3877,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "59fc30ce-d696-479e-95c1-326b1345ea62",
-                            CreatedTime = new DateTime(2024, 7, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4487),
+                            ConcurrencyStamp = "e1435046-60c5-4193-887f-76b613a100b8",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1768),
                             DateOfBirth = new DateTime(2000, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user18@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName18",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4488),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1769),
                             Lastname = "LastName18",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3891,7 +3894,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user18/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4484),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1765),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user18"
@@ -3903,15 +3906,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "8203d9d6-c29e-4f77-b3c2-36a037f2b4fb",
-                            CreatedTime = new DateTime(2023, 12, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4503),
+                            ConcurrencyStamp = "8e0f9c70-86b7-47c2-afec-7d225afcdd7d",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1780),
                             DateOfBirth = new DateTime(2000, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user19@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName19",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4504),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1780),
                             Lastname = "LastName19",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3920,7 +3923,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user19/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4496),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1777),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user19"
@@ -3932,15 +3935,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "f31dcf1f-3da6-4788-b6b2-b2f4a53497a5",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4516),
+                            ConcurrencyStamp = "ba2610a4-9ad4-4c79-8114-a1bbd336b3b0",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1814),
                             DateOfBirth = new DateTime(2000, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "user20@example.com",
                             EmailConfirmed = true,
                             Firstname = "FirstName20",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4517),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1815),
                             Lastname = "LastName20",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3949,7 +3952,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user20/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4513),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1811),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "user20"
@@ -3962,15 +3965,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name21",
-                            ConcurrencyStamp = "d52f940e-2c4d-4ce4-a8ec-23ac81b82736",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4529),
+                            ConcurrencyStamp = "95c1a5b9-8f59-42e1-bab0-67280a965722",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1830),
                             DateOfBirth = new DateTime(2000, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company21@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName21",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4529),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1830),
                             Lastname = "CompanyLastName21",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -3979,7 +3982,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user21/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4525),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1823),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company21"
@@ -3992,15 +3995,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name22",
-                            ConcurrencyStamp = "62c0681e-d49f-475d-9cc2-613d9a49ae86",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4549),
+                            ConcurrencyStamp = "bf85a1fa-1770-4e37-b5c9-9086c7fe2184",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1853),
                             DateOfBirth = new DateTime(2000, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company22@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName22",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4549),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1853),
                             Lastname = "CompanyLastName22",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4009,7 +4012,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user22/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4546),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1849),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company22"
@@ -4022,15 +4025,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name23",
-                            ConcurrencyStamp = "9569d356-3012-4e9f-b6d1-a851b5693320",
-                            CreatedTime = new DateTime(2024, 6, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4563),
+                            ConcurrencyStamp = "05d12388-26c7-4af7-94c3-3849d04563b0",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1866),
                             DateOfBirth = new DateTime(2000, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company23@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName23",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4564),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1866),
                             Lastname = "CompanyLastName23",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4039,7 +4042,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user23/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4560),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1863),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company23"
@@ -4052,15 +4055,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name24",
-                            ConcurrencyStamp = "abc17248-eea5-42c9-b883-f5b1e1a2fc73",
-                            CreatedTime = new DateTime(2023, 11, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4577),
+                            ConcurrencyStamp = "ebb21f31-e0bb-49b3-af53-9eaecedbacd9",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1878),
                             DateOfBirth = new DateTime(2000, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company24@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName24",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4578),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1879),
                             Lastname = "CompanyLastName24",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4069,7 +4072,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user24/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4573),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1875),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company24"
@@ -4082,15 +4085,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name25",
-                            ConcurrencyStamp = "cca2f988-1799-4ff4-982f-976df7c365e1",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4590),
+                            ConcurrencyStamp = "632cedec-fa89-4f0e-9406-3d3836421a26",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1892),
                             DateOfBirth = new DateTime(2000, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company25@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName25",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4591),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1892),
                             Lastname = "CompanyLastName25",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4099,7 +4102,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user25/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4587),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1888),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company25"
@@ -4112,15 +4115,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name26",
-                            ConcurrencyStamp = "d2f28350-527c-44f6-8af9-c54375e77f13",
-                            CreatedTime = new DateTime(2023, 12, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4658),
+                            ConcurrencyStamp = "7d5bff56-cf86-4324-b41f-433efa9801f3",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1904),
                             DateOfBirth = new DateTime(2000, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company26@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName26",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4659),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1905),
                             Lastname = "CompanyLastName26",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4129,7 +4132,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user26/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4655),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1901),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company26"
@@ -4142,15 +4145,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name27",
-                            ConcurrencyStamp = "3d1878be-a9fb-4334-a3cb-55d6dec64fc1",
-                            CreatedTime = new DateTime(2024, 7, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4676),
+                            ConcurrencyStamp = "4e51cfd8-79ae-4363-a7fb-5234c57f43d1",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1916),
                             DateOfBirth = new DateTime(2000, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company27@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName27",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4676),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1917),
                             Lastname = "CompanyLastName27",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4159,7 +4162,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user27/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4669),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1914),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company27"
@@ -4172,15 +4175,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name28",
-                            ConcurrencyStamp = "7ac9f249-db6c-4f7a-84be-46549a69aab3",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4690),
+                            ConcurrencyStamp = "b55e6930-cab6-4833-9b6a-04f77ccb93a1",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1995),
                             DateOfBirth = new DateTime(2000, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company28@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName28",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4691),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1995),
                             Lastname = "CompanyLastName28",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4189,7 +4192,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user28/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4686),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(1926),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company28"
@@ -4202,15 +4205,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name29",
-                            ConcurrencyStamp = "60e30022-2b3c-4f0c-be6e-d68f11f37b34",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4703),
+                            ConcurrencyStamp = "63e0ab54-1a62-4be9-84f6-b31972345be3",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2013),
                             DateOfBirth = new DateTime(2000, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company29@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName29",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4704),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2013),
                             Lastname = "CompanyLastName29",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4219,7 +4222,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user29/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4700),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2005),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company29"
@@ -4232,15 +4235,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name30",
-                            ConcurrencyStamp = "43f9184d-0fdb-4599-9766-5e1b10cc63e3",
-                            CreatedTime = new DateTime(2024, 6, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4716),
+                            ConcurrencyStamp = "20146cca-e7fa-4c0f-b912-488d0954ff28",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2026),
                             DateOfBirth = new DateTime(2000, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company30@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName30",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4717),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2026),
                             Lastname = "CompanyLastName30",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4249,7 +4252,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user30/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4713),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2022),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company30"
@@ -4262,15 +4265,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name31",
-                            ConcurrencyStamp = "79b5f204-1151-45cd-a0bb-5e0cac376538",
-                            CreatedTime = new DateTime(2024, 4, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4729),
+                            ConcurrencyStamp = "0f2bbc7d-7ba1-4009-9bd8-4f1303559e5b",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2039),
                             DateOfBirth = new DateTime(2000, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company31@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName31",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4730),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2039),
                             Lastname = "CompanyLastName31",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4279,7 +4282,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user31/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4726),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2036),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company31"
@@ -4292,15 +4295,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name32",
-                            ConcurrencyStamp = "4e8bdb5d-405a-496b-8c9a-7193d8dd86d3",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4743),
+                            ConcurrencyStamp = "ffd0d0c9-4354-4627-b2ae-eb3097d3930a",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2051),
                             DateOfBirth = new DateTime(2000, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company32@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName32",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4744),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2051),
                             Lastname = "CompanyLastName32",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4309,7 +4312,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user32/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4740),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2048),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company32"
@@ -4322,15 +4325,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name33",
-                            ConcurrencyStamp = "498c78d8-9f90-4587-b4f8-da9e18e96886",
-                            CreatedTime = new DateTime(2023, 11, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4759),
+                            ConcurrencyStamp = "f13630b7-92aa-49e7-92d1-778f5f0fff00",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2066),
                             DateOfBirth = new DateTime(2000, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company33@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName33",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4760),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2066),
                             Lastname = "CompanyLastName33",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4339,7 +4342,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user33/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4756),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2063),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company33"
@@ -4352,15 +4355,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name34",
-                            ConcurrencyStamp = "d0ca3155-887f-481f-8950-a397956fbba8",
-                            CreatedTime = new DateTime(2023, 10, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4811),
+                            ConcurrencyStamp = "fbb9ec61-f786-410e-a44d-ccdb42ad43e2",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2078),
                             DateOfBirth = new DateTime(2000, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company34@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName34",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4812),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2078),
                             Lastname = "CompanyLastName34",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4369,7 +4372,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user34/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4808),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2075),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company34"
@@ -4382,15 +4385,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name35",
-                            ConcurrencyStamp = "bbe40309-ed77-425f-ba30-e7606a816f4c",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4829),
+                            ConcurrencyStamp = "4bf06c3d-fada-4d5d-bfb2-25435a52ab2b",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2091),
                             DateOfBirth = new DateTime(2000, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company35@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName35",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4830),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2092),
                             Lastname = "CompanyLastName35",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4399,7 +4402,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user35/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4823),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2088),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company35"
@@ -4412,15 +4415,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name36",
-                            ConcurrencyStamp = "e2b1077a-be4b-4d47-b994-ca44d210a432",
-                            CreatedTime = new DateTime(2024, 6, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4843),
+                            ConcurrencyStamp = "c222b1df-ef73-4d8f-a6f9-5c6c2e98c802",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2103),
                             DateOfBirth = new DateTime(2000, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company36@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName36",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4844),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2104),
                             Lastname = "CompanyLastName36",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4429,7 +4432,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user36/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4840),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2100),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company36"
@@ -4442,15 +4445,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name37",
-                            ConcurrencyStamp = "36ccc4d8-b473-4cbc-a226-7648b55b09fb",
-                            CreatedTime = new DateTime(2023, 11, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4856),
+                            ConcurrencyStamp = "0b532f0b-ccc4-4345-8521-edd2b59016b6",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2164),
                             DateOfBirth = new DateTime(2000, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company37@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName37",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4857),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2165),
                             Lastname = "CompanyLastName37",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4459,7 +4462,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user37/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4853),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2158),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company37"
@@ -4472,15 +4475,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name38",
-                            ConcurrencyStamp = "47107ce4-a5d6-451d-8e95-4641afd7d339",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4870),
+                            ConcurrencyStamp = "b96dfeab-9d69-4697-bfcb-dcf1c375b322",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2177),
                             DateOfBirth = new DateTime(2000, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company38@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName38",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4871),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2178),
                             Lastname = "CompanyLastName38",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4489,7 +4492,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user38/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4867),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2174),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company38"
@@ -4502,15 +4505,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name39",
-                            ConcurrencyStamp = "82630fc2-7f39-4d8f-9fc9-ee8eb1588d6e",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4883),
+                            ConcurrencyStamp = "6fb29a05-03ea-41ee-9f7a-6bc40c2eaabd",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2190),
                             DateOfBirth = new DateTime(2000, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company39@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName39",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4884),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2190),
                             Lastname = "CompanyLastName39",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4519,7 +4522,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user39/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4880),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2187),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company39"
@@ -4532,15 +4535,15 @@ namespace Persistance.Migrations
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
                             CompanyName = "Company Name40",
-                            ConcurrencyStamp = "b2985bf4-4b89-4948-ac5c-789e755eb21a",
-                            CreatedTime = new DateTime(2024, 7, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4897),
+                            ConcurrencyStamp = "ea8797b6-7803-494d-9c12-8ccde3a2d24f",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2202),
                             DateOfBirth = new DateTime(2000, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Company40@example.com",
                             EmailConfirmed = true,
                             Firstname = "CompanyFirstName40",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4898),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2203),
                             Lastname = "CompanyLastName40",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4549,7 +4552,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user40/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4894),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2199),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Company40"
@@ -4561,15 +4564,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "2d3bed73-7b6d-4911-9c8b-f90935ad2b5f",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4911),
+                            ConcurrencyStamp = "b1277ada-544c-4f44-b1f9-84de8d2d5460",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2215),
                             DateOfBirth = new DateTime(2000, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet41@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName41",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4911),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2216),
                             Lastname = "VetLastName41",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4578,7 +4581,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user41/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4908),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2212),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet41"
@@ -4590,15 +4593,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "ade58e52-8683-48f7-b496-bf4995a05c65",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4929),
+                            ConcurrencyStamp = "e3d6a6f0-4844-49b2-9797-2ae9d563f7e9",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2233),
                             DateOfBirth = new DateTime(2000, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet42@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName42",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4930),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2233),
                             Lastname = "VetLastName42",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4607,7 +4610,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user42/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4926),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2230),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet42"
@@ -4619,15 +4622,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "ee8c7b20-a101-491c-b306-23442d93b3c2",
-                            CreatedTime = new DateTime(2024, 4, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4980),
+                            ConcurrencyStamp = "5e5b3ce1-4b74-4718-92e0-ceda3cc9a8db",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2245),
                             DateOfBirth = new DateTime(2000, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet43@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName43",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4981),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2246),
                             Lastname = "VetLastName43",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4636,7 +4639,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user43/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4974),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2241),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet43"
@@ -4648,15 +4651,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "96ba760a-b857-40cb-84fb-63c9e26de2b6",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5164),
+                            ConcurrencyStamp = "04062e7f-5216-4e60-a74d-43f9b55b0a5b",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2256),
                             DateOfBirth = new DateTime(2000, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet44@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName44",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5166),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2257),
                             Lastname = "VetLastName44",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4665,7 +4668,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user44/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(4991),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2253),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet44"
@@ -4677,15 +4680,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "74802430-8325-411a-ac20-184ed1cdc675",
-                            CreatedTime = new DateTime(2024, 8, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5201),
+                            ConcurrencyStamp = "8ebbce83-c956-42a8-b563-f4156c9d874b",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2271),
                             DateOfBirth = new DateTime(2000, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet45@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName45",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5203),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2271),
                             Lastname = "VetLastName45",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4694,7 +4697,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user45/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5191),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2265),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet45"
@@ -4706,15 +4709,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "3de3b9f8-e022-4240-a818-56c067a63202",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5238),
+                            ConcurrencyStamp = "3d63e7ae-9e24-45b5-96bc-2622e8e55e84",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2311),
                             DateOfBirth = new DateTime(2000, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet46@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName46",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5240),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2311),
                             Lastname = "VetLastName46",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4723,7 +4726,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user46/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5228),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2308),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet46"
@@ -4735,15 +4738,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "c88cfcac-0005-4456-9d13-ed57987ca69a",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5440),
+                            ConcurrencyStamp = "308266d8-03d8-430f-8aad-72f664ea0d63",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2323),
                             DateOfBirth = new DateTime(2000, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet47@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName47",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5441),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2324),
                             Lastname = "VetLastName47",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4752,7 +4755,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user47/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5437),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2320),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet47"
@@ -4764,15 +4767,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "100ec548-7d82-4f07-a0ab-c9e288961f7a",
-                            CreatedTime = new DateTime(2023, 10, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5452),
+                            ConcurrencyStamp = "0b3e1f65-25fb-42c0-a122-e88baa69cd66",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2335),
                             DateOfBirth = new DateTime(2000, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet48@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName48",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5453),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2335),
                             Lastname = "VetLastName48",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4781,7 +4784,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user48/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5449),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2332),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet48"
@@ -4793,15 +4796,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "03079ca4-bf40-4bef-8f7b-632f9bb28ee7",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5465),
+                            ConcurrencyStamp = "33446262-1f91-4990-9e54-776bda413a68",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2346),
                             DateOfBirth = new DateTime(2000, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet49@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName49",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5466),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2347),
                             Lastname = "VetLastName49",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4810,7 +4813,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user49/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5462),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2343),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet49"
@@ -4822,15 +4825,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "d9f1f02d-6f80-4d8b-b629-1c58165cbf71",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5477),
+                            ConcurrencyStamp = "c3b5f8cf-b617-432c-bcd2-8c96ab068d1d",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2358),
                             DateOfBirth = new DateTime(2000, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet50@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName50",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5478),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2358),
                             Lastname = "VetLastName50",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4839,7 +4842,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user50/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5474),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2354),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet50"
@@ -4851,15 +4854,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "2ca38b2c-1c83-4dcc-90be-c620b101cdf5",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5493),
+                            ConcurrencyStamp = "36bf2255-f613-4434-bdac-ea50f44b456e",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2369),
                             DateOfBirth = new DateTime(2000, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet51@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName51",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5493),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2369),
                             Lastname = "VetLastName51",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4868,7 +4871,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user51/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5486),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2366),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet51"
@@ -4880,15 +4883,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "5e20ee91-208c-47ea-93f0-b3e504000fc1",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5505),
+                            ConcurrencyStamp = "0132cd67-ca56-4e2c-bef0-07e9f504e4e5",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2381),
                             DateOfBirth = new DateTime(2000, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet52@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName52",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5506),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2382),
                             Lastname = "VetLastName52",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4897,7 +4900,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user52/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5502),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2378),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet52"
@@ -4909,15 +4912,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "50ee78ca-2169-43d4-ab26-3c5533706248",
-                            CreatedTime = new DateTime(2024, 3, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5770),
+                            ConcurrencyStamp = "72a2a184-3690-4d06-bb1d-6b3148daba79",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2396),
                             DateOfBirth = new DateTime(2000, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet53@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName53",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5772),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2396),
                             Lastname = "VetLastName53",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4926,7 +4929,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user53/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5592),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2390),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet53"
@@ -4938,15 +4941,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "cf9ef245-8566-4383-ab32-8ad6e24b01f9",
-                            CreatedTime = new DateTime(2024, 5, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5810),
+                            ConcurrencyStamp = "48b4ae59-656e-41d4-a3b3-9c04b71d5742",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2407),
                             DateOfBirth = new DateTime(2000, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet54@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName54",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5812),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2408),
                             Lastname = "VetLastName54",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4955,7 +4958,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user54/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5800),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2404),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet54"
@@ -4967,15 +4970,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "383f1367-be0f-4df4-90aa-32e471211516",
-                            CreatedTime = new DateTime(2024, 4, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6027),
+                            ConcurrencyStamp = "afb0d6f2-dc7d-4ad1-a709-95f5ee743f3f",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2420),
                             DateOfBirth = new DateTime(2000, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet55@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName55",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6028),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2420),
                             Lastname = "VetLastName55",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -4984,7 +4987,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user55/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(5837),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2416),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet55"
@@ -4996,15 +4999,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "d6fe4a04-d4bc-4e35-9483-2aa038cb88ca",
-                            CreatedTime = new DateTime(2023, 11, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6039),
+                            ConcurrencyStamp = "5210a77b-000f-4bfc-9a57-c827ed428e0e",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2461),
                             DateOfBirth = new DateTime(2000, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet56@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName56",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6040),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2461),
                             Lastname = "VetLastName56",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -5013,7 +5016,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user56/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6036),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2457),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet56"
@@ -5025,15 +5028,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "3af851a5-e174-4586-ac7d-758c93d75342",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6053),
+                            ConcurrencyStamp = "0be48306-ac87-4280-b3ad-f912fd49604a",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2473),
                             DateOfBirth = new DateTime(2000, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet57@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName57",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6054),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2473),
                             Lastname = "VetLastName57",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -5042,7 +5045,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user57/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6050),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2470),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet57"
@@ -5054,15 +5057,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "ae7917d8-fb4c-44c6-ba41-e88ab4711cbf",
-                            CreatedTime = new DateTime(2024, 1, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6065),
+                            ConcurrencyStamp = "bfeddd66-655a-4769-841f-a0e12223bac5",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2485),
                             DateOfBirth = new DateTime(2000, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet58@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName58",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6066),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2485),
                             Lastname = "VetLastName58",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -5071,7 +5074,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user58/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6062),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2482),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet58"
@@ -5083,15 +5086,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "84b65a86-d078-454d-9a46-74b9ba0c8ecf",
-                            CreatedTime = new DateTime(2023, 10, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6081),
+                            ConcurrencyStamp = "ac9fbd29-00c5-4435-9aee-9581ae898629",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2496),
                             DateOfBirth = new DateTime(2000, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet59@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName59",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6082),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2497),
                             Lastname = "VetLastName59",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -5100,7 +5103,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user59/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6075),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2493),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet59"
@@ -5112,15 +5115,15 @@ namespace Persistance.Migrations
                             AccessFailedCount = 0,
                             Address = "Koroglu Rahimov 70",
                             City = "Baku",
-                            ConcurrencyStamp = "174288bc-c1d6-43db-a4d1-c6fd82b75b44",
-                            CreatedTime = new DateTime(2023, 10, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6093),
+                            ConcurrencyStamp = "cc90ff91-7bdd-4773-bf8b-19f30c283d87",
+                            CreatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2507),
                             DateOfBirth = new DateTime(2000, 2, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dislikes = 1,
                             Email = "Vet60@example.com",
                             EmailConfirmed = true,
                             Firstname = "VetFirstName60",
                             IsDeleted = false,
-                            LastUpdatedTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6094),
+                            LastUpdatedTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2508),
                             Lastname = "VetLastName60",
                             Likes = 1,
                             LockoutEnabled = false,
@@ -5129,7 +5132,7 @@ namespace Persistance.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
                             PhoneNumberConfirmed = false,
                             ProfileImageUrl = "https://picsum.photos/seed/user60/200/300",
-                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 10, 46, 33, 392, DateTimeKind.Utc).AddTicks(6090),
+                            RefreshTokenCreateTime = new DateTime(2024, 9, 3, 7, 57, 45, 905, DateTimeKind.Utc).AddTicks(2504),
                             SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
                             TwoFactorEnabled = false,
                             UserName = "Vet60"

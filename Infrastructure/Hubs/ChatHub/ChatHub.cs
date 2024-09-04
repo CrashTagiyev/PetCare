@@ -38,7 +38,6 @@ namespace Infrastructure.Hubs.ChatHub
 			var usersNotifications = await _hubService.GetUsersNotifications(username);
 			await Clients.Group(username + "Notifications").GetUsersNotifications(usersNotifications.ToList());
 		}
-
 		public override Task OnDisconnectedAsync(Exception? exception)
 		{
 			foreach (var userConnections in _userConnections)

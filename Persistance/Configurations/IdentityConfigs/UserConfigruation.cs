@@ -11,6 +11,28 @@ namespace Persistance.Configurations.IdentityConfigs
 
 			var users = new List<AppUser>();
 
+			var random = new Random();
+			var admin = new AppUser
+			{
+				Id  =9999,
+				DateOfBirth = new DateTime(1999, 12, 31).AddDays(1), // Slightly varying DOB
+				City = $"Baku",
+				Address = $"Koroglu Rahimov 70",
+				CreatedTime = DateTime.UtcNow,
+				LastUpdatedTime = DateTime.UtcNow,
+				IsDeleted = false,
+				EmailConfirmed = true,
+				About = $"Somme about text for something bla bla bla",
+				PasswordHash = "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
+				SecurityStamp = "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
+				ProfileImageUrl = $"https://picsum.photos/seed/user{1}/200/300",
+				UserName="PetCareAdmin",
+				NormalizedUserName="PETCAREADMIN",
+				Email="crashtagiyev@gmail.com",
+				NormalizedEmail="CRASHTAGIYEV@GMAIL.COM"
+
+			};
+			users.Add(admin);
 			for (int i = 1; i <= 60; i++)
 			{
 				var user = new AppUser
@@ -19,7 +41,7 @@ namespace Persistance.Configurations.IdentityConfigs
 					DateOfBirth = new DateTime(1999, 12, 31).AddDays(i), // Slightly varying DOB
 					City = $"Baku",
 					Address = $"Koroglu Rahimov 70",
-					CreatedTime = DateTime.UtcNow,
+					CreatedTime = DateTime.UtcNow.AddMonths(-random.Next(1, 12)),
 					LastUpdatedTime = DateTime.UtcNow,
 					IsDeleted = false,
 					EmailConfirmed = true,

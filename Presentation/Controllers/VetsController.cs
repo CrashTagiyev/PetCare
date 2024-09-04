@@ -17,7 +17,7 @@ namespace Presentation.Controllers
 		}
 
 		[HttpGet("[action]")]
-		[Authorize(Roles ="Vet")]
+		[Authorize(Roles ="Vet,Admin")]
 		public async Task<IActionResult> GetVet(int id)
 		{
 			var vet = await _vetService.GetVetInfoDTO(id);

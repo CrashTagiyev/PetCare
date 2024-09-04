@@ -24,6 +24,7 @@ namespace Infrastructure.BuilderRegisters
 			services.AddScoped<IShelterService, ShelterService>();
 			services.AddScoped<IPetService, PetService>();
 			services.AddScoped<IAdoptService, AdoptService>();
+			services.AddScoped<IAdminService, AdminService>();
 
 		}
 

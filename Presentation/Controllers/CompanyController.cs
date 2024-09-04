@@ -18,7 +18,7 @@ namespace Presentation.Controllers
 
 
 		[HttpGet("[action]")]
-		[Authorize(Roles = "Company")]
+		[Authorize(Roles = "Company,Admin")]
 		public async Task<IActionResult> GetCompanyProfileInfo(int id)
 		{
 			var company = await _companyService.GetCompanyProfileInfo(id);
@@ -26,7 +26,7 @@ namespace Presentation.Controllers
 		}
 
 		[HttpPost("[action]")]
-		[Authorize(Roles = "Company")]
+		[Authorize(Roles = "Company,Admin")]
 		public async Task<IActionResult> CreateShelterAtCompany([FromForm] ShelterWriteDto shelterWriteDto)
 		{
 			var result = await _companyService.CreateShelter(shelterWriteDto);
@@ -34,7 +34,7 @@ namespace Presentation.Controllers
 			return Ok(result);
 		}
 		[HttpGet("[action]")]
-		[Authorize(Roles = "Company")]
+		[Authorize(Roles = "Company,Admin")]
 		public async Task<IActionResult> GetCompanyShelters(int companyId)
 		{
 			try

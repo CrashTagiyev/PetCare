@@ -24,6 +24,9 @@ namespace Persistance.Configurations.IdentityConfigs
 					usersRoles.Add(userRole);
 				}
 			}
+
+			usersRoles.Add (new IdentityUserRole<int> { RoleId = 4, UserId=9999});
+
 			builder.HasData(usersRoles);
 		}
 	}

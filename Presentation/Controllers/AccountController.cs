@@ -54,7 +54,7 @@ namespace Presentation.Controllers
 		public async Task<IActionResult> RefreshToken()
 		{
 			var response = await _authService.RefreshToken( HttpContext);
-			return Ok(new { accessToken = response.AccessToken, message = response.StatusMessage });
+			return Ok(new { accessToken = response.AccessToken, status = response });
 		}
 
 
