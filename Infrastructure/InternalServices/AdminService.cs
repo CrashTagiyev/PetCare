@@ -1,7 +1,12 @@
 ﻿using Application.ServiceAbstracts.UserServices;
+using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
+using Domain.AbstractRepositories.IdentityRepos;
+using Domain.DTOs.ReadDTO.AdminPanelDTOs;
 using Domain.Identity;
+using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
+using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace Infrastructure.InternalServices
@@ -10,10 +15,14 @@ namespace Infrastructure.InternalServices
 	{
 		private readonly IPetReadRepository _petReadRepository;
 		private readonly UserManager<AppUser> _userManager;
-		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager)
+		private readonly IAppUserReadRepository _appUserReadRepository;
+		private readonly IMapper _mapper;
+		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper)
 		{
 			_petReadRepository = petReadRepository;
 			_userManager = userManager;
+			_appUserReadRepository = appUserReadRepository;
+			_mapper = mapper;
 		}
 
 
@@ -83,9 +92,35 @@ namespace Infrastructure.InternalServices
 
 			return groupedVets;
 		}
-		
+
+
 		#endregion
 
+		#region User services
 
+		public async Task<List<AppUserReadAdminDTO>> GetUsersDatas(UsersFilterAdminModel filterModel)
+		{
+			var users = await _userManager.GetUsersInRoleAsync("User");
+			var userDTOs = users.Select(_mapper.Map<AppUserReadAdminDTO>).ToList();
+			return userDTOs;
+		}
+
+		public async Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel)
+		{
+			var vets = await _userManager.GetUsersInRoleAsync("Vet");
+			var vetDTOs = vets.Select(_mapper.Map<VetReadAdminDTO>).ToList();
+
+			return vetDTOs;
+		}
+		public async Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel)
+		{
+			var companies = await _userManager.GetUsersInRoleAsync("Company");
+			var companyDTOs = companies.Select(_mapper.Map<CompanyReadAdminDTO>).ToList();
+			return companyDTOs;
+		}
+
+
+
+		#endregion
 	}
 }

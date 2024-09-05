@@ -1,4 +1,5 @@
 ﻿using Application.ServiceAbstracts.UserServices;
+using Domain.Models.AdminPanelModels.AdminControlModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,46 @@ namespace Presentation.Controllers
 			var usersCount = await _adminService.GetRegisteredUsersCountByMonth();
 			return Ok(usersCount);
 		}
+		#endregion
+
+
+
+		#region User Actions
+
+		[HttpPost("[action]")]
+		public async Task<IActionResult> AdminGetUsers([FromBody] UsersFilterAdminModel filterModel)
+		{
+			var userDTOs = await _adminService.GetUsersDatas(filterModel);
+
+			int totalUsers = userDTOs.Count();
+			int skip = (filterModel!.PageNumber - 1) * filterModel.PageSize;
+			userDTOs = userDTOs.Skip(skip).Take(filterModel.PageSize).ToList();
+			return Ok(new { usersList = userDTOs, totalUsers });
+		}
+		[HttpPost("[action]")]
+		public async Task<IActionResult> AdminGetVets([FromBody] VetFilterAdminModel filterModel)
+		{
+			var vetDTOs = await _adminService.GetVetsDatas(filterModel);
+
+			int totalVets = vetDTOs.Count();
+			int skip = (filterModel!.PageNumber - 1) * filterModel.PageSize;
+			vetDTOs = vetDTOs.Skip(skip).Take(filterModel.PageSize).ToList();
+
+			return Ok(new { vetsList = vetDTOs, totalVets });
+		}
+
+		[HttpPost("[action]")]
+		public async Task<IActionResult> AdminGetCompanies([FromBody] CompanyFilterAdminModel filterModel)
+		{
+			var companyDTOs = await _adminService.GetCompaniesDatas(filterModel);
+
+			int totalCompanies = companyDTOs.Count();
+			int skip = (filterModel!.PageNumber - 1) * filterModel.PageSize;
+			companyDTOs = companyDTOs.Skip(skip).Take(filterModel.PageSize).ToList();
+
+			return Ok(new { companiesList = companyDTOs, totalCompanies });
+		}
+
 		#endregion
 
 

@@ -29,7 +29,8 @@ namespace Persistance.Configurations.IdentityConfigs
 				UserName="PetCareAdmin",
 				NormalizedUserName="PETCAREADMIN",
 				Email="crashtagiyev@gmail.com",
-				NormalizedEmail="CRASHTAGIYEV@GMAIL.COM"
+				NormalizedEmail="CRASHTAGIYEV@GMAIL.COM",
+				PhoneNumber= "+993509998485"
 
 			};
 			users.Add(admin);
@@ -48,6 +49,7 @@ namespace Persistance.Configurations.IdentityConfigs
 					About=$"Somme about text for something bla bla bla",
 					PasswordHash= "AQAAAAIAAYagAAAAEK3JbxnMOU+exC6cOxQLvXvHG6Xt/a7qhEXNftH7DTJLiaC5qZ4fuRAYHF58dVJXaQ==",
 					SecurityStamp= "RYZH37KPG6EEDGSYWW37NETRG56JM7KG",
+					PhoneNumber = "+993509998485",
 					ProfileImageUrl = $"https://picsum.photos/seed/user{i}/200/300" // Using Lorem Picsum for random images
 				};
 				if (i <= 20)

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.DTOs.ReadDTO.AdminPanelDTOs;
 using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
@@ -24,6 +25,12 @@ namespace Domain.AutoMapperProfiles
 
            //Company
            CreateMap<AppUser,CompanyProfileReadDTO>(); 
-        }
+
+
+            //Admin panel
+            CreateMap<AppUser, AppUserReadAdminDTO>();
+            CreateMap<AppUser, CompanyReadAdminDTO>();
+            CreateMap<AppUser, VetReadAdminDTO>();
+		}
     }
 }
