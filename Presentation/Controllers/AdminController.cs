@@ -49,7 +49,7 @@ namespace Presentation.Controllers
 
 
 
-		#region User Actions
+		#region AppUser control Actions
 
 		[HttpPost("[action]")]
 		public async Task<IActionResult> AdminGetUsers([FromBody] UsersFilterAdminModel filterModel)
@@ -61,6 +61,16 @@ namespace Presentation.Controllers
 			userDTOs = userDTOs.Skip(skip).Take(filterModel.PageSize).ToList();
 			return Ok(new { usersList = userDTOs, totalUsers });
 		}
+
+		[HttpDelete("[action]")]
+		public async Task<IActionResult> DeleteUser([FromQuery] int id)
+		{
+			var statusCode = await _adminService.DeleteUser(id);
+			return Ok(statusCode);
+		}
+
+		#endregion
+
 		[HttpPost("[action]")]
 		public async Task<IActionResult> AdminGetVets([FromBody] VetFilterAdminModel filterModel)
 		{
@@ -85,7 +95,6 @@ namespace Presentation.Controllers
 			return Ok(new { companiesList = companyDTOs, totalCompanies });
 		}
 
-		#endregion
 
 
 	}

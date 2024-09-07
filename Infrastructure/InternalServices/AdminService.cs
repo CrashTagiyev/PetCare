@@ -6,8 +6,8 @@ using Domain.DTOs.ReadDTO.AdminPanelDTOs;
 using Domain.Identity;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
-using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Identity;
+using System.Net;
 
 namespace Infrastructure.InternalServices
 {
@@ -96,14 +96,16 @@ namespace Infrastructure.InternalServices
 
 		#endregion
 
-		#region User services
-
+	
+			#region AppUser services
 		public async Task<List<AppUserReadAdminDTO>> GetUsersDatas(UsersFilterAdminModel filterModel)
 		{
 			var users = await _userManager.GetUsersInRoleAsync("User");
 			var userDTOs = users.Select(_mapper.Map<AppUserReadAdminDTO>).ToList();
 			return userDTOs;
 		}
+
+			#endregion
 
 		public async Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel)
 		{
@@ -121,6 +123,22 @@ namespace Infrastructure.InternalServices
 
 
 
-		#endregion
+		public async Task<HttpStatusCode> DeleteUser(int userId)
+		{
+			try
+			{
+				var user = await _appUserReadRepository.GetByIdAsync(userId);
+				if (user is null)
+					return HttpStatusCode.NotFound;
+
+				await _userManager.DeleteAsync(user);
+				return HttpStatusCode.OK;				
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
+
 	}
 }
