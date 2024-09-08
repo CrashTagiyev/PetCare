@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="PetCareDB@localhost" uuid="4ad0113c-00ba-4cf0-ad68-0d090f3dda5d">
+    <data-source source="LOCAL" name="PetCareDB@localhost" uuid="083b4153-a4dc-40cd-ab54-56e9ed51d17c">
       <driver-ref>sqlserver.jb</driver-ref>
       <synchronize>true</synchronize>
       <configured-by-url>true</configured-by-url>
