@@ -84,5 +84,12 @@ namespace Infrastructure.InternalServices
 			var shelterDTos = shelters.Select(_mapper.Map<ShelterReadDto>).ToList();
 			return shelterDTos;
 		}
+		
+		public async Task<ICollection<AdoptionReadDto>> GetAdoptionsForCompanyAsync(int companyId)
+		{
+			var adoptions = await _userReadRepository.GetAdoptionsForCompanyAsync(companyId);
+			var adoptionDto = adoptions.Select(_mapper.Map<AdoptionReadDto>).ToList();
+			return adoptionDto;
+		}
 	}
 }

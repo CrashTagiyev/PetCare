@@ -24,7 +24,7 @@ namespace Domain.Entities.Concretes
 		virtual public PetType PetType { get; set; }
 		virtual public Breed Breed { get; set; }
 		virtual public Shelter Shelter { get; set; }
-		virtual public Adoption? Adoption { get; set; }
+		virtual public ICollection<Adoption>? Adoptions { get; set; }
 
 		public ICollection<AcceptRequest> AcceptRequests { get; set; }
 

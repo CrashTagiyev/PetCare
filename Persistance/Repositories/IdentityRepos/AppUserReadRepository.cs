@@ -76,5 +76,23 @@ namespace Persistance.Repositories.IdentityRepos
 			var user = await _userManager.FindByNameAsync(username);
 			return user is not null ? true : false;
 		}
+		
+		public async Task<ICollection<Adoption>> GetAdoptionsForCompanyAsync(int companyId)
+		{
+			// Fetch shelters owned by the company
+			var shelters = await _context.Shelters
+				.Where(s => s.CompanyId == companyId)
+				.Include(s => s.Pets)
+				.ThenInclude(p => p.Adoptions)
+				.ToListAsync();
+
+			// Extract adoptions from the pets under these shelters
+			var adoptions = shelters
+				.SelectMany(s => s.Pets)
+				.SelectMany(p => p.Adoptions)
+				.ToList();
+
+			return adoptions;
+		}
 	}
 }

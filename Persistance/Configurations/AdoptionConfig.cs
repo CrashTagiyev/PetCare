@@ -10,8 +10,8 @@ namespace Persistance.Configurations
 		{
 			//Relations
 			builder.HasOne(a => a.Pet)
-				.WithOne(p => p.Adoption)
-				.HasForeignKey<Adoption>(a => a.PetId)
+				.WithMany(p => p.Adoptions)
+				.HasForeignKey(a => a.PetId)
 				.OnDelete(DeleteBehavior.NoAction);
 
 			builder.HasOne(a => a.User)
