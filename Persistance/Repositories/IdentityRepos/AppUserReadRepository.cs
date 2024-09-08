@@ -1,4 +1,6 @@
-﻿using Domain.AbstractRepositories.IdentityRepos;
+﻿using System.Collections;
+using Domain.AbstractRepositories.IdentityRepos;
+using Domain.DTOs.ReadDTO;
 using Domain.Entities.Concretes;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -75,6 +77,25 @@ namespace Persistance.Repositories.IdentityRepos
 		{
 			var user = await _userManager.FindByNameAsync(username);
 			return user is not null ? true : false;
+		}
+		
+		// Method to get adoptions for a company by verifying access through shelters and pets
+		public async Task<ICollection<Adoption>> GetAdoptionsForCompanyAsync(int companyId)
+		{
+			// Fetch shelters owned by the company
+			var shelters = await _context.Shelters
+				.Where(s => s.CompanyId == companyId)
+				.Include(s => s.Pets)
+				.ThenInclude(p => p.Adoptions)
+				.ToListAsync();
+
+			// Extract adoptions from the pets under these shelters
+			var adoptions = shelters
+				.SelectMany(s => s.Pets)
+				.SelectMany(p => p.Adoptions)
+				.ToList();
+
+			return adoptions;
 		}
 	}
 }

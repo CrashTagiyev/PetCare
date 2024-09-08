@@ -14,6 +14,7 @@ namespace Domain.DTOs.ReadDTO.IdentityDTOs
         public string? Email { get; set; }
         //Company
         public string? CompanyName { get; set; }
+        
 		//public virtual ICollection<Shelter>? Shelters { get; set; }
 
 		//Vet/Company

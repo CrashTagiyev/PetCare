@@ -12,6 +12,7 @@ namespace Domain.AbstractRepositories.IdentityRepos
 		Task<bool> IsEmailExistAsync(string email);
 		Task<bool> IsEmailConfirmedAsync(string email);
 		Task<ICollection<AppUser>> GetCompanies();
-		Task<ICollection<Shelter>> GetCompanySheltersByIdAsync(int companyId);	 
+		Task<ICollection<Shelter>> GetCompanySheltersByIdAsync(int companyId);
+		Task<ICollection<Adoption>> GetAdoptionsForCompanyAsync(int companyId);
 	}
 }

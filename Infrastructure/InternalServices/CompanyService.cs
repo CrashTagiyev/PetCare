@@ -1,4 +1,5 @@
-﻿using Application.ServiceAbstracts;
+﻿using System.Collections;
+using Application.ServiceAbstracts;
 using Application.ServiceAbstracts.UserServices;
 using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
@@ -83,6 +84,13 @@ namespace Infrastructure.InternalServices
 			var shelters = await _userReadRepository.GetCompanySheltersByIdAsync(companyId);
 			var shelterDTos = shelters.Select(_mapper.Map<ShelterReadDto>).ToList();
 			return shelterDTos;
+		}
+
+		public async Task<ICollection<AdoptionReadDto>> GetAdoptionsForCompanyAsync(int companyId)
+		{
+			var adoptions = await _userReadRepository.GetAdoptionsForCompanyAsync(companyId);
+			var adoptionDto = adoptions.Select(_mapper.Map<AdoptionReadDto>).ToList();
+			return adoptionDto;
 		}
 	}
 }

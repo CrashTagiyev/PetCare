@@ -18,7 +18,7 @@ namespace Persistance.Configurations
 				.WithMany(pt => pt.Pets)
 				.HasForeignKey(p => p.PetTypeId).OnDelete(DeleteBehavior.NoAction);
 
-			builder.HasOne(p => p.Adoption)
+			builder.HasMany(p => p.Adoptions)
 				.WithOne(a => a.Pet)
 				.OnDelete(DeleteBehavior.Restrict);
 

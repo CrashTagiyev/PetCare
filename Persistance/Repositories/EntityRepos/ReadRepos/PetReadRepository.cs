@@ -58,7 +58,7 @@ namespace Persistance.Repositories.EntityRepos.ReadRepos
 
 		public async Task<Pet?> GetByIdAsync(int id)
 		{
-			return await _table.Include(p => p.Breed).Include(p => p.PetType).Include(p => p.Shelter).FirstOrDefaultAsync(p => p.Id == id);
+			return await _table.Include(p => p.Breed).Include(p => p.PetType).Include(p => p.Shelter).Include(p => p.Shelter.Company).Include(p=>p.Adoptions).FirstOrDefaultAsync(p => p.Id == id);
 		}
 	}
 }

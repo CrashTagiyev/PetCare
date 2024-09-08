@@ -9,6 +9,7 @@ namespace Application.ServiceAbstracts.UserServices
 	{
 		Task<CompanyProfileReadDTO> GetCompanyProfileInfo(int id);
 		Task<HttpStatusCode> CreateShelter(ShelterWriteDto shelterWriteDto);
-		Task<List<ShelterReadDto>> GetCompanySheltersById(int companyId);	
+		Task<List<ShelterReadDto>> GetCompanySheltersById(int companyId);
+		Task<ICollection<AdoptionReadDto>> GetAdoptionsForCompanyAsync(int companyId);
 	}
 }

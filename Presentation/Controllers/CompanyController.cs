@@ -47,5 +47,20 @@ namespace Presentation.Controllers
 				return BadRequest(ex.Message);
 			}
 		}
+
+		[HttpGet("[action]")]
+		[Authorize(Roles = "Company")]
+		public async Task<IActionResult> GetCompanyAdoptions(int companyId)
+		{
+			try
+			{
+				var adoptions = await _companyService.GetAdoptionsForCompanyAsync(companyId);
+				return Ok(adoptions);
+			}
+			catch(Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
 	}
 }

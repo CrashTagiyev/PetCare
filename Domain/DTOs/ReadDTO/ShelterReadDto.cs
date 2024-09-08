@@ -1,3 +1,4 @@
+using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.Entities.Concretes;
 
 namespace Domain.DTOs.ReadDTO;
@@ -13,4 +14,5 @@ public class ShelterReadDto
 	public string? PhoneNumber { get; set; }
 	public string? EmailAddress { get; set; }
 	public string? ShelterImageUrl { get; set; }
+	public CompanyProfileReadDTO Company { get; set; }
 }

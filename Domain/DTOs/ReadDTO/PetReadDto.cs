@@ -1,3 +1,4 @@
+using Domain.Entities.Concretes;
 using Domain.Enums;
 
 namespace Domain.DTOs.ReadDTO;
@@ -18,4 +19,5 @@ public class PetReadDto
     public PetTypeReadDto PetType { get; set; }
     public ShelterReadDto  Shelter { get; set; }
     public BreedReadDto  Breed { get; set; }
+    public List<AdoptionReadDto> Adoptions { get; set; }
 }
