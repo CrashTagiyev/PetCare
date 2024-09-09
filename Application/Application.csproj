@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Behaviours\Commands\" />
     <Folder Include="Behaviours\Queries\" />
+    <Folder Include="Validators\FluentValidators\DtoValidatons\AdminDTOValidators\" />
   </ItemGroup>
 
   <ItemGroup>

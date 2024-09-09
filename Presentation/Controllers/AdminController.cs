@@ -1,13 +1,15 @@
 ﻿using Application.ServiceAbstracts.UserServices;
+using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
 using Domain.Models.AdminPanelModels.AdminControlModels;
-using Microsoft.AspNetCore.Authorization;
+using Domain.Models.AuthModels.Request;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Presentation.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	[Authorize(Roles = "Admin")]
+	//[Authorize(Roles = "Admin")]
 	public class AdminController : ControllerBase
 	{
 		private readonly IAdminService _adminService;
@@ -52,7 +54,7 @@ namespace Presentation.Controllers
 		#region AppUser control Actions
 
 		[HttpPost("[action]")]
-		public async Task<IActionResult> AdminGetUsers([FromBody] UsersFilterAdminModel filterModel)
+		public async Task<IActionResult> GetAppUsers([FromBody] UsersFilterAdminModel filterModel)
 		{
 			var userDTOs = await _adminService.GetUsersDatas(filterModel);
 
@@ -62,12 +64,76 @@ namespace Presentation.Controllers
 			return Ok(new { usersList = userDTOs, totalUsers });
 		}
 
+		[HttpPost("[action]")]
+		public async Task<IActionResult> CreateAppUser([FromForm] RegisterRequest registerRequest)
+		{
+
+			if (!ModelState.IsValid)
+			{
+				var errors = ModelState
+					.Where(ms => ms.Value.Errors.Count > 0)
+					.ToDictionary(
+						ms => ms.Key,
+						ms => ms.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+
+				return BadRequest(new { errors });
+
+			}
+
+			var result = await _adminService.CreateUser(registerRequest);
+			if (result != HttpStatusCode.OK)
+			{
+				return BadRequest(new { errors = "Something is wrong. Account is not created" });
+			}
+
+			return Ok(new { statusCode = result, statusMessage = "Account created successfully" });
+		}
+
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> GetAppUser([FromQuery] int userId)
+		{
+			var userDTO = await _adminService.GetAppUserById(userId);
+			return Ok(userDTO);
+		}
+
+		[HttpPut("[action]")]
+		public async Task<IActionResult> UpdateAppUser([FromForm] AppUserUpdateAdminDTO updateAdminDTO)
+		{
+			if (!ModelState.IsValid)
+			{
+				var errors = ModelState
+					.Where(ms => ms.Value.Errors.Count > 0)
+					.ToDictionary(
+						ms => ms.Key,
+						ms => ms.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+
+				return BadRequest(new { errors });
+
+			}
+
+			var statusCode = await _adminService.UpdateAppUser(updateAdminDTO);
+			if (statusCode is HttpStatusCode.NotFound)
+				return NotFound(new { statusCode, statusMessage = $"App user with this id:{updateAdminDTO.Id} did not found" });
+
+			if (statusCode is HttpStatusCode.InternalServerError)
+				return NotFound(new { statusCode, statusMessage = $"Internal server error occurced" });
+
+
+			return Ok(new { statusCode, statusMessage = "App user updated successfuly" });
+
+
+		}
+
+
 		[HttpDelete("[action]")]
-		public async Task<IActionResult> DeleteUser([FromQuery] int id)
+		public async Task<IActionResult> DeleteAppUser([FromQuery] int id)
 		{
 			var statusCode = await _adminService.DeleteUser(id);
 			return Ok(statusCode);
 		}
+
+
 
 		#endregion
 
