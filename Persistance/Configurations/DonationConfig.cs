@@ -9,17 +9,17 @@ namespace Persistance.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Donation> builder)
 		{
-			//Relations
-			builder.HasOne(u=>u.User)
-				.WithMany(u => u.Donations)
-				.HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.NoAction);
+			////Relations
+			//builder.HasOne(u=>u.User)
+			//	.WithMany(u => u.Donations)
+			//	.HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.NoAction);
 
 			
 
-			//Properties
-			builder.Property(d => d.UserId).IsRequired();
-			builder.Property(d => d.CompanyId).IsRequired();
-			builder.Property(d => d.Amount).IsRequired();
+			////Properties
+			//builder.Property(d => d.UserId).IsRequired();
+			//builder.Property(d => d.CompanyId).IsRequired();
+			//builder.Property(d => d.Amount).IsRequired();
 
 		}
 	}

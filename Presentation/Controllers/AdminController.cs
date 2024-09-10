@@ -149,6 +149,9 @@ namespace Presentation.Controllers
 			return Ok(new { vetsList = vetDTOs, totalVets });
 		}
 
+
+		#region Company control Actions
+
 		[HttpPost("[action]")]
 		public async Task<IActionResult> AdminGetCompanies([FromBody] CompanyFilterAdminModel filterModel)
 		{
@@ -161,7 +164,18 @@ namespace Presentation.Controllers
 			return Ok(new { companiesList = companyDTOs, totalCompanies });
 		}
 
+		[HttpPost("[action]")]
+		public async Task<IActionResult> AdminCreateCompany([FromForm] RegisterCompanyRequest request)
+		{
+			var statusCode = await _adminService.CreateCompany(request);
+			if (statusCode is HttpStatusCode.Created)
+				return Ok("Account successfully created");
 
+			return BadRequest(statusCode);
+		}
+
+
+		#endregion
 
 	}
 }

@@ -18,7 +18,6 @@ namespace Application.ServiceAbstracts.UserServices
 		#endregion
 
 
-
 		#region User controls
 
 		Task<List<AppUserReadAdminDTO>> GetUsersDatas(UsersFilterAdminModel filterModel);
@@ -28,9 +27,14 @@ namespace Application.ServiceAbstracts.UserServices
 		#endregion
 
 
+		#region Company control services
+
+		Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel);
+		Task<HttpStatusCode> CreateCompany(RegisterCompanyRequest request);
+
+		#endregion
 
 		Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel);
-		Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel);
 		Task<HttpStatusCode> UpdateAppUser(AppUserUpdateAdminDTO updateAdminDTO);
 
 		Task<HttpStatusCode> DeleteUser(int userId);

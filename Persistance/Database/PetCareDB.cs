@@ -23,7 +23,7 @@ namespace Persistance.Database
 			builder.ApplyConfiguration(new ShelterConfig());
 			builder.ApplyConfiguration(new PetTypeConfig());
 			builder.ApplyConfiguration(new BreedConfig());
-			builder.ApplyConfiguration(new DonationConfig());
+			//builder.ApplyConfiguration(new DonationConfig());
 			builder.ApplyConfiguration(new MessageConfiguration());
 			builder.ApplyConfiguration(new ChatConfiguration());
 			builder.ApplyConfiguration(new UserConfigruation());
@@ -59,7 +59,7 @@ namespace Persistance.Database
 		public DbSet<Adoption> Adoptions { get; set; }
 		public DbSet<Breed> Breeds { get; set; }
 		public DbSet<AcceptRequest> AcceptRequests { get; set; }
-		public DbSet<Donation> Donations { get; set; }
+		//public DbSet<Donation> Donations { get; set; }
 		public DbSet<Shelter> Shelters { get; set; }
 		public DbSet<Chat> Chats { get; set; }
 		public DbSet<Message> Messages { get; set; }

@@ -11,7 +11,6 @@ namespace Persistance.Configurations
 			//Properties
 			builder.Property(pt => pt.TypeName).IsRequired();
 
-
 			// Seed Data
 			builder.HasData(
 				new PetType { Id = 1, TypeName = "Dogs" },

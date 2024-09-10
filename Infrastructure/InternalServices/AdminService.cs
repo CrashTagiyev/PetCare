@@ -182,10 +182,7 @@ namespace Infrastructure.InternalServices
 
 		//-------------------------------------
 
-
-
-
-
+		#region Vet services
 
 
 		public async Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel)
@@ -195,6 +192,10 @@ namespace Infrastructure.InternalServices
 
 			return vetDTOs;
 		}
+		#endregion
+
+
+		#region Company services
 		public async Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel)
 		{
 			var companies = await _userManager.GetUsersInRoleAsync("Company");
@@ -202,7 +203,34 @@ namespace Infrastructure.InternalServices
 			return companyDTOs;
 		}
 
+		public async Task<HttpStatusCode> CreateCompany(RegisterCompanyRequest request)
+		{
+			try
+			{
 
+				var newCompany = _mapper.Map<AppUser>(request);
+
+				if (request.ProfileImage is not null)
+					newCompany.ProfileImageUrl = await _blobService.UploadImageFileAsync(request.ProfileImage);
+
+				newCompany.EmailConfirmed = true;
+				var result = await _userManager.CreateAsync(newCompany, request.Password!);
+
+				if (result.Succeeded)
+				{
+					await _userManager.AddToRoleAsync(newCompany, "Company");
+					return HttpStatusCode.Created;
+				}
+
+				return HttpStatusCode.BadRequest;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+			}
+		}
+		#endregion
 
 		public async Task<HttpStatusCode> DeleteUser(int userId)
 		{

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Persistance.BuilderRegisters;
-using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using System.Text;
 using System.Text.Json.Serialization;
 

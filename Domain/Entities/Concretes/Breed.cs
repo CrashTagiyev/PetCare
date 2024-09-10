@@ -14,5 +14,7 @@ namespace Domain.Entities.Concretes
         public int PetTypeId { get; set; }
         //Property navigations
         public PetType? PetType { get; set; }
+
+        public ICollection<Pet> Pets { get; set; }
     }
 }

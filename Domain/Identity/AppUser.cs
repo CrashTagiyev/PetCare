@@ -33,8 +33,8 @@ namespace Domain.Identity
 		public string? About { get; set; }= string.Empty;	
 
 		//App Users
-		public virtual ICollection<Donation>? Donations { get; set; }
-		public virtual ICollection<AcceptRequest>? AcceptRequests { get; set; }
+		//public virtual ICollection<Donation>? Donations { get; set; }
+		public virtual ICollection<AcceptRequest?>? AcceptRequests { get; set; }
 		public virtual ICollection<Adoption>? Adoptions { get; set; }
 
         //Chatting between Vet  && User || Company
