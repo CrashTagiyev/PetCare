@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs
+namespace Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs
 {
-    public class AppUserReadAdminDTO
+    public class AppUserUpdateAdminDTO
     {
         public int Id { get; set; }
         public string? Firstname { get; set; }
@@ -12,9 +12,7 @@ namespace Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs
         public DateTime? DateOfBirth { get; set; }
         public string? City { get; set; }
         public string? Address { get; set; }
-        public string? ProfileImageUrl { get; set; }
+        public IFormFile? ProfileImage { get; set; }
         public string? PhoneNumber { get; set; }
-        public DateTime CreatedTime { get; set; }
-        public DateTime LastUpdatedTime { get; set; }
     }
 }

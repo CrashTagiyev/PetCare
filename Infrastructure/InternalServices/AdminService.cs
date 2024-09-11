@@ -3,31 +3,37 @@ using Application.ServiceAbstracts.UserServices;
 using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.IdentityRepos;
-using Domain.DTOs.ReadDTO.AdminPanelDTOs;
-using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs;
+using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
+using Domain.Entities.Concretes;
 using Domain.Identity;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
 using Domain.Models.AuthModels.Request;
+using Domain.Models.AuthModels.Response;
 using Microsoft.AspNetCore.Identity;
+using Persistance.Repositories.EntityRepos.ReadRepos;
 using System.Net;
 
 namespace Infrastructure.InternalServices
 {
-	public class AdminService : IAdminService
+    public class AdminService : IAdminService
 	{
 		private readonly IPetReadRepository _petReadRepository;
+		private readonly IPetTypeReadRepository _petTypeReadRepository;
 		private readonly UserManager<AppUser> _userManager;
 		private readonly IAppUserReadRepository _appUserReadRepository;
 		private readonly IMapper _mapper;
 		private readonly IBlobService _blobService;
-		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService)
+		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService, IPetTypeReadRepository petTypeReadRepository)
 		{
 			_petReadRepository = petReadRepository;
 			_userManager = userManager;
 			_appUserReadRepository = appUserReadRepository;
 			_mapper = mapper;
 			_blobService = blobService;
+			_petTypeReadRepository = petTypeReadRepository;
 		}
 
 
@@ -101,7 +107,7 @@ namespace Infrastructure.InternalServices
 
 		#endregion
 
-		//---------------------------------------------------
+		//----------------------------------------------------
 		#region AppUser services
 		public async Task<List<AppUserReadAdminDTO>> GetUsersDatas(UsersFilterAdminModel filterModel)
 		{
@@ -180,7 +186,7 @@ namespace Infrastructure.InternalServices
 		#endregion
 
 
-		//-------------------------------------
+		//----------------------------------------------------
 
 		#region Vet services
 
@@ -192,9 +198,42 @@ namespace Infrastructure.InternalServices
 
 			return vetDTOs;
 		}
+
+		public async Task<HttpStatusCode> CreateVet(RegisterVetRequest registerVetRequest)
+		{
+			var vet = _mapper.Map<AppUser>(registerVetRequest);
+
+			if (registerVetRequest.ProfileImage is not null)
+			{
+				vet.ProfileImageUrl = await _blobService.UploadImageFileAsync(registerVetRequest.ProfileImage);
+			}
+
+			vet.ProficientPetTypes = new List<PetType>();
+			var petTypes = await _petTypeReadRepository.GetAllAsync();
+			var proficientPetTypes = petTypes.Where(pt => registerVetRequest.ProficientPetTypesIds[0].Split(",").Contains(pt.Id.ToString())).ToList();
+
+			foreach (var petType in proficientPetTypes)
+			{
+				vet.ProficientPetTypes.Add(petType);
+			}
+			vet.EmailConfirmed = true;
+			var result = await _userManager.CreateAsync(vet, registerVetRequest.Password!);
+
+			if (result.Succeeded)
+			{
+				await _userManager.AddToRoleAsync(vet, "Vet");
+	
+				return HttpStatusCode.Created;
+			}
+		
+			return HttpStatusCode.InternalServerError;
+		}
+
+
+
 		#endregion
 
-
+		//----------------------------------------------------
 		#region Company services
 		public async Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel)
 		{
@@ -202,6 +241,13 @@ namespace Infrastructure.InternalServices
 			var companyDTOs = companies.Select(_mapper.Map<CompanyReadAdminDTO>).ToList();
 			return companyDTOs;
 		}
+
+		public async Task<CompanyReadAdminDTO> GetCompany(int companyId)
+		{
+			var companies = await _userManager.GetUsersInRoleAsync("Company");
+			return companies.Select(_mapper.Map<CompanyReadAdminDTO>).FirstOrDefault(c => c.Id == companyId)!;
+		}
+
 
 		public async Task<HttpStatusCode> CreateCompany(RegisterCompanyRequest request)
 		{
@@ -230,7 +276,41 @@ namespace Infrastructure.InternalServices
 				throw new Exception(ex.Message);
 			}
 		}
+
+
+		public async Task<HttpStatusCode> UpdateCompany(CompanyUpdateAdminDTO updateAdminDTO)
+		{
+			try
+			{
+
+				var company = await _appUserReadRepository.GetByIdAsync(updateAdminDTO.Id);
+				if (company is null)
+					return HttpStatusCode.NotFound;
+
+				_mapper.Map(updateAdminDTO, company, typeof(CompanyUpdateAdminDTO), typeof(AppUser));
+
+				if (updateAdminDTO.ProfileImage is not null)
+				{
+					var imageDeletingStatusCode = await _blobService.DeleteImageFileAsync(company.ProfileImageUrl!);
+					var newImageUrl = await _blobService.UploadImageFileAsync(updateAdminDTO.ProfileImage);
+					company.ProfileImageUrl = newImageUrl;
+				}
+
+				var result = await _userManager.UpdateAsync(company);
+
+				if (result.Succeeded)
+					return HttpStatusCode.OK;
+
+				return HttpStatusCode.InternalServerError;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
+
 		#endregion
+
 
 		public async Task<HttpStatusCode> DeleteUser(int userId)
 		{
