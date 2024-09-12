@@ -229,7 +229,23 @@ namespace Infrastructure.InternalServices
 			return HttpStatusCode.InternalServerError;
 		}
 
+		public async Task<VetReadAdminDTO> GetVetById(int vetId)
+		{
+			try
+			{
+				var vets = await 
+				var vet =  vets.Select(_mapper.Map<VetReadAdminDTO>).FirstOrDefault(v => v.Id == vetId);
 
+				if (vet is null)
+					throw new Exception($"Vet with this id:{vetId} did not found");
+
+				return vet;
+            }
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
 
 		#endregion
 

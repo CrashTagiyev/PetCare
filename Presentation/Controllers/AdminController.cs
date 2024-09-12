@@ -157,7 +157,12 @@ namespace Presentation.Controllers
 			return Ok(new { message = "Account is successfully create", statusCode });
 		}
 
-
+		[HttpGet("[action]")]
+		public async Task<IActionResult> AdminGetVetById(int vetId)
+		{
+			var vet = await _adminService.GetVetById(vetId);
+			return Ok(vet);
+		}
 
 		#endregion
 

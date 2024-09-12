@@ -32,7 +32,7 @@ namespace Application.ServiceAbstracts.UserServices
 		
 		Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel);
 		Task<HttpStatusCode> CreateVet(RegisterVetRequest registerVetRequest);
-
+		Task<VetReadAdminDTO> GetVetById(int id);
 		#endregion
 
 		#region Company control services
