@@ -13,15 +13,19 @@ namespace Persistance.Configurations
 			//Relations
 			builder.HasOne(p => p.Shelter)
 				.WithMany(sb => sb.Pets)
-				.HasForeignKey(p => p.ShelterId).OnDelete(DeleteBehavior.Restrict);
+				.HasForeignKey(p => p.ShelterId).OnDelete(DeleteBehavior.Cascade);
 
 			builder.HasOne(p => p.PetType)
 				.WithMany(pt => pt.Pets)
-				.HasForeignKey(p => p.PetTypeId).OnDelete(DeleteBehavior.NoAction);
+				.HasForeignKey(p => p.PetTypeId).OnDelete(DeleteBehavior.SetNull);
+			
+			builder.HasOne(p => p.Breed)
+				.WithMany(b => b.Pets)
+				.HasForeignKey(p => p.PetTypeId).OnDelete(DeleteBehavior.SetNull);
 
 			builder.HasMany(p => p.Adoptions)
 				.WithOne(a => a.Pet)
-				.OnDelete(DeleteBehavior.Restrict);
+				.OnDelete(DeleteBehavior.Cascade);
 
 			//Properties
 			builder.Property(p => p.Age).IsRequired();

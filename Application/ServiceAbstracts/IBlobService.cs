@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Net;
 
 namespace Application.ServiceAbstracts
 {
@@ -6,5 +7,6 @@ namespace Application.ServiceAbstracts
 	{
 		Task<string> UploadImageFileAsync(IFormFile file);
 		Task<ICollection<string>> UploadImageFileRangeAsync(IFormFileCollection fileCollection);
+		Task<HttpStatusCode> DeleteImageFileAsync(string imageUrl);
 	}
 }

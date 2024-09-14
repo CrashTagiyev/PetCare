@@ -1,8 +1,10 @@
 ﻿using Application.ServiceAbstracts;
+using Azure;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System.Net;
 
 namespace Infrastructure.InternalServices
 {
@@ -14,6 +16,29 @@ namespace Infrastructure.InternalServices
 		{
 			_blobServiceClient = blobService;
 			_configuration = configuration;
+		}
+
+		public async Task<HttpStatusCode> DeleteImageFileAsync(string imageUrl)
+		{
+			var imageName = imageUrl.Split("/")[^1];
+			var blobStorageContainerName = _blobServiceClient.GetBlobContainerClient(
+				_configuration.GetValue<string>("PetCareImageBlobContainer"));
+
+			var blobStorageClient = blobStorageContainerName.GetBlobClient(imageName);
+
+			try
+			{
+				var response = await blobStorageClient.DeleteIfExistsAsync();
+
+				if (response.Value) 
+					return HttpStatusCode.OK;
+				else
+					return HttpStatusCode.NotFound; 
+			}
+			catch (RequestFailedException)
+			{
+				return HttpStatusCode.InternalServerError;
+			}
 		}
 		public async Task<string> UploadImageFileAsync(IFormFile file)
 		{

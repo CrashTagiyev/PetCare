@@ -13,12 +13,12 @@ namespace Persistance.Configurations
 			builder.HasOne(ar=>ar.Pet)
 				.WithMany(p => p.AcceptRequests)
 				.HasForeignKey(ar => ar.PetId)
-				.OnDelete(DeleteBehavior.NoAction);
+				.OnDelete(DeleteBehavior.Cascade);
 
 			builder.HasOne(ar=>ar.User)
 				.WithMany(u => u.AcceptRequests)
 				.HasForeignKey(u => u.UserId)
-				.OnDelete(DeleteBehavior.NoAction);
+				.OnDelete(DeleteBehavior.Restrict);
 
 			builder.Property(ar => ar.UserId).IsRequired();
 			builder.Property(ar => ar.PetId).IsRequired();

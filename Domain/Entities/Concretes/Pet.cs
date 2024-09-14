@@ -16,17 +16,17 @@ namespace Domain.Entities.Concretes
 		public decimal Weight { get; set; }
 
 		//Foreign key
-		public int BreedId { get; set; }
-		public int PetTypeId { get; set; }
+		public int? BreedId { get; set; }
+		public int? PetTypeId { get; set; }
 		public int ShelterId { get; set; }
 		public int? AdoptionId { get; set; }
 		//Navigation property
-		virtual public PetType PetType { get; set; }
-		virtual public Breed Breed { get; set; }
+		virtual public PetType? PetType { get; set; }
+		virtual public Breed? Breed { get; set; }
 		virtual public Shelter Shelter { get; set; }
 		virtual public ICollection<Adoption>? Adoptions { get; set; }
 
-		public ICollection<AcceptRequest> AcceptRequests { get; set; }
+		public ICollection<AcceptRequest?>? AcceptRequests { get; set; }
 
 	}
 }

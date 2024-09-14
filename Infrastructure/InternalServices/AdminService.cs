@@ -1,11 +1,14 @@
-﻿using Application.ServiceAbstracts.UserServices;
+﻿using Application.ServiceAbstracts;
+using Application.ServiceAbstracts.UserServices;
 using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.ReadDTO.AdminPanelDTOs;
+using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
 using Domain.Identity;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
+using Domain.Models.AuthModels.Request;
 using Microsoft.AspNetCore.Identity;
 using System.Net;
 
@@ -17,12 +20,14 @@ namespace Infrastructure.InternalServices
 		private readonly UserManager<AppUser> _userManager;
 		private readonly IAppUserReadRepository _appUserReadRepository;
 		private readonly IMapper _mapper;
-		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper)
+		private readonly IBlobService _blobService;
+		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService)
 		{
 			_petReadRepository = petReadRepository;
 			_userManager = userManager;
 			_appUserReadRepository = appUserReadRepository;
 			_mapper = mapper;
+			_blobService = blobService;
 		}
 
 
@@ -96,8 +101,8 @@ namespace Infrastructure.InternalServices
 
 		#endregion
 
-	
-			#region AppUser services
+		//---------------------------------------------------
+		#region AppUser services
 		public async Task<List<AppUserReadAdminDTO>> GetUsersDatas(UsersFilterAdminModel filterModel)
 		{
 			var users = await _userManager.GetUsersInRoleAsync("User");
@@ -105,7 +110,80 @@ namespace Infrastructure.InternalServices
 			return userDTOs;
 		}
 
-			#endregion
+		public async Task<AppUserReadAdminDTO> GetAppUserById(int userId)
+		{
+			try
+			{
+				var user = await _appUserReadRepository.GetByIdAsync(userId);
+				if (user is null)
+					throw new Exception($"App user did not found by this id {userId}");
+
+				return _mapper.Map<AppUserReadAdminDTO>(user);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
+		public async Task<HttpStatusCode> CreateUser(RegisterRequest request)
+		{
+			var user = _mapper.Map<AppUser>(request);
+			user.EmailConfirmed = true;
+
+			if (request.ProfileImage is not null)
+				user.ProfileImageUrl = await _blobService.UploadImageFileAsync(request.ProfileImage);
+
+			var result = await _userManager.CreateAsync(user, request.Password!);
+
+			if (result.Succeeded)
+			{
+				await _userManager.AddToRoleAsync(user, "User");
+
+				return HttpStatusCode.OK;
+			}
+
+			return HttpStatusCode.BadRequest;
+		}
+		public async Task<HttpStatusCode> UpdateAppUser(AppUserUpdateAdminDTO updateAdminDTO)
+		{
+			try
+			{
+
+				var user = await _appUserReadRepository.GetByIdAsync(updateAdminDTO.Id);
+				if (user is null)
+					return HttpStatusCode.NotFound;
+
+				_mapper.Map(updateAdminDTO, user, typeof(AppUserUpdateAdminDTO), typeof(AppUser));
+
+				if (updateAdminDTO.ProfileImage is not null)
+				{
+					var imageDeletingStatusCode = await _blobService.DeleteImageFileAsync(user.ProfileImageUrl!);
+					var newImageUrl = await _blobService.UploadImageFileAsync(updateAdminDTO.ProfileImage);
+					user.ProfileImageUrl = newImageUrl;
+				}
+
+				var result = await _userManager.UpdateAsync(user);
+
+				if (result.Succeeded)
+					return HttpStatusCode.OK;
+
+				return HttpStatusCode.InternalServerError;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+			}
+		}
+
+
+		#endregion
+
+
+		//-------------------------------------
+
+		#region Vet services
+
 
 		public async Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel)
 		{
@@ -114,6 +192,10 @@ namespace Infrastructure.InternalServices
 
 			return vetDTOs;
 		}
+		#endregion
+
+
+		#region Company services
 		public async Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel)
 		{
 			var companies = await _userManager.GetUsersInRoleAsync("Company");
@@ -121,7 +203,34 @@ namespace Infrastructure.InternalServices
 			return companyDTOs;
 		}
 
+		public async Task<HttpStatusCode> CreateCompany(RegisterCompanyRequest request)
+		{
+			try
+			{
 
+				var newCompany = _mapper.Map<AppUser>(request);
+
+				if (request.ProfileImage is not null)
+					newCompany.ProfileImageUrl = await _blobService.UploadImageFileAsync(request.ProfileImage);
+
+				newCompany.EmailConfirmed = true;
+				var result = await _userManager.CreateAsync(newCompany, request.Password!);
+
+				if (result.Succeeded)
+				{
+					await _userManager.AddToRoleAsync(newCompany, "Company");
+					return HttpStatusCode.Created;
+				}
+
+				return HttpStatusCode.BadRequest;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+			}
+		}
+		#endregion
 
 		public async Task<HttpStatusCode> DeleteUser(int userId)
 		{
@@ -132,7 +241,7 @@ namespace Infrastructure.InternalServices
 					return HttpStatusCode.NotFound;
 
 				await _userManager.DeleteAsync(user);
-				return HttpStatusCode.OK;				
+				return HttpStatusCode.OK;
 			}
 			catch (Exception ex)
 			{

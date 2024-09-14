@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.DTOs.ReadDTO.AdminPanelDTOs;
+using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
 using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Domain.AutoMapperProfiles
 {
-	public class AppUserProfile:Profile
+    public class AppUserProfile:Profile
 	{
         public AppUserProfile()
         {
@@ -35,6 +36,8 @@ namespace Domain.AutoMapperProfiles
             CreateMap<AppUser, AppUserReadAdminDTO>();
             CreateMap<AppUser, CompanyReadAdminDTO>();
             CreateMap<AppUser, VetReadAdminDTO>();
+            CreateMap<AppUserUpdateAdminDTO, AppUser>()
+                .ForMember(dest => dest.Id, options => options.Ignore());
 		}
     }
 }
