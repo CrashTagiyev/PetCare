@@ -1,4 +1,5 @@
-﻿using Application.ServiceAbstracts.UserServices;
+﻿using Application.ServiceAbstracts;
+using Application.ServiceAbstracts.UserServices;
 using Domain.DTOs.WriteDTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,12 +11,14 @@ namespace Presentation.Controllers
 	public class CompanyController : ControllerBase
 	{
 		private readonly ICompanyService _companyService;
+		private readonly IAdoptService _adoptService;
 
-		public CompanyController(ICompanyService companyService)
+
+		public CompanyController(ICompanyService companyService, IAdoptService adoptService)
 		{
 			_companyService = companyService;
+			_adoptService = adoptService;
 		}
-
 
 		[HttpGet("[action]")]
 		[Authorize(Roles = "Company,Admin")]
@@ -49,17 +52,32 @@ namespace Presentation.Controllers
 		}
 		
 		[HttpGet("[action]")]
-		[Authorize(Roles = "Company")]
+
 		public async Task<IActionResult> GetCompanyAdoptions(int companyId)
 		{
 			try
 			{
 				var adoptions = await _companyService.GetAdoptionsForCompanyAsync(companyId);
-				return Ok(adoptions);
+				return Ok(new {requestsArray=adoptions});
 			}
 			catch(Exception ex)
 			{
 				return BadRequest(ex.Message);
+			}
+		}
+
+		[HttpPost("[action]")]
+		public async Task<IActionResult> HandleRequest(int adoptionId,bool response)
+		{
+			try
+			{
+				var result = await _adoptService.HandleAdoptRequest(adoptionId, response);
+				return Ok();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				throw;
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using Domain.AbstractRepositories.IdentityRepos;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
@@ -61,6 +62,7 @@ namespace Persistance.Repositories.IdentityRepos
 			_table.Update(entity);
 			await SaveChangesDbAsync();
 		}
+		
 
 	}
 }

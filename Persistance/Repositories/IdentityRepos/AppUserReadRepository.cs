@@ -84,6 +84,7 @@ namespace Persistance.Repositories.IdentityRepos
 				.Where(s => s.CompanyId == companyId)
 				.Include(s => s.Pets)
 				.ThenInclude(p => p.Adoptions)
+				.ThenInclude(a => a.User)
 				.ToListAsync();
 
 			// Extract adoptions from the pets under these shelters
