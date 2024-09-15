@@ -1,4 +1,5 @@
-﻿using Application.ServiceAbstracts;
+﻿using System.Net;
+using Application.ServiceAbstracts;
 using Application.ServiceAbstracts.UserServices;
 using Domain.DTOs.WriteDTO;
 using Microsoft.AspNetCore.Authorization;
@@ -72,7 +73,12 @@ namespace Presentation.Controllers
 			try
 			{
 				var result = await _adoptService.HandleAdoptRequest(adoptionId, response);
-				return Ok();
+				if (result == HttpStatusCode.NotFound)
+					return NotFound("Adoption is not found");
+				else if (result == HttpStatusCode.NotModified)
+					return Ok("Adoption is not accepted");
+				
+				return Ok("Adoption is accepted");
 			}
 			catch (Exception e)
 			{
