@@ -11,9 +11,7 @@ using Domain.Identity;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
 using Domain.Models.AuthModels.Request;
-using Domain.Models.AuthModels.Response;
 using Microsoft.AspNetCore.Identity;
-using Persistance.Repositories.EntityRepos.ReadRepos;
 using System.Net;
 
 namespace Infrastructure.InternalServices
@@ -193,7 +191,7 @@ namespace Infrastructure.InternalServices
 
 		public async Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel)
 		{
-			var vets = await _userManager.GetUsersInRoleAsync("Vet");
+			var vets = await _appUserReadRepository.GetVetsWithPetTypesAsync();
 			var vetDTOs = vets.Select(_mapper.Map<VetReadAdminDTO>).ToList();
 
 			return vetDTOs;
@@ -233,7 +231,8 @@ namespace Infrastructure.InternalServices
 		{
 			try
 			{
-				var vets = await 
+				var vets = await _appUserReadRepository.GetVetsWithPetTypesAsync();
+
 				var vet =  vets.Select(_mapper.Map<VetReadAdminDTO>).FirstOrDefault(v => v.Id == vetId);
 
 				if (vet is null)
