@@ -21,6 +21,10 @@ namespace Domain.AutoMapperProfiles
             CreateMap<RegisterRequest, AppUser>();
             CreateMap<RegisterCompanyRequest, AppUser>();
 			CreateMap<RegisterVetRequest, AppUser>();
+			
+			// User
+			CreateMap<AppUser, UserDto>();
+			CreateMap<UserDto, AppUser>();
 
             //Vet
             CreateMap<AppUser,VetInfoDTO>();

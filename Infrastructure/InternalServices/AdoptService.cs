@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Infrastructure.InternalServices;
 
@@ -25,5 +26,11 @@ public class AdoptService: IAdoptService
         await _adoptionWriteRepository.CreateAsync(adoption);
 
         return HttpStatusCode.OK;
+    }
+
+    public async Task<HttpStatusCode> HandleAdoptRequest(int adoptionId, bool response)
+    {
+        var result = await _adoptionWriteRepository.HandleAdoptRequest(adoptionId, response);
+        return HttpStatusCode.Accepted;
     }
 }

@@ -15,11 +15,14 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("AllowSpecificOrigin",
-			builder => builder.WithOrigins("http://localhost:5174").WithOrigins("http://localhost:3000").WithOrigins("http://localhost:5173")
+	options.AddPolicy("AllowSpecificOrigin", builder =>
+	{
+		builder
+			.WithOrigins("http://localhost:5173") // Specify your frontend origin
 			.AllowAnyMethod()
-			.AllowCredentials()
-			.AllowAnyHeader());
+			.AllowAnyHeader()
+			.AllowCredentials(); // Allow credentials
+	});
 });
 
 

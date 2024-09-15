@@ -1,5 +1,7 @@
 ﻿using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.Entities.Concretes;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Database;
 using Persistance.Repositories.GenericRepos;
@@ -28,6 +30,21 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 			}
 		}
 
+		public async Task<bool> HandleAdoptRequest(int adoptionId, bool response)
+		{
+			var adoption = await _table.FirstOrDefaultAsync(a => a.Id == adoptionId);
+
+			if (adoption is not null)
+			{
+				if (response == true)
+					adoption.isAccepted = true;
+
+				await UpdateAsync(adoption);
+				return true;
+			}
+
+			return false;
+		}
 
 
 		public async Task UpdateAsync(Adoption entity)
@@ -35,5 +52,7 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 			_table.Update(entity);
 			await SaveChangesDbAsync();
 		}
+
+
 	}
 }
