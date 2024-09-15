@@ -1,4 +1,5 @@
-﻿using Domain.AbstractRepositories.EntityRepos.WriteRepos;
+﻿using System.Net;
+using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.Entities.Concretes;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -30,20 +31,24 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 			}
 		}
 
-		public async Task<bool> HandleAdoptRequest(int adoptionId, bool response)
+		public async Task<HttpStatusCode> HandleAdoptRequest(int adoptionId, bool response)
 		{
 			var adoption = await _table.FirstOrDefaultAsync(a => a.Id == adoptionId);
 
 			if (adoption is not null)
 			{
 				if (response == true)
+				{
 					adoption.isAccepted = true;
 
-				await UpdateAsync(adoption);
-				return true;
+					await UpdateAsync(adoption);
+					return HttpStatusCode.Accepted;
+				}
+
+				return HttpStatusCode.NotModified;
 			}
 
-			return false;
+			return HttpStatusCode.NotFound;
 		}
 
 
