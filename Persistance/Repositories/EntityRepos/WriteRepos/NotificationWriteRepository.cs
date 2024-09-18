@@ -15,6 +15,7 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 		public async Task CreateAsync(Notification entity)
 		{
 			await _table.AddAsync(entity);
+			await SaveChangesDbAsync();
 		}
 
 		public async Task DeleteAsync(int id)
@@ -22,6 +23,7 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 			var notification = await _table.FirstOrDefaultAsync(n => n.Id == id);
 			if (notification != null)
 				_table.Remove(notification);
+			await SaveChangesDbAsync();
 			//Burda exception atsa yaxshi olar
 		}
 
@@ -29,6 +31,7 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 		{
 			_table.Update(entity);
 			await Task.CompletedTask;
+			await SaveChangesDbAsync();
 		}
 	}
 }

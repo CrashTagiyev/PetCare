@@ -1,5 +1,6 @@
-﻿using Domain.DTOs.ReadDTO.AdminPanelDTOs;
-using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
+﻿using Domain.DTOs.AdminPanelDTOs;
+using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
 using Domain.Models.AuthModels.Request;
@@ -23,19 +24,26 @@ namespace Application.ServiceAbstracts.UserServices
 		Task<List<AppUserReadAdminDTO>> GetUsersDatas(UsersFilterAdminModel filterModel);
 		Task<HttpStatusCode> CreateUser(RegisterRequest request);
 		Task<AppUserReadAdminDTO> GetAppUserById(int userId);
+		Task<HttpStatusCode> UpdateAppUser(AppUserUpdateAdminDTO updateAdminDTO);
 
 		#endregion
 
+		#region Vet control services
+		
+		Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel);
+		Task<HttpStatusCode> CreateVet(RegisterVetRequest registerVetRequest);
+		Task<VetReadAdminDTO> GetVetById(int id);
+		#endregion
 
 		#region Company control services
 
 		Task<List<CompanyReadAdminDTO>> GetCompaniesDatas(CompanyFilterAdminModel filterModel);
 		Task<HttpStatusCode> CreateCompany(RegisterCompanyRequest request);
+		Task<HttpStatusCode> UpdateCompany(CompanyUpdateAdminDTO updateAdminDTO);
+		Task<CompanyReadAdminDTO> GetCompany(int companyId);
 
 		#endregion
 
-		Task<List<VetReadAdminDTO>> GetVetsDatas(VetFilterAdminModel filterModel);
-		Task<HttpStatusCode> UpdateAppUser(AppUserUpdateAdminDTO updateAdminDTO);
 
 		Task<HttpStatusCode> DeleteUser(int userId);
 

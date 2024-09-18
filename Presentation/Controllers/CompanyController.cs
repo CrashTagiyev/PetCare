@@ -2,6 +2,7 @@
 using Application.ServiceAbstracts;
 using Application.ServiceAbstracts.UserServices;
 using Domain.DTOs.WriteDTO;
+using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -68,11 +69,11 @@ namespace Presentation.Controllers
 		}
 
 		[HttpPost("[action]")]
-		public async Task<IActionResult> HandleRequest(int adoptionId,bool response)
+		public async Task<IActionResult> HandleRequest([FromBody]AdoptionRequestHandlerModel adoptionRequestHandlerModler)
 		{
 			try
 			{
-				var result = await _adoptService.HandleAdoptRequest(adoptionId, response);
+				var result = await _adoptService.HandleAdoptRequest(adoptionRequestHandlerModler.AdoptionId, adoptionRequestHandlerModler.Response);
 				if (result == HttpStatusCode.NotFound)
 					return NotFound("Adoption is not found");
 				else if (result == HttpStatusCode.NotModified)

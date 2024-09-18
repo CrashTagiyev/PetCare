@@ -1,5 +1,6 @@
 ﻿using Application.ServiceAbstracts.UserServices;
-using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AuthModels.Request;
 using Microsoft.AspNetCore.Mvc;
@@ -126,16 +127,11 @@ namespace Presentation.Controllers
 		}
 
 
-		[HttpDelete("[action]")]
-		public async Task<IActionResult> DeleteAppUser([FromQuery] int id)
-		{
-			var statusCode = await _adminService.DeleteUser(id);
-			return Ok(statusCode);
-		}
-
-
-
 		#endregion
+
+
+
+		#region Vet control actions
 
 		[HttpPost("[action]")]
 		public async Task<IActionResult> AdminGetVets([FromBody] VetFilterAdminModel filterModel)
@@ -149,6 +145,26 @@ namespace Presentation.Controllers
 			return Ok(new { vetsList = vetDTOs, totalVets });
 		}
 
+		[HttpPost("[action]")]
+		public async Task<IActionResult> AdminCreateVet([FromForm] RegisterVetRequest registerVetRequest)
+		{
+
+			var statusCode = await _adminService.CreateVet(registerVetRequest);
+
+			if (statusCode is HttpStatusCode.InternalServerError)
+				return BadRequest(new { message = "Internal server error", statusCode });
+
+			return Ok(new { message = "Account is successfully create", statusCode });
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> AdminGetVetById(int vetId)
+		{
+			var vet = await _adminService.GetVetById(vetId);
+			return Ok(vet);
+		}
+
+		#endregion
 
 		#region Company control Actions
 
@@ -175,7 +191,46 @@ namespace Presentation.Controllers
 		}
 
 
+		[HttpGet("[action]")]
+		public async Task<IActionResult> GetCompany([FromQuery] int companyId)
+		{
+			var companyDTO = await _adminService.GetCompany(companyId);
+
+			if (companyDTO is null)
+				return NotFound("Company with this id did not found!");
+
+			return Ok(companyDTO);
+		}
+
+
+
+		[HttpPut("[action]")]
+		public async Task<IActionResult> UpdateCompany([FromForm] CompanyUpdateAdminDTO updateAdminDTO)
+		{
+
+			var statusCode = await _adminService.UpdateCompany(updateAdminDTO);
+			if (statusCode is HttpStatusCode.NotFound)
+				return NotFound(new { statusCode, statusMessage = $"Company with this id:{updateAdminDTO.Id} did not found" });
+
+			if (statusCode is HttpStatusCode.InternalServerError)
+				return NotFound(new { statusCode, statusMessage = $"Internal server error occurced" });
+
+
+			return Ok(new { statusCode, statusMessage = "Company updated successfuly" });
+
+
+		}
+
 		#endregion
+
+
+		[HttpDelete("[action]")]
+		public async Task<IActionResult> DeleteAppUser([FromQuery] int id)
+		{
+			var statusCode = await _adminService.DeleteUser(id);
+			return Ok(statusCode);
+		}
+
 
 	}
 }

@@ -8,8 +8,6 @@ namespace Persistance.BuilderRegisters
 {
 	public static class PetCareDbContextRegisters
 	{
-
-
 		public static void AddPetCareDbContext(this IHostApplicationBuilder builder)
 		{
 

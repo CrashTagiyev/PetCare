@@ -13,7 +13,7 @@ namespace Domain.AbstractRepositories.IdentityRepos
 		Task<bool> IsEmailConfirmedAsync(string email);
 		Task<ICollection<AppUser>> GetCompanies();
 		Task<ICollection<Shelter>> GetCompanySheltersByIdAsync(int companyId);
-		public Task<ICollection<Adoption>> GetAdoptionsForCompanyAsync(int companyId);
-
+		Task<ICollection<Adoption>> GetAdoptionsForCompanyAsync(int companyId);
+		Task<ICollection<AppUser>> GetVetsWithPetTypesAsync();
 	}
 }

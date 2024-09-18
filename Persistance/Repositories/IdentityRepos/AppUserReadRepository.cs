@@ -95,5 +95,12 @@ namespace Persistance.Repositories.IdentityRepos
 
 			return adoptions;
 		}
+
+		public async Task<ICollection<AppUser>> GetVetsWithPetTypesAsync()
+		{
+			var umVets = await _userManager.GetUsersInRoleAsync("Vet");
+			var vets =  _table.Include(v => v.ProficientPetTypes).Where(umVets.Contains);
+			return vets.ToList();
+		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Domain.DTOs.ReadDTO.AdminPanelDTOs;
-using Domain.DTOs.ReadDTO.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs;
+using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
 using Domain.DTOs.ReadDTO.IdentityDTOs;
 using Domain.Identity;
 using Domain.Models.AuthModels.Request;
@@ -36,8 +37,14 @@ namespace Domain.AutoMapperProfiles
             CreateMap<AppUser, AppUserReadAdminDTO>();
             CreateMap<AppUser, CompanyReadAdminDTO>();
             CreateMap<AppUser, VetReadAdminDTO>();
+
             CreateMap<AppUserUpdateAdminDTO, AppUser>()
                 .ForMember(dest => dest.Id, options => options.Ignore());
+
+			CreateMap<CompanyUpdateAdminDTO, AppUser>()
+				.ForMember(dest => dest.Id, options => options.Ignore());
+
+
 		}
-    }
+	}
 }
