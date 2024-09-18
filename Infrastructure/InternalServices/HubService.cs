@@ -159,7 +159,7 @@ namespace Infrastructure.InternalServices
 				};
 
 				await _notificationWriteRepository.CreateAsync(newNotification);
-				
+			
 			}
 
 		}

@@ -93,5 +93,14 @@ namespace Infrastructure.Hubs.ChatHub
 			}
 			await _hubService.SaveMessageToDb(sendMessageModel);
 		}
+
+
+		public async Task SendNotification(NotificationModel notificationModel)
+		{
+			await Clients.Group(notificationModel.ReceiverUserName + "Notifications").SendNotification(notificationModel);
+			await _hubService.SaveNotificationToDb(notificationModel);
+		}
+
+
 	}
 }
