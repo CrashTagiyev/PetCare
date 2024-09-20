@@ -28,7 +28,7 @@ public class AdoptService: IAdoptService
         return HttpStatusCode.OK;
     }
 
-    public async Task<HttpStatusCode> HandleAdoptRequest(int adoptionId, bool response)
+    public async Task<Adoption> HandleAdoptRequest(int adoptionId, bool response)
     {
         var result = await _adoptionWriteRepository.HandleAdoptRequest(adoptionId, response);
         return result;
