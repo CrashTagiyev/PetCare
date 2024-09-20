@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.Entities.Concretes;
+using Domain.Enums;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,24 +32,17 @@ namespace Persistance.Repositories.EntityRepos.WriteRepos
 			}
 		}
 
-		public async Task<HttpStatusCode> HandleAdoptRequest(int adoptionId, bool response)
+		public async Task<Adoption> HandleAdoptRequest(int adoptionId, bool response)
 		{
 			var adoption = await _table.FirstOrDefaultAsync(a => a.Id == adoptionId);
 
 			if (adoption is not null)
 			{
-				if (response == true)
-				{
-					adoption.isAccepted = true;
-
-					await UpdateAsync(adoption);
-					return HttpStatusCode.Accepted;
-				}
-
-				return HttpStatusCode.NotModified;
+				adoption.isAccepted = response ? Acceptstatus.Accepted : Acceptstatus.Denied;
+				await UpdateAsync(adoption);
 			}
 
-			return HttpStatusCode.NotFound;
+			return adoption;
 		}
 
 
