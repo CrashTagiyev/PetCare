@@ -7,6 +7,6 @@ namespace Domain.AbstractRepositories.EntityRepos.WriteRepos
 {
     public interface IAdoptionWriteRepository : IGenericWriteRepository<Adoption>
     {
-        public Task<HttpStatusCode> HandleAdoptRequest(int adoptionId, bool response);
+        public Task<Adoption> HandleAdoptRequest(int adoptionId, bool response);
     }
 }

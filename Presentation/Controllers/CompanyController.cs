@@ -2,6 +2,7 @@
 using Application.ServiceAbstracts;
 using Application.ServiceAbstracts.UserServices;
 using Domain.DTOs.WriteDTO;
+using Domain.Enums;
 using Domain.Models.EntityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -74,12 +75,15 @@ namespace Presentation.Controllers
 			try
 			{
 				var result = await _adoptService.HandleAdoptRequest(adoptionRequestHandlerModler.AdoptionId, adoptionRequestHandlerModler.Response);
-				if (result == HttpStatusCode.NotFound)
-					return NotFound("Adoption is not found");
-				else if (result == HttpStatusCode.NotModified)
-					return Ok("Adoption is not accepted");
-				
-				return Ok("Adoption is accepted");
+				if (result is not null)
+				{
+					if (result.isAccepted == Acceptstatus.Accepted)
+						return Ok("Your adoption request is accepted");
+					else if (result.isAccepted == Acceptstatus.Denied)
+						return Ok("Your adoption request is rejected");
+				}
+
+				return BadRequest("Invalid adoption request");
 			}
 			catch (Exception e)
 			{
