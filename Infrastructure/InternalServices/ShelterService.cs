@@ -5,7 +5,6 @@ using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.DTOs.ReadDTO;
 using Domain.DTOs.WriteDTO;
 using Domain.Entities.Concretes;
-using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Infrastructure.InternalServices
@@ -15,11 +14,13 @@ namespace Infrastructure.InternalServices
 		private readonly IShelterReadRepository _shelterReadRepository;
 		private readonly IShelterWriteRepository _shelterWriteRepository;
 		private readonly IMapper _mapper;
-		public ShelterService(IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, IMapper mapper)
+		private readonly IBlobService _blobService;
+		public ShelterService(IShelterReadRepository shelterReadRepository, IShelterWriteRepository shelterWriteRepository, IMapper mapper, IBlobService blobService)
 		{
 			_shelterReadRepository = shelterReadRepository;
 			_shelterWriteRepository = shelterWriteRepository;
 			_mapper = mapper;
+			_blobService = blobService;
 		}
 
 		public async Task<List<ShelterReadDto>> GetAllShelters()
@@ -48,6 +49,14 @@ namespace Infrastructure.InternalServices
 				if (shelter is not null)
 				{
 					var pet = _mapper.Map<Pet>(petWriteDto);
+					var currentImageLinks = new List<string>();
+						
+					foreach (var imageFile in petWriteDto.ImageUrls)
+					{
+						var petsImageUrls = await _blobService.UploadImageFileAsync(imageFile);
+						currentImageLinks.Add(petsImageUrls);
+					}
+					pet.ImageUrls=currentImageLinks.ToArray();
 					shelter.Pets.Add(pet);
 					await _shelterWriteRepository.UpdateAsync(shelter);
 					return HttpStatusCode.OK;

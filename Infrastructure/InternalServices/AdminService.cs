@@ -2,10 +2,12 @@
 using Application.ServiceAbstracts.UserServices;
 using AutoMapper;
 using Domain.AbstractRepositories.EntityRepos.ReadRepos;
+using Domain.AbstractRepositories.EntityRepos.WriteRepos;
 using Domain.AbstractRepositories.IdentityRepos;
 using Domain.DTOs.AdminPanelDTOs;
 using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
 using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.ShelterControlDTOs;
 using Domain.Entities.Concretes;
 using Domain.Identity;
 using Domain.Models.AdminPanelModels.AdminControlModels;
@@ -16,7 +18,7 @@ using System.Net;
 
 namespace Infrastructure.InternalServices
 {
-    public class AdminService : IAdminService
+	public class AdminService : IAdminService
 	{
 		private readonly IPetReadRepository _petReadRepository;
 		private readonly IPetTypeReadRepository _petTypeReadRepository;
@@ -24,7 +26,9 @@ namespace Infrastructure.InternalServices
 		private readonly IAppUserReadRepository _appUserReadRepository;
 		private readonly IMapper _mapper;
 		private readonly IBlobService _blobService;
-		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService, IPetTypeReadRepository petTypeReadRepository)
+		private readonly IShelterReadRepository _shelterReadRepository;
+		private readonly IShelterWriteRepository _shelterWriteRepository;
+		public AdminService(IPetReadRepository petReadRepository, UserManager<AppUser> userManager, IAppUserReadRepository appUserReadRepository, IMapper mapper, IBlobService blobService, IPetTypeReadRepository petTypeReadRepository, IShelterReadRepository shelterReadRepository)
 		{
 			_petReadRepository = petReadRepository;
 			_userManager = userManager;
@@ -32,6 +36,7 @@ namespace Infrastructure.InternalServices
 			_mapper = mapper;
 			_blobService = blobService;
 			_petTypeReadRepository = petTypeReadRepository;
+			_shelterReadRepository = shelterReadRepository;
 		}
 
 
@@ -220,10 +225,10 @@ namespace Infrastructure.InternalServices
 			if (result.Succeeded)
 			{
 				await _userManager.AddToRoleAsync(vet, "Vet");
-	
+
 				return HttpStatusCode.Created;
 			}
-		
+
 			return HttpStatusCode.InternalServerError;
 		}
 
@@ -233,13 +238,13 @@ namespace Infrastructure.InternalServices
 			{
 				var vets = await _appUserReadRepository.GetVetsWithPetTypesAsync();
 
-				var vet =  vets.Select(_mapper.Map<VetReadAdminDTO>).FirstOrDefault(v => v.Id == vetId);
+				var vet = vets.Select(_mapper.Map<VetReadAdminDTO>).FirstOrDefault(v => v.Id == vetId);
 
 				if (vet is null)
 					throw new Exception($"Vet with this id:{vetId} did not found");
 
 				return vet;
-            }
+			}
 			catch (Exception ex)
 			{
 				throw new Exception(ex.Message);
@@ -325,6 +330,54 @@ namespace Infrastructure.InternalServices
 		}
 
 		#endregion
+
+
+		//----------------------------------------------------
+		#region Shelter services
+
+		public async Task<List<ShelterReadAdminDTO>> GetShelters()
+		{
+			var shelters = await _shelterReadRepository.GetAllAsync();
+			return shelters.Select(_mapper.Map<ShelterReadAdminDTO>).ToList();
+		}
+
+		public async Task<ShelterReadAdminDTO> GetShelterById(int id)
+		{
+			try
+			{
+				var shelter = await _shelterReadRepository.GetByIdAsync(id);
+				if (shelter is null)
+					throw new Exception($"shelter with this ID:{id} did not found");
+
+				return _mapper.Map<ShelterReadAdminDTO>(shelter);
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+			}
+		}
+
+		public async Task<HttpStatusCode> UpdateShelter(ShelterUpdateAdminDTO shelterDTO)
+		{
+			try
+			{
+				var shelter = await _shelterReadRepository.GetByIdAsync(shelterDTO.Id);
+				if (shelter is null) throw new Exception($"Shelter with this iD:{shelterDTO.Id} did not found");
+
+				_mapper.Map(shelterDTO, shelter);
+				await _shelterWriteRepository.UpdateAsync(shelter);
+				return HttpStatusCode.OK;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
+
+		#endregion
+
 
 
 		public async Task<HttpStatusCode> DeleteUser(int userId)

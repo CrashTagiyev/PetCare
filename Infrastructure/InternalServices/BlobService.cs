@@ -44,7 +44,7 @@ namespace Infrastructure.InternalServices
 		{
 			var blobStorageContainerName = _blobServiceClient.GetBlobContainerClient(_configuration.GetValue<string>("PetCareImageBlobContainer"));
 
-			var blobStorageClient = blobStorageContainerName.GetBlobClient(file.FileName + Guid.NewGuid().ToString());
+			var blobStorageClient = blobStorageContainerName.GetBlobClient( Guid.NewGuid().ToString()+ file.FileName);
 
 			using (var streamContent = file.OpenReadStream())
 			{

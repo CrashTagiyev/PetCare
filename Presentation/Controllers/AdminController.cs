@@ -1,16 +1,20 @@
 ﻿using Application.ServiceAbstracts.UserServices;
 using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
 using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.ShelterControlDTOs;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AuthModels.Request;
+using Domain.Models.EntityModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using System.Net;
 
 namespace Presentation.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	//[Authorize(Roles = "Admin")]
+	[Authorize(Roles = "Admin")]
 	public class AdminController : ControllerBase
 	{
 		private readonly IAdminService _adminService;
@@ -223,6 +227,36 @@ namespace Presentation.Controllers
 
 		#endregion
 
+		#region Shelter control actions
+		[HttpPost("[action]")]
+		public async Task<IActionResult> GetShelters(ShelterFilterModel filterModel)
+		{
+			var shelterDTOs=await _adminService.GetShelters();
+
+			int totalShelters = shelterDTOs.Count();
+			int skip = (filterModel!.PageNumber - 1) * filterModel.PageSize;
+			var sheltersList = shelterDTOs.Skip(skip).Take(filterModel.PageSize).ToList();
+
+			return Ok(new { sheltersList, totalShelters });
+
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> GetShelterById(int id)
+		{
+			var shelterDTOs = await _adminService.GetShelterById(id);
+			return Ok(shelterDTOs);
+		}
+
+		[HttpPut("[action]")]
+		public async Task<IActionResult> UpdateShelter(ShelterUpdateAdminDTO shelter)
+		{
+			var statusCode = await _adminService.UpdateShelter(shelter);
+			return Ok(statusCode);
+		}
+
+
+		#endregion
 
 		[HttpDelete("[action]")]
 		public async Task<IActionResult> DeleteAppUser([FromQuery] int id)
