@@ -39,7 +39,7 @@ namespace Persistance.Configurations.IdentityConfigs
 				var user = new AppUser
 				{
 					Id = i + 2000,
-					DateOfBirth = new DateTime(1999, 12, 31).AddDays(i), // Slightly varying DOB
+					DateOfBirth = new DateTime(1999, 12, 31).AddDays(i), 
 					City = $"Baku",
 					Address = $"Koroglu Rahimov 70",
 					CreatedTime = DateTime.UtcNow.AddMonths(-random.Next(1, 12)),

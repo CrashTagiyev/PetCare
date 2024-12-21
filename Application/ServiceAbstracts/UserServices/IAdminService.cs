@@ -1,6 +1,7 @@
 ﻿using Domain.DTOs.AdminPanelDTOs;
 using Domain.DTOs.AdminPanelDTOs.AppUserControlDTOs;
 using Domain.DTOs.AdminPanelDTOs.CompanyControlDTOs;
+using Domain.DTOs.AdminPanelDTOs.ShelterControlDTOs;
 using Domain.Models.AdminPanelModels.AdminControlModels;
 using Domain.Models.AdminPanelModels.DashboardModels;
 using Domain.Models.AuthModels.Request;
@@ -44,6 +45,12 @@ namespace Application.ServiceAbstracts.UserServices
 
 		#endregion
 
+
+		#region Shelter control services
+		Task<ShelterReadAdminDTO> GetShelterById(int id);
+		Task<List<ShelterReadAdminDTO>> GetShelters();
+		Task<HttpStatusCode> UpdateShelter(ShelterUpdateAdminDTO shelterDTO);
+		#endregion
 
 		Task<HttpStatusCode> DeleteUser(int userId);
 

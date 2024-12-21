@@ -51,9 +51,9 @@ namespace Infrastructure.InternalServices
 			if (company.Shelters.IsNullOrEmpty())
 				company.Shelters = new List<Shelter>();
 
-			company.Shelters!.Add(newShelter);
 			var imageUrl = await _blobService.UploadImageFileAsync(shelterWriteDto.ShelterImage);
 			newShelter.ShelterImageUrl = imageUrl;
+			company.Shelters!.Add(newShelter);
 
 			await _userManager.UpdateAsync(company);
 			return HttpStatusCode.OK;

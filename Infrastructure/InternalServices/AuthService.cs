@@ -51,7 +51,7 @@ namespace Infrastructure.ExternalServices
 			if (result.Succeeded)
 			{
 				await _userManager.AddToRoleAsync(user, "User");
-				//await _emailService.SendEmailConfirm(user);
+				await _emailService.SendEmailConfirm(user);
 				var successRespose = new RegisterResponse
 				{
 					StatusMessage = "Account created successfully.Please confirm registration from the email",
